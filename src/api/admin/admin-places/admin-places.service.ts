@@ -8,6 +8,7 @@ import { EditCountryAdminDto } from './dto/edit-country.admin.dto';
 import { AddCityAdminDto } from './dto/add-city.admin.dto';
 import { City } from '../../../entity/country/city.entity';
 import { CityRepository } from '../../../repository/country/city.repository';
+import { AddCitiesAdminDto } from './dto/add-cities.admin.dto';
 
 @Injectable()
 export class AdminPlacesService {
@@ -53,6 +54,18 @@ export class AdminPlacesService {
     try {
       const city = new City(addCity);
       return await this.cityRepository.save(city);
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async addCities(newCities: AddCitiesAdminDto) {
+    try {
+      const cities = [];
+      for (const city of newCities.cities) {
+        cities.push(city);
+      }
+      return await this.cityRepository.save(cities);
     } catch (e) {
       this.exceptionService.handleException(e);
     }
