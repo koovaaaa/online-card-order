@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsNumber, IsPositive } from 'class-validator';
 import { CurrencyEnum } from '../../../../enum/currency.enum';
 
-export class CreateCountryAdminDto {
+export class AddCountryAdminDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsEnum(CountryNameEnum)

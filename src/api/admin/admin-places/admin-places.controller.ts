@@ -1,31 +1,37 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AdminPlacesService } from './admin-places.service';
-import { CreateCountryAdminDto } from './dto/create-country.admin.dto';
+import { AddCountryAdminDto } from './dto/add-country.admin.dto';
 import { Country } from '../../../entity/country/country.entity';
 import { EditCountryAdminDto } from './dto/edit-country.admin.dto';
+import { AddCityAdminDto } from './dto/add-city.admin.dto';
 
 @ApiTags('Admin Places')
 @Controller('admin/places')
 export class AdminPlacesController {
   constructor(private readonly adminPlacesService: AdminPlacesService) {}
-  @Get('get-countries')
-  getAllCountries() {
-    return 'test';
+  @Get('country/get-countries')
+  async getAllCountries() {
+    return await this.adminPlacesService.getAllCountries();
   }
 
-  @Post('add-country')
+  @Post('country/add-country')
   async addNewCountry(
-    @Body() createNewCountry: CreateCountryAdminDto,
+    @Body() createNewCountry: AddCountryAdminDto,
   ): Promise<Country> {
     return await this.adminPlacesService.addNewCountry(createNewCountry);
   }
 
-  @Put('edit-country/:id')
+  @Put('country/edit-country/:id')
   async editCountry(
     @Param('id') countryId: string,
     @Body() editCountry: EditCountryAdminDto,
-  ) {
+  ): Promise<Country> {
     return await this.adminPlacesService.editCountry(countryId, editCountry);
+  }
+
+  @Post('city/add-city')
+  async addNewCity(@Body() addCity: AddCityAdminDto) {
+    return this.adminPlacesService.addCity(addCity);
   }
 }
