@@ -6,11 +6,11 @@ ConfigModule.forRoot({ isGlobal: true });
 
 const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'mysql',
-  host: 'localhost',
-  port: 3306,
-  username: 'root',
-  password: 'root',
-  database: 'order_card_db',
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT),
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   entities: ['./dist/entity/*/*.entity.js'],
   synchronize: true,
   namingStrategy: new SnakeNamingStrategy(),
