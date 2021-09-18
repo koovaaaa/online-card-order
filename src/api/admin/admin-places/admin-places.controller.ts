@@ -1,5 +1,14 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AdminPlacesService } from './admin-places.service';
 import { AddCountryAdminDto } from './dto/add-country.admin.dto';
 import { Country } from '../../../entity/country/country.entity';
@@ -10,8 +19,12 @@ import { EditCityAdminDto } from './dto/edit-city.admin.dto';
 import { City } from '../../../entity/city/city.entity';
 import { PaginationDto } from '../../../helper/dto/pagination.dto';
 import { PaginationService } from '../../../helper/services/pagination.service';
+import { AdminGuard } from '../../auth/guards/admin.guard';
+import { JwtAuthGuard } from '../../auth/guards/jwt.guard';
 
 @ApiTags('Admin Places')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard, AdminGuard)
 @Controller('admin/places')
 export class AdminPlacesController {
   constructor(
