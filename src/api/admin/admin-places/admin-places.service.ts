@@ -51,7 +51,7 @@ export class AdminPlacesService {
     }
   }
 
-  async addCity(addCity: AddCityAdminDto) {
+  async addCity(addCity: AddCityAdminDto): Promise<City> {
     try {
       const city = new City(addCity);
       return await this.cityRepository.save(city);
@@ -60,7 +60,7 @@ export class AdminPlacesService {
     }
   }
 
-  async addCities(newCities: AddCitiesAdminDto) {
+  async addCities(newCities: AddCitiesAdminDto): Promise<City[]> {
     try {
       const cities = [];
       for (const city of newCities.cities) {
@@ -72,12 +72,20 @@ export class AdminPlacesService {
     }
   }
 
-  async editCity(cityId: string, editCity: EditCityAdminDto) {
+  async editCity(cityId: string, editCity: EditCityAdminDto): Promise<City> {
     try {
       let city = await this.cityRepository.findOneOrFail(cityId);
       city = { ...city, ...editCity };
       await this.cityRepository.update(cityId, city);
       return city;
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async getAllCities(): Promise<City[]> {
+    try {
+      return await this.cityRepository.find();
     } catch (e) {
       this.exceptionService.handleException(e);
     }
