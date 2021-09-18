@@ -10,6 +10,8 @@ import { UserService } from '../user/user.service';
 import * as bcrypt from 'bcrypt';
 import { JwtPayloadInterface } from './jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
+import { MailService } from '../../mail/mail.service';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 
 @Injectable()
 export class AuthService {
@@ -19,12 +21,15 @@ export class AuthService {
     private readonly passwordService: PasswordService,
     private readonly jwtService: JwtService,
     private readonly userService: UserService,
+    private readonly mailService: MailService,
   ) {}
   async singUp(userData: UserRegistrationDto): Promise<User> {
     try {
       let user: User = new User(userData);
       user = await this.passwordService.hashPasswordAndGenerateSalt(user);
-      return await this.userRepository.save(user);
+      user = await this.userRepository.save(user);
+      await this.mailService.sendWelcomeMail(user);
+      return user;
     } catch (e) {
       this.exceptionService.handleException(e);
     }
@@ -39,6 +44,33 @@ export class AuthService {
 
       const payload: JwtPayloadInterface = { username: user.username };
       return this.jwtService.sign(payload);
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async forgotPassword(usernameOrEmail: string): Promise<void> {
+    try {
+      const user = await this.userService.findUserByEmailOrUsername(
+        usernameOrEmail,
+      );
+
+      const token = this.jwtService.sign(
+        { username: user.username },
+        {
+          secret: process.env.JWT_SECRET_FOR_PASSWORD_RESET,
+          expiresIn: parseInt(process.env.JWT_TOKEN_RESET_PASSWORD_EXPIRES),
+        },
+      );
+
+      await this.mailService.sendMailForResetPassword(user, token);
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async resetPassword(id: string, token: string, password: string) {
+    try {
     } catch (e) {
       this.exceptionService.handleException(e);
     }
