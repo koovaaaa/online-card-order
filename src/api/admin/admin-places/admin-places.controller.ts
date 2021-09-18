@@ -6,6 +6,7 @@ import { Country } from '../../../entity/country/country.entity';
 import { EditCountryAdminDto } from './dto/edit-country.admin.dto';
 import { AddCityAdminDto } from './dto/add-city.admin.dto';
 import { AddCitiesAdminDto } from './dto/add-cities.admin.dto';
+import { EditCityAdminDto } from './dto/edit-city.admin.dto';
 
 @ApiTags('Admin Places')
 @Controller('admin/places')
@@ -33,11 +34,19 @@ export class AdminPlacesController {
 
   @Post('city/add-city')
   async addNewCity(@Body() addCity: AddCityAdminDto) {
-    return this.adminPlacesService.addCity(addCity);
+    return await this.adminPlacesService.addCity(addCity);
   }
 
   @Post('city/add-cities')
   async addNewCities(@Body() newCities: AddCitiesAdminDto) {
-    return this.adminPlacesService.addCities(newCities);
+    return await this.adminPlacesService.addCities(newCities);
+  }
+
+  @Put('city/edit-city/:id')
+  async editCity(
+    @Param('id') cityId: string,
+    @Body() editCity: EditCityAdminDto,
+  ) {
+    return this.adminPlacesService.editCity(cityId, editCity);
   }
 }
