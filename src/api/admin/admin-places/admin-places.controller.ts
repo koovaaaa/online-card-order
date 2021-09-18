@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AdminPlacesService } from './admin-places.service';
 import { AddCountryAdminDto } from './dto/add-country.admin.dto';
@@ -8,14 +8,24 @@ import { AddCityAdminDto } from './dto/add-city.admin.dto';
 import { AddCitiesAdminDto } from './dto/add-cities.admin.dto';
 import { EditCityAdminDto } from './dto/edit-city.admin.dto';
 import { City } from '../../../entity/country/city.entity';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
+import { PaginationService } from '../../../helper/services/pagination.service';
 
 @ApiTags('Admin Places')
 @Controller('admin/places')
 export class AdminPlacesController {
-  constructor(private readonly adminPlacesService: AdminPlacesService) {}
+  constructor(
+    private readonly adminPlacesService: AdminPlacesService,
+    private readonly paginationService: PaginationService,
+  ) {}
   @Get('country/get-countries')
   async getAllCountries() {
     return await this.adminPlacesService.getAllCountries();
+  }
+
+  @Get('country/:id')
+  async getCountryById(@Param('id') countryId: string): Promise<Country> {
+    return await this.adminPlacesService.getCountryById(countryId);
   }
 
   @Post('country/add-country')
@@ -34,8 +44,28 @@ export class AdminPlacesController {
   }
 
   @Get('city/get-cities')
-  async getAllCities(): Promise<City[]> {
-    return await this.adminPlacesService.getAllCities();
+  async getAllCities(@Query() pagination: PaginationDto): Promise<City[]> {
+    const paginationSet = this.paginationService.setPagination(pagination);
+    return await this.adminPlacesService.getAllCities(paginationSet);
+  }
+
+  @Get('city/get-city/:id')
+  async getCityById(@Param('id') cityId: string): Promise<City> {
+    return await this.adminPlacesService.getCityById(cityId);
+  }
+
+  @Get('city/get-cities-from-country/:id')
+  async getCitiesFromCountry(
+    @Query() pagination: PaginationDto,
+    @Param('id') countryId: string,
+  ): Promise<City[]> {
+    const paginationSet = await this.paginationService.setPagination(
+      pagination,
+    );
+    return await this.adminPlacesService.getCityFromCountry(
+      countryId,
+      paginationSet,
+    );
   }
 
   @Post('city/add-city')

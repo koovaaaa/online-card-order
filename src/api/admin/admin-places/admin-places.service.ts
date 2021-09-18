@@ -10,6 +10,7 @@ import { City } from '../../../entity/country/city.entity';
 import { CityRepository } from '../../../repository/country/city.repository';
 import { AddCitiesAdminDto } from './dto/add-cities.admin.dto';
 import { EditCityAdminDto } from './dto/edit-city.admin.dto';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
 
 @Injectable()
 export class AdminPlacesService {
@@ -83,9 +84,43 @@ export class AdminPlacesService {
     }
   }
 
-  async getAllCities(): Promise<City[]> {
+  async getAllCities({ limit, skip }: PaginationDto): Promise<City[]> {
     try {
-      return await this.cityRepository.find();
+      return await this.cityRepository.find({
+        take: limit,
+        skip,
+      });
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async getCityFromCountry(
+    countryId: string,
+    { limit, skip }: PaginationDto,
+  ): Promise<City[]> {
+    try {
+      return await this.cityRepository.find({
+        take: limit,
+        skip,
+        where: { country: countryId },
+      });
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async getCountryById(id: string): Promise<Country> {
+    try {
+      return await this.countryRepository.findOneOrFail(id);
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async getCityById(id: string): Promise<City> {
+    try {
+      return await this.cityRepository.findOneOrFail(id);
     } catch (e) {
       this.exceptionService.handleException(e);
     }
