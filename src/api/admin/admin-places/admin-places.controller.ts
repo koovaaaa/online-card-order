@@ -7,7 +7,7 @@ import { EditCountryAdminDto } from './dto/edit-country.admin.dto';
 import { AddCityAdminDto } from './dto/add-city.admin.dto';
 import { AddCitiesAdminDto } from './dto/add-cities.admin.dto';
 import { EditCityAdminDto } from './dto/edit-city.admin.dto';
-import { City } from '../../../entity/country/city.entity';
+import { City } from '../../../entity/city/city.entity';
 import { PaginationDto } from '../../../helper/dto/pagination.dto';
 import { PaginationService } from '../../../helper/services/pagination.service';
 

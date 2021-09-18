@@ -15,6 +15,8 @@ export class ExceptionService {
         throw new ConflictException(error.message);
       case 'ER_NO_REFERENCED_ROW_2':
         throw new NotFoundException(error.message);
+      case 'ER_NO_DEFAULT_FOR_FIELD':
+        throw new ConflictException(error.message);
       default:
         throw new BadRequestException(error.message);
     }

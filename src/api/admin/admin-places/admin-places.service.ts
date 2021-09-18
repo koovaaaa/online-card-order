@@ -6,8 +6,8 @@ import { CountryRepository } from '../../../repository/country/country.repositor
 import { ExceptionService } from '../../../helper/services/exception.service';
 import { EditCountryAdminDto } from './dto/edit-country.admin.dto';
 import { AddCityAdminDto } from './dto/add-city.admin.dto';
-import { City } from '../../../entity/country/city.entity';
-import { CityRepository } from '../../../repository/country/city.repository';
+import { City } from '../../../entity/city/city.entity';
+import { CityRepository } from '../../../repository/city/city.repository';
 import { AddCitiesAdminDto } from './dto/add-cities.admin.dto';
 import { EditCityAdminDto } from './dto/edit-city.admin.dto';
 import { PaginationDto } from '../../../helper/dto/pagination.dto';

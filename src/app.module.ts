@@ -5,12 +5,14 @@ import { AdminModule } from './api/admin/admin.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import typeOrmConfig from './config/typeormconfig';
+import { AuthModule } from './api/auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(typeOrmConfig),
     AdminModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
