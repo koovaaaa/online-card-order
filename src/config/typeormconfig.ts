@@ -14,6 +14,7 @@ const typeOrmConfig: TypeOrmModuleOptions = {
   entities: ['./dist/entity/*/*.entity.js'],
   synchronize: true,
   namingStrategy: new SnakeNamingStrategy(),
+  logging: true,
 };
 
 export default typeOrmConfig;
