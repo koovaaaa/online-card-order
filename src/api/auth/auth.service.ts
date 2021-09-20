@@ -10,7 +10,6 @@ import { User } from '../../entity/user/user.entity';
 import { ExceptionService } from '../../helper/services/exception.service';
 import { PasswordService } from '../../helper/services/password.service';
 import { UserLoginDto } from './dto/user-login.dto';
-import { UserService } from '../user/user.service';
 import * as bcrypt from 'bcrypt';
 import { JwtPayloadInterface } from './jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
@@ -23,7 +22,6 @@ export class AuthService {
     private readonly exceptionService: ExceptionService,
     private readonly passwordService: PasswordService,
     private readonly jwtService: JwtService,
-    private readonly userService: UserService,
     private readonly mailService: MailService,
   ) {}
   async singUp(userData: UserRegistrationDto): Promise<User> {
@@ -37,7 +35,6 @@ export class AuthService {
       delete user['password'];
       user = await this.userRepository.save(user);
       await this.mailService.sendWelcomeMail(user);
-      console.log();
       return user;
     } catch (e) {
       this.exceptionService.handleException(e);
@@ -46,7 +43,7 @@ export class AuthService {
 
   async singIn(loginData: UserLoginDto): Promise<string> {
     try {
-      const user = await this.userService.findUserByEmailOrUsername(
+      const user = await this.findUserByEmailOrUsername(
         loginData.usernameOrEmail,
       );
       await this.checkPassword(user, loginData.password);
@@ -60,9 +57,7 @@ export class AuthService {
 
   async forgotPassword(usernameOrEmail: string): Promise<void> {
     try {
-      const user = await this.userService.findUserByEmailOrUsername(
-        usernameOrEmail,
-      );
+      const user = await this.findUserByEmailOrUsername(usernameOrEmail);
 
       const token = this.jwtService.sign(
         { username: user.username },
@@ -89,7 +84,7 @@ export class AuthService {
 
       await this.checkIfJwtTokenExpired(currentTimestamp, expiresAt);
 
-      await this.userService.changeForgottenPassword(user, password);
+      await this.changeForgottenPassword(user, password);
     } catch (e) {
       this.exceptionService.handleException(e);
     }
@@ -107,5 +102,30 @@ export class AuthService {
   checkIfJwtTokenExpired(currentTime, expiresAt) {
     if (currentTime > expiresAt)
       throw new UnauthorizedException('Token je istekao!');
+  }
+
+  async findUserByEmailOrUsername(usernameOrEmail: string): Promise<User> {
+    try {
+      return await this.userRepository.findOneOrFail({
+        where: [{ username: usernameOrEmail }, { email: usernameOrEmail }],
+      });
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async changeForgottenPassword(user: User, password: string) {
+    try {
+      const userWithNewPassword =
+        await this.passwordService.hashPasswordAndGenerateSalt(user, password);
+      return this.userRepository.update(user.userId, {
+        passwordHash: userWithNewPassword.passwordHash,
+        salt: userWithNewPassword.salt,
+        passwordChangeCounter: userWithNewPassword.passwordChangeCounter + 1,
+        lastPasswordChangeAt: new Date(),
+      });
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
   }
 }

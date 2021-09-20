@@ -7,9 +7,9 @@ import { ChangeRoleDto } from './dto/change-role.dto';
 import { UpdateResult } from 'typeorm';
 import { User } from '../../../entity/user/user.entity';
 
-@ApiTags('Admin Users')
+@ApiTags('Admin User')
 @ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, AdminGuard)
 @Controller('admin/users')
 export class AdminUserController {
   constructor(private readonly adminUserService: AdminUserService) {}

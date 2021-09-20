@@ -22,7 +22,7 @@ import { PaginationService } from '../../../helper/services/pagination.service';
 import { AdminGuard } from '../../auth/guards/admin.guard';
 import { JwtAuthGuard } from '../../auth/guards/jwt.guard';
 
-@ApiTags('Admin Places')
+@ApiTags('Admin Place')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, AdminGuard)
 @Controller('admin/places')

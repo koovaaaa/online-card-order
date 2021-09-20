@@ -17,7 +17,7 @@ import { User } from '../../../entity/user/user.entity';
 import { DeleteResult } from 'typeorm';
 import { Category } from '../../../entity/category/category.entity';
 
-@ApiTags('Admin Categories')
+@ApiTags('Admin Category')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, AdminGuard)
 @Controller('admin/categories')

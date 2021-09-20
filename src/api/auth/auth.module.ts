@@ -5,7 +5,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../../entity/user/user.entity';
 import { ExceptionService } from '../../helper/services/exception.service';
 import { PasswordService } from '../../helper/services/password.service';
-import { UserService } from '../user/user.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
@@ -30,7 +29,6 @@ import { MailService } from '../../mail/mail.service';
     AuthService,
     ExceptionService,
     PasswordService,
-    UserService,
     JwtStrategy,
     MailService,
   ],
