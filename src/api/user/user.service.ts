@@ -30,7 +30,7 @@ export class UserService {
       return this.userRepository.update(user.userId, {
         passwordHash: userWithNewPassword.passwordHash,
         salt: userWithNewPassword.salt,
-        passwordChangeCounter: user.passwordChangeCounter + 1,
+        passwordChangeCounter: userWithNewPassword.passwordChangeCounter + 1,
         lastPasswordChangeAt: new Date(),
       });
     } catch (e) {

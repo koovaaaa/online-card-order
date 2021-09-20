@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { AdminPlacesController } from './admin-places.controller';
-import { AdminPlacesService } from './admin-places.service';
+import { AdminPlaceController } from './admin-place.controller';
+import { AdminPlaceService } from './admin-place.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Country } from '../../../entity/country/country.entity';
 import { ExceptionService } from '../../../helper/services/exception.service';
@@ -9,7 +9,7 @@ import { PaginationService } from '../../../helper/services/pagination.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Country, City])],
-  controllers: [AdminPlacesController],
-  providers: [AdminPlacesService, ExceptionService, PaginationService],
+  controllers: [AdminPlaceController],
+  providers: [AdminPlaceService, ExceptionService, PaginationService],
 })
-export class AdminPlacesModule {}
+export class AdminPlaceModule {}

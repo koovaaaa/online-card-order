@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AdminPlacesModule } from './admin-places/admin-places.module';
+import { AdminPlaceModule } from './admin-place/admin-place.module';
+import { AdminUserModule } from './admin-user/admin-user.module';
 
 @Module({
-  imports: [AdminPlacesModule]
+  imports: [AdminPlaceModule, AdminUserModule],
 })
 export class AdminModule {}

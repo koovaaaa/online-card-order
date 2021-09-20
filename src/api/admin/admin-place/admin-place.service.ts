@@ -13,7 +13,7 @@ import { EditCityAdminDto } from './dto/edit-city.admin.dto';
 import { PaginationDto } from '../../../helper/dto/pagination.dto';
 
 @Injectable()
-export class AdminPlacesService {
+export class AdminPlaceService {
   constructor(
     @InjectRepository(Country)
     private readonly countryRepository: CountryRepository,

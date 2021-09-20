@@ -14,6 +14,7 @@ export class AuthController {
   @Post('register')
   async userRegistration(@Body() userData: UserRegistrationDto): Promise<User> {
     return await this.authService.singUp(userData);
+    console.log();
   }
 
   @Post('login')

@@ -37,6 +37,7 @@ export class AuthService {
       delete user['password'];
       user = await this.userRepository.save(user);
       await this.mailService.sendWelcomeMail(user);
+      console.log();
       return user;
     } catch (e) {
       this.exceptionService.handleException(e);

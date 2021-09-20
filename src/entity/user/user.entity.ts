@@ -53,8 +53,8 @@ export class User {
   @Column()
   address: string;
 
-  @Column({ unique: true })
-  phoneNumber: string;
+  @Column()
+  contactPhone: string;
 
   @ManyToOne(() => City)
   city: City;

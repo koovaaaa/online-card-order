@@ -4,6 +4,7 @@ import {
   IsNotEmpty,
   IsNumberString,
   IsString,
+  Matches,
   MaxLength,
   MinLength,
 } from 'class-validator';
@@ -30,6 +31,13 @@ export class UserRegistrationDto {
   @IsEmail()
   email: string;
   @ApiProperty()
+  @IsNumberString()
+  @Matches(/^[+]{1}[0-9]{9,14}$/, {
+    message:
+      'Broj mora biti u obliku +387XXXXXX (+387 - Umjesto 387 unosite pozivni broj za vasu drzavu)',
+  })
+  contactPhone: string;
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
   @MinLength(8)
@@ -39,10 +47,6 @@ export class UserRegistrationDto {
   @IsNotEmpty()
   @IsString()
   address: string;
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsNumberString()
-  phoneNumber: string;
   @ApiProperty()
   @IsNotEmpty()
   city: City;
