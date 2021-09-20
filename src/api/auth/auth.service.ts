@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { UserRegistrationDto } from './dto/user-registration.dto';
 import { UserRepository } from '../../repository/user/user.repository';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -11,7 +15,6 @@ import * as bcrypt from 'bcrypt';
 import { JwtPayloadInterface } from './jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
 import { MailService } from '../../mail/mail.service';
-import { ResetPasswordDto } from './dto/reset-password.dto';
 
 @Injectable()
 export class AuthService {
@@ -26,7 +29,12 @@ export class AuthService {
   async singUp(userData: UserRegistrationDto): Promise<User> {
     try {
       let user: User = new User(userData);
-      user = await this.passwordService.hashPasswordAndGenerateSalt(user);
+      const password = userData.password;
+      user = await this.passwordService.hashPasswordAndGenerateSalt(
+        user,
+        password,
+      );
+      delete user['password'];
       user = await this.userRepository.save(user);
       await this.mailService.sendWelcomeMail(user);
       return user;
@@ -71,6 +79,16 @@ export class AuthService {
 
   async resetPassword(id: string, token: string, password: string) {
     try {
+      const user = await this.userRepository.findOneOrFail(id);
+      const checkUser = await this.jwtService.decode(token);
+      await this.checkIfUserExist(user, checkUser);
+
+      const currentTimestamp = Math.round(Date.now() / 1000);
+      const expiresAt = checkUser['exp'];
+
+      await this.checkIfJwtTokenExpired(currentTimestamp, expiresAt);
+
+      await this.userService.changeForgottenPassword(user, password);
     } catch (e) {
       this.exceptionService.handleException(e);
     }
@@ -79,5 +97,14 @@ export class AuthService {
   async checkPassword(user: User, password: string) {
     if ((await bcrypt.hash(password, user.salt)) !== user.passwordHash)
       throw new UnauthorizedException('Lozinka nije ispravna!');
+  }
+
+  checkIfUserExist(user, checkUser) {
+    if (user.username !== checkUser['username']) throw new NotFoundException();
+  }
+
+  checkIfJwtTokenExpired(currentTime, expiresAt) {
+    if (currentTime > expiresAt)
+      throw new UnauthorizedException('Token je istekao!');
   }
 }

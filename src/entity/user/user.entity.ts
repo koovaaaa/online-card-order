@@ -39,6 +39,14 @@ export class User {
   @Exclude()
   salt: string;
 
+  @Column({ default: null })
+  @Exclude()
+  lastPasswordChangeAt: Date;
+
+  @Column({ default: 0 })
+  @Exclude()
+  passwordChangeCounter: number;
+
   @Column({ default: UserRoleEnum.USER })
   role: UserRoleEnum;
 

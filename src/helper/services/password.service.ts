@@ -4,10 +4,9 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class PasswordService {
-  async hashPasswordAndGenerateSalt(user: User): Promise<User> {
+  async hashPasswordAndGenerateSalt(user: User, password: string) {
     user.salt = await bcrypt.genSalt();
-    user.passwordHash = await bcrypt.hash(user['password'], user.salt);
-    delete user['password'];
+    user.passwordHash = await bcrypt.hash(password, user.salt);
     return user;
   }
 }
