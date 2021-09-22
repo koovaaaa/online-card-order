@@ -22,7 +22,6 @@ import { GetUser } from '../../auth/get-user.decorator';
 import { User } from '../../../entity/user/user.entity';
 import { Event } from '../../../entity/event/event.entity';
 import { DeleteResult, UpdateResult } from 'typeorm';
-import { Multer } from 'multer';
 import { ChangeEventDto } from './dto/change-event.dto';
 
 @ApiTags('Employee Event')
