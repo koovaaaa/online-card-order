@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ExceptionService } from '../../../helper/services/exception.service';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Ticket } from '../../../entity/ticket/ticket.entity';
-import { TicketRepositorty } from '../../../repository/ticket/ticket.repositorty';
+import { TicketRepository } from '../../../repository/ticket/ticketRepository';
 import { AddTicketDto } from './dto/add-ticket.dto';
 import { User } from '../../../entity/user/user.entity';
 import { DeleteResult, MoreThanOrEqual, UpdateResult } from 'typeorm';
@@ -12,7 +12,7 @@ import { EditTicketDto } from './dto/edit-ticket.dto';
 export class EmployeeTicketService {
   constructor(
     @InjectRepository(Ticket)
-    private readonly ticketRepository: TicketRepositorty,
+    private readonly ticketRepository: TicketRepository,
     private readonly exceptionService: ExceptionService,
   ) {}
 
