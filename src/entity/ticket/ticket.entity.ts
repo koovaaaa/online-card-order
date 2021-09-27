@@ -30,7 +30,7 @@ export class Ticket {
   @Column('decimal', { precision: 10, scale: 2 })
   ticketPrice: number;
 
-  @Column()
+  @Column({ unsigned: true })
   ticketCount: number;
 
   @ManyToOne(() => User)

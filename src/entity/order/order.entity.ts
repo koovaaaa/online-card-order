@@ -11,17 +11,13 @@ import { Cart } from '../cart/cart.entity';
 
 @Entity()
 export class Order {
-  constructor(partial: Partial<Order>) {
-    Object.assign(this, partial);
-  }
-
   @PrimaryGeneratedColumn()
   orderId: number;
 
   @CreateDateColumn()
   createdAt: Date;
 
-  @Column()
+  @Column({ default: OrderStatusEnum.PENDING })
   orderStatus: OrderStatusEnum;
 
   @OneToOne(() => Cart)

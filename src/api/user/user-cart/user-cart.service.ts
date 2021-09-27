@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cart } from '../../../entity/cart/cart.entity';
 import { CartRepository } from '../../../repository/cart/cart.repository';
@@ -9,6 +9,7 @@ import { User } from '../../../entity/user/user.entity';
 import { ExceptionService } from '../../../helper/services/exception.service';
 import { AddTicketToCartDto } from './dto/add-ticket-to-cart.dto';
 import { EditCartDto } from './dto/edit-cart.dto';
+import { TicketRepository } from '../../../repository/ticket/ticketRepository';
 
 @Injectable()
 export class UserCartService {
@@ -17,6 +18,8 @@ export class UserCartService {
     private readonly cartRepository: CartRepository,
     @InjectRepository(CartTicket)
     private readonly cartTicketRepository: CartTicketRepository,
+    @InjectRepository(Ticket)
+    private readonly ticketRepository: TicketRepository,
     private readonly exceptionService: ExceptionService,
   ) {}
 
@@ -55,6 +58,15 @@ export class UserCartService {
       } else {
         cartTicket.quantity += ticketData.quantity;
       }
+
+      const ticket = await this.ticketRepository.findOneOrFail({
+        where: { ticketId: ticketData.ticket },
+      });
+
+      await this.checkIfNumberOfAvailableTicketEnough(
+        ticket.ticketCount,
+        cartTicket.quantity,
+      );
 
       await this.cartTicketRepository.save(cartTicket);
 
@@ -116,6 +128,15 @@ export class UserCartService {
       return await this.getCartById(cart.cartId);
     } catch (e) {
       this.exceptionService.handleException(e);
+    }
+  }
+
+  async checkIfNumberOfAvailableTicketEnough(
+    numberOfTicket: number,
+    orderedTicket: number,
+  ) {
+    if (orderedTicket > numberOfTicket) {
+      throw new ConflictException('Trazeni broj karata nije dostupan!');
     }
   }
 }

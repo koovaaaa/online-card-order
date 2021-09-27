@@ -2,6 +2,7 @@ import {
   Column,
   Entity,
   Index,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -22,6 +23,7 @@ export class CartTicket {
   cart: Cart;
 
   @ManyToOne(() => Ticket)
+  @JoinColumn()
   ticket: Ticket;
 
   @Column()
