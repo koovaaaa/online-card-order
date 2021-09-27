@@ -15,7 +15,10 @@ export class UserTicketService {
     private readonly userRepository: UserRepository,
     private readonly exceptionService: ExceptionService,
   ) {}
-  async getTicket(id: string, user: User) {
+  async getTicket(
+    id: string,
+    user: User,
+  ): Promise<{ ticket: Ticket; price: string }> {
     try {
       const ticket = await this.ticketRepository.findOneOrFail(id);
       const userDb = await this.userRepository.findOneOrFail(user.userId, {
@@ -33,7 +36,10 @@ export class UserTicketService {
     }
   }
 
-  async getTicketsForEvent(eventId: string, user: User) {
+  async getTicketsForEvent(
+    eventId: string,
+    user: User,
+  ): Promise<{ ticket: Ticket; price: string }[]> {
     try {
       const tickets = await this.ticketRepository.find({
         where: { event: eventId },
@@ -42,7 +48,7 @@ export class UserTicketService {
         relations: ['country'],
       });
 
-      const ticketAndPrice = [];
+      const ticketAndPrice: { ticket: Ticket; price: string }[] = [];
 
       for (const ticket of tickets) {
         const price =

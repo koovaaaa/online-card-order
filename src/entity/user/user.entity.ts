@@ -9,6 +9,7 @@ import { Exclude } from 'class-transformer';
 import { UserRoleEnum } from '../../enum/user-role.enum';
 import { City } from '../city/city.entity';
 import { Country } from '../country/country.entity';
+import { JoinColumn } from 'typeorm/browser';
 
 @Entity()
 export class User {
