@@ -16,7 +16,9 @@ export class UserCartController {
   constructor(private readonly userCartService: UserCartService) {}
 
   @Get('get-current-cart')
-  async getCurrentCart(@GetUser() user: User): Promise<Cart> {
+  async getCurrentCart(
+    @GetUser() user: User,
+  ): Promise<{ cart: Cart; totalPrice: string }> {
     return await this.userCartService.getCurrentActiveCart(user);
   }
 
@@ -24,7 +26,7 @@ export class UserCartController {
   async addTicketToCart(
     @Body() ticketData: AddTicketToCartDto,
     @GetUser() user: User,
-  ): Promise<Cart> {
+  ): Promise<{ cart: Cart; totalPrice: string }> {
     return await this.userCartService.addTicketToCart(user, ticketData);
   }
 
@@ -32,7 +34,7 @@ export class UserCartController {
   async editCart(
     @Body() ticketData: EditCartDto,
     @GetUser() user: User,
-  ): Promise<Cart> {
+  ): Promise<{ cart: Cart; totalPrice: string }> {
     return await this.userCartService.editCart(ticketData, user);
   }
 }

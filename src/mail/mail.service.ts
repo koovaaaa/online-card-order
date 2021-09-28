@@ -29,4 +29,40 @@ export class MailService {
       },
     });
   }
+
+  async sendMailForAcceptedOrder(email: string, name: string, surname: string) {
+    await this.mailerService.sendMail({
+      to: `${email}`,
+      subject: 'Naruči kartu - Obavještenje o prihvatanju narudžbe',
+      template: './order-accepted.hbs',
+      context: {
+        name: name,
+        surname: surname,
+      },
+    });
+  }
+
+  async sendMailForRejectedOrder(email: string, name: string, surname: string) {
+    await this.mailerService.sendMail({
+      to: `${email}`,
+      subject: 'Naruči kartu - Obavještenje o odbijanju narudžbe',
+      template: './order-rejected.hbs',
+      context: {
+        name: name,
+        surname: surname,
+      },
+    });
+  }
+
+  async sendMailForReceivedOrder(email: string, name: string, surname: string) {
+    await this.mailerService.sendMail({
+      to: `${email}`,
+      subject: 'Naruči kartu - Obavještenje o prijemu narudžbe',
+      template: './order-received.hbs',
+      context: {
+        name: name,
+        surname: surname,
+      },
+    });
+  }
 }

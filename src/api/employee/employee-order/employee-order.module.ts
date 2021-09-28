@@ -6,10 +6,11 @@ import { Order } from '../../../entity/order/order.entity';
 import { ExceptionService } from '../../../helper/services/exception.service';
 import { Cart } from '../../../entity/cart/cart.entity';
 import { Ticket } from '../../../entity/ticket/ticket.entity';
+import { MailService } from '../../../mail/mail.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Order, Cart, Ticket])],
   controllers: [EmployeeOrderController],
-  providers: [EmployeeOrderService, ExceptionService],
+  providers: [EmployeeOrderService, ExceptionService, MailService],
 })
 export class EmployeeOrderModule {}

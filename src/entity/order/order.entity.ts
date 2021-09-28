@@ -20,6 +20,9 @@ export class Order {
   @Column({ default: OrderStatusEnum.PENDING })
   orderStatus: OrderStatusEnum;
 
+  @Column('decimal', { precision: 10, scale: 2 })
+  orderPrice: number;
+
   @OneToOne(() => Cart)
   @JoinColumn()
   cart: Cart;

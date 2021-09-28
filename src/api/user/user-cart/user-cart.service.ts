@@ -10,6 +10,7 @@ import { ExceptionService } from '../../../helper/services/exception.service';
 import { AddTicketToCartDto } from './dto/add-ticket-to-cart.dto';
 import { EditCartDto } from './dto/edit-cart.dto';
 import { TicketRepository } from '../../../repository/ticket/ticketRepository';
+import { CalculateSumService } from '../../../helper/services/calculate-sum.service';
 
 @Injectable()
 export class UserCartService {
@@ -21,9 +22,12 @@ export class UserCartService {
     @InjectRepository(Ticket)
     private readonly ticketRepository: TicketRepository,
     private readonly exceptionService: ExceptionService,
+    private readonly calculateSumService: CalculateSumService,
   ) {}
 
-  async getCurrentActiveCart(user: User): Promise<Cart> {
+  async getCurrentActiveCart(
+    user: User,
+  ): Promise<{ cart: Cart; totalPrice: string }> {
     try {
       const carts = await this.cartRepository.find({
         where: { createdBy: user },
@@ -36,7 +40,9 @@ export class UserCartService {
       const cart = carts[0];
       if (cart.order != null) return null;
 
-      return cart;
+      const sum = await this.calculateSumService.calculateSum(cart, user, true);
+
+      return { cart, totalPrice: sum };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
@@ -45,16 +51,22 @@ export class UserCartService {
   async addTicketToCart(
     user: User,
     ticketData: AddTicketToCartDto,
-  ): Promise<Cart> {
+  ): Promise<{ cart: Cart; totalPrice: string }> {
     try {
-      let cart = await this.getCurrentActiveCart(user);
-      if (!cart) cart = await this.createNewCart(user);
+      let currentCartWithPrice = await this.getCurrentActiveCart(user);
+      if (!(currentCartWithPrice && currentCartWithPrice.cart)) {
+        currentCartWithPrice = { cart: null, totalPrice: '' };
+        currentCartWithPrice.cart = await this.createNewCart(user);
+      }
 
-      let cartTicket = await this.findExistCartTicket(cart, ticketData.ticket);
+      let cartTicket = await this.findExistCartTicket(
+        currentCartWithPrice.cart,
+        ticketData.ticket,
+      );
 
       if (!cartTicket) {
         cartTicket = new CartTicket(ticketData);
-        cartTicket.cart = cart;
+        cartTicket.cart = currentCartWithPrice.cart;
       } else {
         cartTicket.quantity += ticketData.quantity;
       }
@@ -70,7 +82,7 @@ export class UserCartService {
 
       await this.cartTicketRepository.save(cartTicket);
 
-      return await this.getCartById(cart.cartId);
+      return await this.getCartById(currentCartWithPrice.cart.cartId, user);
     } catch (e) {
       this.exceptionService.handleException(e);
     }
@@ -86,11 +98,15 @@ export class UserCartService {
     }
   }
 
-  async getCartById(id: number) {
+  async getCartById(id: number, user: User) {
     try {
-      return await this.cartRepository.findOneOrFail(id, {
+      const cart = await this.cartRepository.findOneOrFail(id, {
         relations: ['cartTickets', 'cartTickets.ticket'],
       });
+
+      const sum = await this.calculateSumService.calculateSum(cart, user, true);
+
+      return { cart, totalPrice: sum };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
@@ -110,9 +126,12 @@ export class UserCartService {
     }
   }
 
-  async editCart(ticketData: EditCartDto, user: User): Promise<Cart> {
+  async editCart(
+    ticketData: EditCartDto,
+    user: User,
+  ): Promise<{ cart: Cart; totalPrice: string }> {
     try {
-      const cart = await this.getCurrentActiveCart(user);
+      const { cart } = await this.getCurrentActiveCart(user);
       const cartTicket = await this.findExistCartTicket(
         cart,
         ticketData.ticket,
@@ -125,7 +144,7 @@ export class UserCartService {
         else await this.cartTicketRepository.save(cartTicket);
       }
 
-      return await this.getCartById(cart.cartId);
+      return await this.getCartById(cart.cartId, user);
     } catch (e) {
       this.exceptionService.handleException(e);
     }

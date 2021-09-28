@@ -7,6 +7,8 @@ import { User } from '../../../entity/user/user.entity';
 import { Cart } from '../../../entity/cart/cart.entity';
 import { CartRepository } from '../../../repository/cart/cart.repository';
 import { UserCartService } from '../user-cart/user-cart.service';
+import { CalculateSumService } from '../../../helper/services/calculate-sum.service';
+import { MailService } from '../../../mail/mail.service';
 
 @Injectable()
 export class UserOrderService {
@@ -17,24 +19,40 @@ export class UserOrderService {
     @InjectRepository(Cart)
     private readonly cartRepository: CartRepository,
     private readonly userCartService: UserCartService,
+    private readonly calculateSumService: CalculateSumService,
+    private readonly mailService: MailService,
   ) {}
 
   async makeOrder(user: User): Promise<Order> {
     try {
-      const activeCart = await this.userCartService.getCurrentActiveCart(user);
+      const { cart } = await this.userCartService.getCurrentActiveCart(user);
+
       const order = await this.orderRepository.findOne({
-        where: { cart: activeCart },
+        where: { cart: cart },
       });
       await this.checkIfOrderExist(order);
-      await this.checkIfCartEmpty(activeCart.cartTickets.length);
+      await this.checkIfCartEmpty(cart.cartTickets.length);
 
       let newOrder = new Order();
-      newOrder.cart = activeCart;
+      newOrder.cart = cart;
+
+      const sum = await this.calculateSumService.calculateSum(
+        cart,
+        user,
+        false,
+      );
+      newOrder.orderPrice = parseInt(sum);
 
       newOrder = await this.orderRepository.save(newOrder);
-      await this.cartRepository.update(activeCart.cartId, {
+      await this.cartRepository.update(cart.cartId, {
         order: newOrder,
       });
+
+      await this.mailService.sendMailForReceivedOrder(
+        user.email,
+        user.name,
+        user.surname,
+      );
 
       return newOrder;
     } catch (e) {

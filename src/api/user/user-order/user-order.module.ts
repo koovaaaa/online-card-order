@@ -9,6 +9,9 @@ import { UserCartService } from '../user-cart/user-cart.service';
 import { CartTicket } from '../../../entity/cart-ticket/cart-ticket.entity';
 import { Ticket } from '../../../entity/ticket/ticket.entity';
 import { OrderRepository } from '../../../repository/order/order.repository';
+import { CalculateSumService } from '../../../helper/services/calculate-sum.service';
+import { User } from '../../../entity/user/user.entity';
+import { MailService } from '../../../mail/mail.service';
 
 @Module({
   imports: [
@@ -18,9 +21,16 @@ import { OrderRepository } from '../../../repository/order/order.repository';
       CartTicket,
       Ticket,
       OrderRepository,
+      User,
     ]),
   ],
   controllers: [UserOrderController],
-  providers: [UserOrderService, ExceptionService, UserCartService],
+  providers: [
+    UserOrderService,
+    ExceptionService,
+    UserCartService,
+    CalculateSumService,
+    MailService,
+  ],
 })
 export class UserOrderModule {}
