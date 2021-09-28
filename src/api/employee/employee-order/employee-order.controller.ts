@@ -1,9 +1,11 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Put, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/guards/jwt.guard';
 import { EmployeeGuard } from '../../auth/guards/employee.guard';
 import { EmployeeOrderService } from './employee-order.service';
 import { Order } from '../../../entity/order/order.entity';
+import { EditOrderDto } from './dto/edit-order.dto';
+import { UpdateResult } from 'typeorm';
 
 @ApiTags('Employee Order')
 @ApiBearerAuth()
@@ -19,5 +21,16 @@ export class EmployeeOrderController {
   @Get('get-order-history')
   async getOrderHistory(): Promise<Order[]> {
     return await this.employeeOrderService.getOrderHistory();
+  }
+
+  @Put('change-order-status/:id')
+  async acceptOrRejectOrder(
+    @Param('id') orderId: string,
+    @Body() { orderStatus }: EditOrderDto,
+  ): Promise<UpdateResult> {
+    return await this.employeeOrderService.acceptOrRejectOrder(
+      orderId,
+      orderStatus,
+    );
   }
 }
