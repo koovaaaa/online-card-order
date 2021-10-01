@@ -3,11 +3,11 @@ import { IsNotEmpty, IsString } from 'class-validator';
 
 export class UserLoginDto {
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Unesite korisnicko ime! ' })
   @IsString()
   usernameOrEmail: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Unesite lozinku!' })
   @IsString()
   password: string;
 }

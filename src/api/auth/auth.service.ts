@@ -110,6 +110,7 @@ export class AuthService {
         where: [{ username: usernameOrEmail }, { email: usernameOrEmail }],
       });
     } catch (e) {
+      e.message = 'Korisnik ne postoji!';
       this.exceptionService.handleException(e);
     }
   }
