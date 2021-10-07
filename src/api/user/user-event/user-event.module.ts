@@ -8,12 +8,13 @@ import { Event } from '../../../entity/event/event.entity';
 import { Country } from '../../../entity/country/country.entity';
 import { City } from '../../../entity/city/city.entity';
 import { EventRepository } from '../../../repository/event/event.repository';
+import { PaginationService } from '../../../helper/services/pagination.service';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Category, Event, EventRepository, Country, City]),
   ],
   controllers: [UserEventController],
-  providers: [UserEventService, ExceptionService],
+  providers: [UserEventService, ExceptionService, PaginationService],
 })
 export class UserEventModule {}

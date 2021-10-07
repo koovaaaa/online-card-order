@@ -48,7 +48,11 @@ export class AuthService {
       );
       await this.checkPassword(user, loginData.password);
 
-      const payload: JwtPayloadInterface = { username: user.username };
+      const payload = {
+        username: user.username,
+        role: user.role,
+        name: user.name,
+      };
       return this.jwtService.sign(payload);
     } catch (e) {
       this.exceptionService.handleException(e);

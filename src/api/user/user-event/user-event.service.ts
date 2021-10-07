@@ -11,6 +11,7 @@ import { City } from '../../../entity/city/city.entity';
 import { CountryRepository } from '../../../repository/country/country.repository';
 import { CityRepository } from '../../../repository/city/city.repository';
 import { FilterDto } from './dto/filter.dto';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
 
 @Injectable()
 export class UserEventService {
@@ -72,21 +73,34 @@ export class UserEventService {
     }
   }
 
-  async getActiveEvents(filter: FilterDto): Promise<Event[]> {
+  async getActiveEvents(
+    filter: FilterDto,
+    pagination: PaginationDto,
+  ): Promise<{ events: Event[]; eventsCount: number }> {
     try {
-      return await this.eventRepository.findActiveEvents(filter);
+      const events = await this.eventRepository.findActiveEvents(
+        filter,
+        pagination,
+      );
+
+      return { events: events[0], eventsCount: events[1] };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
   }
 
-  async getNewestEvents(): Promise<Event[]> {
+  async getNewestEvents(): Promise<{
+    events: Event[];
+    numberOfEvents: number;
+  }> {
     try {
-      return await this.eventRepository.find({
+      const events = await this.eventRepository.find({
         order: { eventDate: 'DESC' },
         relations: ['country', 'city'],
         take: 3,
       });
+
+      return { events, numberOfEvents: events.length };
     } catch (e) {
       this.exceptionService.handleException(e);
     }

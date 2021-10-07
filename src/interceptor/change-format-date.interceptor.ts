@@ -8,8 +8,8 @@ export class ChangeFormatDateInterceptor implements NestInterceptor {
     next: CallHandler<any>,
   ): Observable<any> | Promise<Observable<any>> {
     return next.handle().pipe(
-      tap(async (events) => {
-        for (const event of events) {
+      tap(async (response) => {
+        for (const event of response.events) {
           event.eventDate = moment(event.eventDate).format('DD/MM/YYYY');
         }
       }),

@@ -5,16 +5,27 @@ import { ApiTags } from '@nestjs/swagger';
 import { Event } from '../../../entity/event/event.entity';
 import { ChangeFormatDateInterceptor } from '../../../interceptor/change-format-date.interceptor';
 import { FilterDto } from './dto/filter.dto';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
+import { PaginationService } from '../../../helper/services/pagination.service';
 
 @ApiTags('User Event')
 @Controller('user-event')
 export class UserEventController {
-  constructor(private readonly userEventService: UserEventService) {}
+  constructor(
+    private readonly userEventService: UserEventService,
+    private readonly paginationService: PaginationService,
+  ) {}
 
   @Get('get-active-events')
   @UseInterceptors(ChangeFormatDateInterceptor)
-  async getActiveEvents(@Query() filter: FilterDto): Promise<Event[]> {
-    return await this.userEventService.getActiveEvents(filter);
+  async getActiveEvents(
+    @Query() filter: FilterDto,
+    @Query() pagination: PaginationDto,
+  ): Promise<{ events: Event[]; eventsCount: number }> {
+    const setPagination = await this.paginationService.setPagination(
+      pagination,
+    );
+    return await this.userEventService.getActiveEvents(filter, setPagination);
   }
 
   @Get('get-categories')
@@ -48,7 +59,10 @@ export class UserEventController {
 
   @Get('get-newest-events')
   @UseInterceptors(ChangeFormatDateInterceptor)
-  async getNewestEvents(): Promise<Event[]> {
+  async getNewestEvents(): Promise<{
+    events: Event[];
+    numberOfEvents: number;
+  }> {
     return await this.userEventService.getNewestEvents();
   }
 }
