@@ -2,22 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/homePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/navBar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/eventCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/eventList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/api/user/user-event/dto/filter.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/interceptor/change-format-date.interceptor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/homePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/auth/dto/user-registration.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/auth/dto/user-registration.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/repository/event/event.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/repository/event/event.repository.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +76,10 @@
       <workItem from="1633129347519" duration="11921000" />
       <workItem from="1633213078340" duration="1237000" />
       <workItem from="1633247419886" duration="3621000" />
+      <workItem from="1633336699530" duration="16680000" />
+      <workItem from="1633419242070" duration="787000" />
+      <workItem from="1633549116679" duration="690000" />
+      <workItem from="1633601176233" duration="754000" />
     </task>
     <servers />
   </component>
