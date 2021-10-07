@@ -5,6 +5,7 @@ import {Route, Switch} from "react-router-dom";
 import {HomePage} from "./components/homePage";
 import LoginPage from "./components/auth/loginPage";
 import RegisterPage from "./components/auth/registerPage";
+import EventList from "./components/eventList";
 
 class App extends React.Component {
     render() {
@@ -15,6 +16,7 @@ class App extends React.Component {
                 <Container>
                     <Switch>
                         <Route path="/login" component={LoginPage}/>
+                        <Route path="/events" component={EventList}/>
                         <Route path="/register" component={RegisterPage}/>
                         <Route path="/" component={HomePage}/>
                     </Switch>

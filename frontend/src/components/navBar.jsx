@@ -9,9 +9,9 @@ const NavBar = () => {
 
         <Navbar bg="dark" variant="dark">
             <Container>
-                <Link className="navbar-brand" to="/"> <FontAwesomeIcon icon={faHome}/> Home</Link>
+                <Link className="navbar-brand" to="/"> <FontAwesomeIcon icon={faHome}/> Početna strana</Link>
                 <Nav className="me-auto">
-                    <Link className="nav-link" to="/contact">Kontakt</Link>
+                    <Link className="nav-link" to="/events">Lista događaja</Link>
                     <Link className="nav-link" to="/login">Prijava</Link>
                     <Link className="nav-link" to="/register">Registracija</Link>
                 </Nav>

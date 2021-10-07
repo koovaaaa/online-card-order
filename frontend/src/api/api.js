@@ -4,7 +4,7 @@ export default async function api(path, method, body) {
     const response = await axios({
         method: method,
         url: path,
-        baseURL: 'http://localhost:3000/',
+        baseURL: process.env.REACT_APP_API_URL,
         data: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',

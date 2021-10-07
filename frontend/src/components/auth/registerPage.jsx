@@ -21,10 +21,6 @@ export default class RegisterPage extends Component {
         errorMessage: '',
     }
 
-    constructor(props) {
-        super(props);
-    }
-
     async componentDidMount() {
         const countries = await
             api('user-place/get-countries', 'get', '');
@@ -51,7 +47,7 @@ export default class RegisterPage extends Component {
                 await this.setState({errorMessage: ''})
                 await this.setState({message: 'Uspješno ste registrovani!'})
             }
-            console.log(response);
+            
         } catch (e) {
             await this.setState({message: ''})
             await this.setState({errorMessage: e.response.data.message})
@@ -64,21 +60,16 @@ export default class RegisterPage extends Component {
         })
 
         await this.setState(newState);
-
-        console.log(this.state);
-
     }
 
     async onSelectCountry(event) {
         const cities = await api(`user-place/get-cities/${event.target.value}`, 'get', '');
 
         await this.setState({cities: cities, country: event.target.value})
-        console.log(this.state);
     }
 
     async onSelectCity(event) {
         await this.setState({city: event.target.value})
-        console.log(this.state);
     }
 
 
@@ -133,7 +124,7 @@ export default class RegisterPage extends Component {
                                 <Col>
                                     <select id="country" required className="form-select"
                                             onChange={event => this.onSelectCountry(event)}>
-                                        <option>Izaberi drzavu</option>
+                                        <option value={''}>Izaberi državu</option>
                                         {this.state.countries.map(country => <option
                                             value={country.countryId}
                                             key={country.countryId}> {country.countryName} </option>)}
@@ -142,7 +133,7 @@ export default class RegisterPage extends Component {
                                 <Col>
                                     <select id="city" className="form-select"
                                             onChange={event => this.onSelectCity(event)}>
-                                        <option>Izaberi grad</option>
+                                        <option value={''}>Izaberi grad</option>
                                         {this.state.cities.map(city => <option key={city.cityId}
                                                                                value={city.cityId}> {city.cityName} </option>)}
                                     </select>

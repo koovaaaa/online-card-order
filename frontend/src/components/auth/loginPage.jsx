@@ -14,9 +14,6 @@ export default class LoginPage extends Component {
         errorMessage: ''
     }
 
-    constructor(props) {
-        super(props);
-    }
 
     async onInputFieldChange(event) {
         const newState = Object.assign(this.state, {
@@ -24,8 +21,6 @@ export default class LoginPage extends Component {
         })
 
         await this.setState(newState);
-
-        console.log(this.state);
     }
 
     async doLogin() {
@@ -51,7 +46,7 @@ export default class LoginPage extends Component {
                 <Redirect to="/"/>
             );
         }
-        
+
         return (
             <Container>
                 <Col md={{span: 6, offset: 3}}>
