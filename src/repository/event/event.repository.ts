@@ -4,7 +4,7 @@ import { FilterDto } from '../../api/user/user-event/dto/filter.dto';
 
 @EntityRepository(Event)
 export class EventRepository extends Repository<Event> {
-  async findActiveFilters(filter: FilterDto) {
+  async findActiveEvents(filter: FilterDto) {
     const events = this.createQueryBuilder('event')
       .where(filter)
       .andWhere('event.eventDate > :dateNow', { dateNow: new Date() })

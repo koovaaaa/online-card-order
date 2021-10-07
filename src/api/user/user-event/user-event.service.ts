@@ -74,7 +74,7 @@ export class UserEventService {
 
   async getActiveEvents(filter: FilterDto): Promise<Event[]> {
     try {
-      return await this.eventRepository.findActiveFilters(filter);
+      return await this.eventRepository.findActiveEvents(filter);
     } catch (e) {
       this.exceptionService.handleException(e);
     }
