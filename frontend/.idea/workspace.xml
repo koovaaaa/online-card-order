@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/auth/logoutPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/eventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/eventList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/auth/auth.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/auth/jwt-payload.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/auth/jwt-payload.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.controller.ts" afterDir="false" />
@@ -74,7 +65,7 @@
       <workItem from="1633419242070" duration="787000" />
       <workItem from="1633549116679" duration="690000" />
       <workItem from="1633601176233" duration="6480000" />
-      <workItem from="1633610901551" duration="12273000" />
+      <workItem from="1633610901551" duration="12964000" />
     </task>
     <servers />
   </component>
