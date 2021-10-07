@@ -13,7 +13,7 @@ import { Country } from '../../../entity/country/country.entity';
 
 export class UserRegistrationDto {
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: "Polje 'Ime' ne smije biti prazno! " })
   @IsString()
   name: string;
   @ApiProperty()

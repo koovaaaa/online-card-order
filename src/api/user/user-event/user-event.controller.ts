@@ -1,14 +1,21 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseInterceptors } from '@nestjs/common';
 import { UserEventService } from './user-event.service';
 import { Category } from '../../../entity/category/category.entity';
 import { ApiTags } from '@nestjs/swagger';
 import { Event } from '../../../entity/event/event.entity';
-import { City } from '../../../entity/city/city.entity';
+import { ChangeFormatDateInterceptor } from '../../../interceptor/change-format-date.interceptor';
+import { FilterDto } from './dto/filter.dto';
 
 @ApiTags('User Event')
 @Controller('user-event')
 export class UserEventController {
   constructor(private readonly userEventService: UserEventService) {}
+
+  @Get('get-active-events')
+  @UseInterceptors(ChangeFormatDateInterceptor)
+  async getActiveEvents(@Query() filter: FilterDto): Promise<Event[]> {
+    return await this.userEventService.getActiveEvents(filter);
+  }
 
   @Get('get-categories')
   async getCategories(): Promise<Category[]> {
@@ -37,5 +44,11 @@ export class UserEventController {
   @Get('get-event/:id')
   async getEvent(@Param('id') eventId: string): Promise<Event> {
     return await this.userEventService.getEvent(eventId);
+  }
+
+  @Get('get-newest-events')
+  @UseInterceptors(ChangeFormatDateInterceptor)
+  async getNewestEvents(): Promise<Event[]> {
+    return await this.userEventService.getNewestEvents();
   }
 }

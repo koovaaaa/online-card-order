@@ -10,13 +10,14 @@ import { Country } from '../../../entity/country/country.entity';
 import { City } from '../../../entity/city/city.entity';
 import { CountryRepository } from '../../../repository/country/country.repository';
 import { CityRepository } from '../../../repository/city/city.repository';
+import { FilterDto } from './dto/filter.dto';
 
 @Injectable()
 export class UserEventService {
   constructor(
     @InjectRepository(Category)
     private readonly categoryRepository: CategoryRepository,
-    @InjectRepository(Event)
+    //@InjectRepository(Event)
     private readonly eventRepository: EventRepository,
     @InjectRepository(Country)
     private readonly countryRepository: CountryRepository,
@@ -66,6 +67,26 @@ export class UserEventService {
   async getEvent(eventId: string): Promise<Event> {
     try {
       return await this.eventRepository.findOneOrFail(eventId);
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async getActiveEvents(filter: FilterDto): Promise<Event[]> {
+    try {
+      return await this.eventRepository.findActiveFilters(filter);
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async getNewestEvents(): Promise<Event[]> {
+    try {
+      return await this.eventRepository.find({
+        order: { eventDate: 'DESC' },
+        relations: ['country', 'city'],
+        take: 3,
+      });
     } catch (e) {
       this.exceptionService.handleException(e);
     }

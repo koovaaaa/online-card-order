@@ -7,9 +7,12 @@ import { ExceptionService } from '../../../helper/services/exception.service';
 import { Event } from '../../../entity/event/event.entity';
 import { Country } from '../../../entity/country/country.entity';
 import { City } from '../../../entity/city/city.entity';
+import { EventRepository } from '../../../repository/event/event.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Category, Event, Country, City])],
+  imports: [
+    TypeOrmModule.forFeature([Category, Event, EventRepository, Country, City]),
+  ],
   controllers: [UserEventController],
   providers: [UserEventService, ExceptionService],
 })
