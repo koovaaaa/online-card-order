@@ -11,7 +11,7 @@ export class HomePage extends React.Component {
     async componentDidMount() {
         const events = await api('http://localhost:3000/user-event/get-newest-events', 'get', '');
 
-        await this.setState({events})
+        await this.setState({events: events.events})
     }
 
     render() {

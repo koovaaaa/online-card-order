@@ -14,10 +14,14 @@ export default async function api(path, method, body) {
     return response.data;
 }
 
-function getToken() {
-    return localStorage.getItem('api_token');
+export function getToken() {
+    return localStorage.getItem('token');
 }
 
 export function saveToken(token) {
-    localStorage.setItem('api_token', token);
+    localStorage.setItem('token', token);
+}
+
+export function removeToken() {
+    localStorage.removeItem('token');
 }

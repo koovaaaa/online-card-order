@@ -3,8 +3,7 @@ import {Alert, Button, Card, Col, Container, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSignInAlt} from "@fortawesome/free-solid-svg-icons";
 import api, {saveToken} from "../../api/api";
-import {Redirect} from "react-router-dom";
-
+import jwtDecode from "jwt-decode";
 
 export default class LoginPage extends Component {
     state = {
@@ -32,8 +31,11 @@ export default class LoginPage extends Component {
 
             if (response) {
                 saveToken(response);
+                const user = jwtDecode(response);
+                if (user.role === 'admin') window.location = '/admin';
+                else if (user.role === 'employee') window.location = '/employee';
+                else window.location = '/';
                 await this.setState({isLogged: true, errorMessage: ''})
-
             }
         } catch (e) {
             await this.setState({errorMessage: e.response.data.message})
@@ -41,11 +43,6 @@ export default class LoginPage extends Component {
     }
 
     render() {
-        if (this.state.isLogged) {
-            return (
-                <Redirect to="/"/>
-            );
-        }
 
         return (
             <Container>

@@ -10,6 +10,9 @@ export default class EventList extends Component {
         countries: [],
         country: '',
         category: '',
+        numberOfActiveEvents: '',
+        numberOfEventsPerPage: '',
+        currentPage: 1
     }
 
     async componentDidMount() {
@@ -17,7 +20,11 @@ export default class EventList extends Component {
         const countries = await api('http://localhost:3000/user-place/get-countries', 'get', '');
         const categories = await api('http://localhost:3000/user-event/get-categories', 'get', '');
 
-        await this.setState({events})
+        await this.setState({
+            events: events.events,
+            numberOfActiveEvents: events.numberOfActiveEvents,
+            numberOfEventsPerPage: events.numberOfEventsPerPage
+        })
         await this.setState({countries})
         await this.setState({categories});
     }
@@ -29,8 +36,9 @@ export default class EventList extends Component {
 
         await this.setState(newState);
 
+
         const events = await api(`http://localhost:3000/user-event/get-active-events?${this.state.category ? `category=${this.state.category}` : ''}&${this.state.country ? `country=${this.state.country}` : ''}`, 'get', '');
-        this.setState({events});
+        await this.setState({events: events.events});
     }
 
     render() {
