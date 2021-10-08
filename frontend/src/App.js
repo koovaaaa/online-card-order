@@ -29,7 +29,7 @@ class App extends React.Component {
                 <br/>
                 <Container>
                     <Switch>
-                        <Route path="/login" render={props => <LoginPage {...props} user={this.state.user}/>}/>
+                        <Route path="/login" component={LoginPage}/>
                         <Route path="/logout" component={Logout}/>
                         <Route path="/events" component={EventList}/>
                         <Route path="/register" component={RegisterPage}/>
@@ -37,8 +37,7 @@ class App extends React.Component {
                     </Switch>
                 </Container>
             </React.Fragment>
-        )
-            ;
+        );
     }
 }
 
