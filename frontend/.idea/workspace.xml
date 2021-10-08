@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/pagination.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/auth/jwt-payload.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/auth/jwt-payload.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/eventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/eventList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interceptor/change-format-date.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/interceptor/change-format-date.interceptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/repository/event/event.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/repository/event/event.repository.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +63,8 @@
       <workItem from="1633419242070" duration="787000" />
       <workItem from="1633549116679" duration="690000" />
       <workItem from="1633601176233" duration="6480000" />
-      <workItem from="1633610901551" duration="12964000" />
+      <workItem from="1633610901551" duration="13287000" />
+      <workItem from="1633682315009" duration="3675000" />
     </task>
     <servers />
   </component>
