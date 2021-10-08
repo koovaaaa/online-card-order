@@ -21,7 +21,7 @@ export class UserEventController {
   async getActiveEvents(
     @Query() filter: FilterDto,
     @Query() pagination: PaginationDto,
-  ): Promise<{ events: Event[]; eventsCount: number }> {
+  ): Promise<{ events: Event[]; eventsCount: number; eventsPerPage: number }> {
     const setPagination = await this.paginationService.setPagination(
       pagination,
     );

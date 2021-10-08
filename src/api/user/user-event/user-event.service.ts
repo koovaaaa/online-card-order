@@ -76,14 +76,18 @@ export class UserEventService {
   async getActiveEvents(
     filter: FilterDto,
     pagination: PaginationDto,
-  ): Promise<{ events: Event[]; eventsCount: number }> {
+  ): Promise<{ events: Event[]; eventsCount: number; eventsPerPage: number }> {
     try {
       const events = await this.eventRepository.findActiveEvents(
         filter,
         pagination,
       );
 
-      return { events: events[0], eventsCount: events[1] };
+      return {
+        events: events[0],
+        eventsCount: events[1],
+        eventsPerPage: parseInt(process.env.DEFAULT_PER_PAGE),
+      };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
