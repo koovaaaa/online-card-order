@@ -15,20 +15,29 @@ export class EmployeeEventService {
     private readonly eventRepository: EventRepository,
     private readonly exceptionService: ExceptionService,
   ) {}
-  async getAllEvents(): Promise<Event[]> {
+  async getAllEvents(): Promise<{ events: Event[]; numberOfEvents: number }> {
     try {
-      return await this.eventRepository.find();
+      const events = await this.eventRepository.findAndCount({
+        relations: ['category', 'city', 'country'],
+      });
+      return { events: events[0], numberOfEvents: events[1] };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
   }
 
-  async getActiveEvents(): Promise<Event[]> {
+  async getActiveEvents(): Promise<{
+    events: Event[];
+    numberOfEvents: number;
+  }> {
     try {
       const dateNow = new Date();
-      return await this.eventRepository.find({
-        eventDate: MoreThan(dateNow),
+      const events = await this.eventRepository.findAndCount({
+        where: { eventDate: MoreThan(dateNow) },
+        relations: ['category', 'country', 'city'],
       });
+
+      return { events: events[0], numberOfEvents: events[1] };
     } catch (e) {
       this.exceptionService.handleException(e);
     }

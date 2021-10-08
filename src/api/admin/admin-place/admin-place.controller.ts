@@ -68,17 +68,8 @@ export class AdminPlaceController {
   }
 
   @Get('city/get-cities-from-country/:id')
-  async getCitiesFromCountry(
-    @Query() pagination: PaginationDto,
-    @Param('id') countryId: string,
-  ): Promise<City[]> {
-    const paginationSet = await this.paginationService.setPagination(
-      pagination,
-    );
-    return await this.adminPlaceService.getCityFromCountry(
-      countryId,
-      paginationSet,
-    );
+  async getCitiesFromCountry(@Param('id') countryId: string): Promise<City[]> {
+    return await this.adminPlaceService.getCityFromCountry(countryId);
   }
 
   @Post('city/add-city')

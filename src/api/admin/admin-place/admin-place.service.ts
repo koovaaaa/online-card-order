@@ -95,14 +95,9 @@ export class AdminPlaceService {
     }
   }
 
-  async getCityFromCountry(
-    countryId: string,
-    { limit, skip }: PaginationDto,
-  ): Promise<City[]> {
+  async getCityFromCountry(countryId: string): Promise<City[]> {
     try {
       return await this.cityRepository.find({
-        take: limit,
-        skip,
         where: { country: countryId },
       });
     } catch (e) {

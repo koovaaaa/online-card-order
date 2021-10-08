@@ -23,6 +23,7 @@ import { User } from '../../../entity/user/user.entity';
 import { Event } from '../../../entity/event/event.entity';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { ChangeEventDto } from './dto/change-event.dto';
+import { ChangeFormatDateInterceptor } from '../../../interceptor/change-format-date.interceptor';
 
 @ApiTags('Employee Event')
 @ApiBearerAuth()
@@ -32,12 +33,17 @@ export class EmployeeEventController {
   constructor(private readonly employeeEventService: EmployeeEventService) {}
 
   @Get('get-events')
-  async getAllEvents(): Promise<Event[]> {
+  @UseInterceptors(ChangeFormatDateInterceptor)
+  async getAllEvents(): Promise<{ events: Event[]; numberOfEvents: number }> {
     return await this.employeeEventService.getAllEvents();
   }
 
   @Get('get-active-events')
-  async getActiveEvents(): Promise<Event[]> {
+  @UseInterceptors(ChangeFormatDateInterceptor)
+  async getActiveEvents(): Promise<{
+    events: Event[];
+    numberOfEvents: number;
+  }> {
     return await this.employeeEventService.getActiveEvents();
   }
 
