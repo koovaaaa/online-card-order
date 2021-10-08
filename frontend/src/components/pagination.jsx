@@ -6,7 +6,7 @@ const Pagination = props => {
     if (numberOfPages === 1) return null;
     const pages = _.range(1, numberOfPages + 1);
     return <nav>
-        <ul className="pagination">
+        <ul className="pagination justify-content-md-center">
             {pages.map(page =>
                 <li key={page} className={page === props.currentPage ? 'page-item active' : 'page-item'}>
                     <a className="page-link" onClick={async () => await props.onPageChange(page)}>{page}</a>

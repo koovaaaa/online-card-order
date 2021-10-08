@@ -9,6 +9,9 @@ import EventList from "./components/eventList";
 import jwtDecode from "jwt-decode";
 import Logout from "./components/auth/logoutPage";
 import {getToken} from "./api/api";
+import AdminHomePage from "./components/admin/adminHomePage";
+import AdminEventList from "./components/admin/adminEventList";
+import AddNewEvent from "./components/admin/addNewEvent";
 
 class App extends React.Component {
     state = {}
@@ -29,6 +32,9 @@ class App extends React.Component {
                 <br/>
                 <Container>
                     <Switch>
+                        <Route path="/admin/add-new-event" component={AddNewEvent}/>
+                        <Route path="/admin/events" component={AdminEventList}/>
+                        <Route path="/admin" component={AdminHomePage}/>
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/logout" component={Logout}/>
                         <Route path="/events" component={EventList}/>

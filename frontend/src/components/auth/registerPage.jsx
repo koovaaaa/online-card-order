@@ -47,7 +47,7 @@ export default class RegisterPage extends Component {
                 await this.setState({errorMessage: ''})
                 await this.setState({message: 'Uspješno ste registrovani!'})
             }
-            
+
         } catch (e) {
             await this.setState({message: ''})
             await this.setState({errorMessage: e.response.data.message})
@@ -141,7 +141,6 @@ export default class RegisterPage extends Component {
                             </Row>
                             <br/>
                             <Button variant="primary" onClick={async () => {
-                                console.log(this.state);
                                 await this.doRegister()
                             }}>Registruj se</Button>
                         </Form>

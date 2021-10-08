@@ -94,7 +94,8 @@ export default class EventList extends Component {
                     )}
                 </Row>
                 <br/>
-                <Pagination eventsCount={this.state.numberOfActiveEvents} pageSize={this.state.numberOfEventsPerPage}
+                <Pagination eventsCount={this.state.numberOfActiveEvents}
+                            pageSize={this.state.numberOfEventsPerPage}
                             onPageChange={this.handlePageChange}
                             currentPage={this.state.currentPage}/>
                 <br/>

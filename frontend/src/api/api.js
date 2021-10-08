@@ -8,9 +8,23 @@ export default async function api(path, method, body) {
         data: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': getToken(),
+            'Authorization': getToken()
         }
     })
+    return response.data;
+}
+
+export async function apiFile(path, method, data) {
+    const response = await axios({
+        method: method,
+        url: path,
+        baseURL: process.env.REACT_APP_API_URL,
+        data: data,
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': getToken()
+        }
+    });
     return response.data;
 }
 
@@ -19,7 +33,7 @@ export function getToken() {
 }
 
 export function saveToken(token) {
-    localStorage.setItem('token', token);
+    localStorage.setItem('token', 'Bearer ' + token);
 }
 
 export function removeToken() {
