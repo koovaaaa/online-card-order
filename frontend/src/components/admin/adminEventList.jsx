@@ -2,6 +2,8 @@ import {Component} from "react";
 import {Button, Table} from "react-bootstrap";
 import api from "../../api/api";
 import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit, faEye, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 
 export default class AdminEventList extends Component {
@@ -19,7 +21,8 @@ export default class AdminEventList extends Component {
     render() {
         return (
             <>
-                <Link className="btn btn-primary" to={"add-new-event"}>Dodaj novi dogadjaj</Link>
+                <Link className="btn btn-primary" to={"add-new-event"}><FontAwesomeIcon icon={faPlus}/> Dodaj novi
+                    dogadjaj</Link>
                 <br/>
                 <br/>
                 <Table>
@@ -47,9 +50,12 @@ export default class AdminEventList extends Component {
                             <td>{event.country.countryName}</td>
                             <td>{event.createdAt}</td>
                             <td>{event.eventDate}</td>
-                            <td><Button>Pregledaj</Button></td>
-                            <td><Button variant={"outline-warning"}>Izmijeni</Button></td>
-                            <td><Button variant={"outline-danger"}>Obriši</Button></td>
+                            <td><Button><FontAwesomeIcon icon={faEye}/> Pregledaj</Button></td>
+                            <td><Link className="btn btn-warning" to={`edit-event/${event.eventId}`}><FontAwesomeIcon
+                                icon={faEdit}/>Izmijeni</Link>
+                            </td>
+                            <td><Button variant={"danger"}><FontAwesomeIcon icon={faTrash}/> Obriši</Button>
+                            </td>
                         </tr>
                     )}
                     </tbody>

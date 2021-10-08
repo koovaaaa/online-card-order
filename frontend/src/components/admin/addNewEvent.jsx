@@ -19,7 +19,7 @@ export default class AddNewEvent extends Component {
         country: '',
         eventPhoto: null,
         errorMessage: '',
-        isAdded: ''
+        isAdded: false
     }
 
     async componentDidMount() {
@@ -126,7 +126,7 @@ export default class AddNewEvent extends Component {
                                     </select>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label id={"event-photo"}>Fotografija događaja</Form.Label><br/>
+                                    <Form.Label htmlFor={"event-photo"}>Fotografija događaja</Form.Label>
                                     <Form.Control id="event-photo" type={"file"}
                                                   onChange={event => this.handleFile(event)}/>
                                 </Form.Group>
