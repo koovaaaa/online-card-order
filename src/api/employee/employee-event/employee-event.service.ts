@@ -7,6 +7,7 @@ import { EventRepository } from '../../../repository/event/event.repository';
 import { User } from '../../../entity/user/user.entity';
 import { DeleteResult, LessThan, MoreThan, UpdateResult } from 'typeorm';
 import { ChangeEventDto } from './dto/change-event.dto';
+import * as moment from 'moment';
 
 @Injectable()
 export class EmployeeEventService {
@@ -21,6 +22,14 @@ export class EmployeeEventService {
         relations: ['category', 'city', 'country'],
       });
       return { events: events[0], numberOfEvents: events[1] };
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
+  async getEvent(id: string): Promise<Event> {
+    try {
+      return await this.eventRepository.findOneOrFail(id);
     } catch (e) {
       this.exceptionService.handleException(e);
     }
