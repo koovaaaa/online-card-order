@@ -84,7 +84,7 @@ export default class EventList extends Component {
                     {this.state.events.map(event =>
                         <Col key={event.eventId}>
                             <CardGroup>
-                                <EventCard eventPhoto={event.eventPhoto} description={event.description}
+                                <EventCard eventPhoto={event.eventPhoto}
                                            eventName={event.eventName}
                                            eventDate={event.eventDate}
                                            city={event.city.cityName}
@@ -100,7 +100,7 @@ export default class EventList extends Component {
                             currentPage={this.state.currentPage}/>
                 <br/>
                 <Alert variant={"warning"}
-                       className={this.state.events.length === 0 ? '' : 'd-none'}>{'Za izabrani filter ne postoje događaji!'}</Alert>
+                       className={!this.state.events.length ? '' : 'd-none'}>{'Za izabrani filter ne postoje događaji!'}</Alert>
             </>);
     }
 }

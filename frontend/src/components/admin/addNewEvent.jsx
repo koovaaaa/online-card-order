@@ -29,7 +29,7 @@ export default class AddNewEvent extends Component {
     }
 
     async handleCountryChange(event) {
-        const cities = await api(`admin/places/city/get-cities-from-country/${event.target.value}`, 'get', '');
+        const cities = await api(`admin/places/city/get-cities-from-country/${event.target.value}`, 'get', null);
         await this.setState({cities});
         await this.setState({country: event.target.value});
     }
@@ -126,7 +126,7 @@ export default class AddNewEvent extends Component {
                                     </select>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"event-photo"}>Fotografija događaja</Form.Label>
+                                    <Form.Label htmlFor={"event-photo"}>Fotografija događaja</Form.Label><br/>
                                     <Form.Control id="event-photo" type={"file"}
                                                   onChange={event => this.handleFile(event)}/>
                                 </Form.Group>

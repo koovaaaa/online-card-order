@@ -9,7 +9,8 @@ const Pagination = props => {
         <ul className="pagination justify-content-md-center">
             {pages.map(page =>
                 <li key={page} className={page === props.currentPage ? 'page-item active' : 'page-item'}>
-                    <a className="page-link" onClick={async () => await props.onPageChange(page)}>{page}</a>
+                    <button className="page-link"
+                            onClick={async () => await props.onPageChange(page)}>{page}</button>
                 </li>)}
         </ul>
     </nav>;

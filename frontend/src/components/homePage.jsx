@@ -18,7 +18,7 @@ export class HomePage extends React.Component {
         return (
             <Row>
                 {this.state.events.map(event => <Col key={event.eventId}><CardGroup><EventCard
-                    eventName={event.eventName} description={event.description}
+                    eventName={event.eventName}
                     eventPhoto={event.eventPhoto}
                     country={event.country.countryName} city={event.city.cityName}
                     eventDate={event.eventDate}/></CardGroup></Col>)}

@@ -56,7 +56,7 @@ export default class EditEvent extends Component {
     render() {
         if (this.state.isEdited) return (<Redirect to={'../events'}/>)
         return (
-            <Container className="justify-content-center">
+            <Container>
                 <Col md={{span: 6, offset: 3}}>
                     <Card>
                         <Card.Body>

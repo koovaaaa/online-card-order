@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Button, Table} from "react-bootstrap";
+import {Button, Col, Row, Table} from "react-bootstrap";
 import api from "../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -13,8 +13,20 @@ export default class AdminEventList extends Component {
     }
 
     async componentDidMount() {
-        const events = await api('http://localhost:3000/employee-events/get-events', 'get', '');
+        const events = await api('employee-events/get-events', 'get', '');
 
+        await this.setState({events: events.events, numberOfEvents: events.numberOfEvents})
+    }
+
+    async onSelectChange(event) {
+        let events = '';
+        if (event.target.value === 'active') {
+            events = await api('employee-events/get-active-events', 'get', '');
+        } else if (event.target.value === 'previous') {
+            events = await api('employee-events/get-previous-events', 'get', '');
+        } else {
+            events = await api('employee-events/get-events', 'get', '');
+        }
         await this.setState({events: events.events, numberOfEvents: events.numberOfEvents})
     }
 
@@ -25,19 +37,30 @@ export default class AdminEventList extends Component {
                     dogadjaj</Link>
                 <br/>
                 <br/>
-                <Table>
+                <Row>
+                    <Col xs={3}>
+                        <select id="event" className={"form-select"} onChange={event => this.onSelectChange(event)}>
+                            <option value={"all"}>Prikaži sve događaje</option>
+                            <option value={"active"}>Prikaži aktivne događaje</option>
+                            <option value={"previous"}>Prikaži završene događaje</option>
+                        </select>
+                    </Col>
+                    <Col md={{span: 3, offset: 6}}>
+                        <i><b>Ukupan broj događaja: {this.state.numberOfEvents}</b></i>
+                    </Col>
+                </Row>
+                <br/>
+                <Table hover bordered striped>
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Naziv događaja</th>
                         <th>Kategorija</th>
                         <th>Grad</th>
                         <th>Država</th>
                         <th>Datum objavljivanja</th>
                         <th>Datum održavanja</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -54,13 +77,14 @@ export default class AdminEventList extends Component {
                             <td><Link className="btn btn-warning" to={`edit-event/${event.eventId}`}><FontAwesomeIcon
                                 icon={faEdit}/>Izmijeni</Link>
                             </td>
-                            <td><Button variant={"danger"}><FontAwesomeIcon icon={faTrash}/> Obriši</Button>
+                            <td><Link className="btn btn-danger" to={`delete-event/${event.eventId}`}><FontAwesomeIcon
+                                icon={faTrash}/> Obriši</Link>
                             </td>
                         </tr>
                     )}
                     </tbody>
                 </Table>
-                <i>Ukupan broj događaja: {this.state.numberOfEvents}</i>
+                <br/>
             </>
         );
     }

@@ -8,16 +8,19 @@ const NavBar = ({user}) => {
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
-                {(!user || (user && user.role === 'user')) &&
+                {(!user || (user && user.role === 'Korisnik')) &&
                 <Link className="navbar-brand" to="/"> <FontAwesomeIcon icon={faHome}/> Početna strana</Link>}
-                {user && user.role === 'admin' &&
+                {user && user.role === 'Admin' &&
                 <Link className="navbar-brand" to="/admin"> <FontAwesomeIcon icon={faHome}/> Početna strana</Link>}
                 <Nav className="me-auto">
-                    {(!user || (user && user.role === 'user')) &&
+                    {(!user || (user && user.role === 'Korisnik')) &&
                     <Link className="nav-link" to="/events">Lista događaja</Link>}
-                    {((user && user.role === 'admin')) &&
+                    {((user && user.role === 'Admin')) &&
                     <Link className="nav-link" to="/admin/events">Događaji</Link>}
-
+                    {((user && user.role === 'Admin')) &&
+                    <Link className="nav-link" to="/admin/users">Korisnici</Link>}
+                    {((user && user.role === 'Admin')) &&
+                    <Link className="nav-link" to="/admin/location">Lokacije</Link>}
                     {!user &&
                     <>
                         <Link className="nav-link" to="/login">Prijava</Link>
