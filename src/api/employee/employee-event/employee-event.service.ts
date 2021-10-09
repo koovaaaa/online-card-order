@@ -52,12 +52,17 @@ export class EmployeeEventService {
     }
   }
 
-  async getPreviousEvents(): Promise<Event[]> {
+  async getPreviousEvents(): Promise<{
+    events: Event[];
+    numberOfEvents: number;
+  }> {
     try {
       const dateNow = new Date();
-      return await this.eventRepository.find({
-        eventDate: LessThan(dateNow),
+      const events = await this.eventRepository.findAndCount({
+        where: { eventDate: LessThan(dateNow) },
+        relations: ['category', 'country', 'city'],
       });
+      return { events: events[0], numberOfEvents: events[1] };
     } catch (e) {
       this.exceptionService.handleException(e);
     }

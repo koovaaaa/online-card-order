@@ -115,7 +115,9 @@ export class AdminPlaceService {
 
   async getCityById(id: string): Promise<City> {
     try {
-      return await this.cityRepository.findOneOrFail(id);
+      return await this.cityRepository.findOneOrFail(id, {
+        relations: ['country'],
+      });
     } catch (e) {
       this.exceptionService.handleException(e);
     }

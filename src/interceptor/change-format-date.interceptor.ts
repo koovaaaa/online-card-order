@@ -9,7 +9,6 @@ export class ChangeFormatDateInterceptor implements NestInterceptor {
   ): Observable<any> | Promise<Observable<any>> {
     return next.handle().pipe(
       tap(async (response) => {
-        console.log(typeof response);
         for (const event of response.events) {
           event.eventDate = moment(event.eventDate).format('DD/MM/YYYY');
           event.createdAt = moment(event.createdAt).format('DD/MM/YYYY');

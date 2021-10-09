@@ -16,7 +16,9 @@ export class AdminUserService {
 
   async getAllUsers(): Promise<User[]> {
     try {
-      return await this.userRepository.find();
+      return await this.userRepository.find({
+        relations: ['country', 'city'],
+      });
     } catch (e) {
       this.exceptionService.handleException(e);
     }
