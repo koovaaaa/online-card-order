@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/admin/addNewCity.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/adminUserList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/deleteEvent.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/editCity.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/editUser.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/admin/eventLocations.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/eventCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/addNewEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/addNewEvent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/adminEventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/adminEventList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/editEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/editEvent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/eventCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/eventCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/eventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/eventList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/homePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pagination.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pagination.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-place/admin-place.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-place/admin-place.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/enum/user-role.enum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/enum/user-role.enum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interceptor/change-date.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/interceptor/change-date.interceptor.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interceptor/change-format-date.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/interceptor/change-format-date.interceptor.ts" afterDir="false" />
-    </list>
+    <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +58,7 @@
       <workItem from="1633601176233" duration="6480000" />
       <workItem from="1633610901551" duration="13287000" />
       <workItem from="1633682315009" duration="37245000" />
-      <workItem from="1633770496878" duration="25688000" />
+      <workItem from="1633770496878" duration="26284000" />
     </task>
     <servers />
   </component>
