@@ -54,13 +54,14 @@ export default class LoginPage extends Component {
                             </Card.Title>
                             <Form>
                                 <Form.Group>
-                                    <Form.Label htmlFor="username">Korisničko ime / Email</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor="username">Korisničko ime /
+                                        Email</Form.Label>
                                     <Form.Control type="text" id="usernameOrEmail"
                                                   placeholder="Unesite korisničko ime ili email"
                                                   onChange={event => this.onInputFieldChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor="password">Lozinka</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor="password">Lozinka</Form.Label>
                                     <Form.Control type="password" id="password" placeholder="Unesite lozinku"
                                                   onChange={event => this.onInputFieldChange(event)}/>
                                 </Form.Group>
@@ -69,6 +70,7 @@ export default class LoginPage extends Component {
                                     await this.doLogin()
                                 }}>Prijavi se</Button>
                             </Form>
+                            <br/>
                             <Alert variant="danger" className={this.state.errorMessage ? '' : 'd-none'}>
                                 {this.state.errorMessage}
                             </Alert>

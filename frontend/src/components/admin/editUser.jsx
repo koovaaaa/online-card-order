@@ -45,10 +45,11 @@ export default class EditUser extends Component {
                             </Card.Title>
                             <Form>
                                 <Form.Group>
-                                    <Form.Label>{this.state.user.role}: {this.state.user.name + ' ' + this.state.user.surname}</Form.Label>
+                                    <Form.Label
+                                        className={"small fw-bold"}>{this.state.user.role}: {this.state.user.name + ' ' + this.state.user.surname}</Form.Label>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"role"}>Uloga: </Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"role"}>Uloga: </Form.Label>
                                     <select id={"role"} className={"form-select"}
                                             onChange={event => this.onSelectChange(event)}>
                                         <option value={''}>Izaberi ulogu</option>

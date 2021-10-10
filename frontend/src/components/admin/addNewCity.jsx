@@ -52,19 +52,20 @@ export default class AddNewCity extends Component {
                             </Card.Title>
                             <Form>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"city"}>Naziv grada</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"city"}>Naziv grada</Form.Label>
                                     <Form.Control id={"city"} type={"text"}
                                                   placeholder={"Unesite naziv grada"}
                                                   onChange={event => this.handleChangeInput(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"postalCode"}>Poštanski broj</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"postalCode"}>Poštanski
+                                        broj</Form.Label>
                                     <Form.Control id={"postalCode"} type={"text"}
                                                   placeholder={"Unesite poštanski broj"}
                                                   onChange={event => this.handleChangeInput(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"country"}>Država</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"country"}>Država</Form.Label>
                                     <select id={"country"} className={"form-select"}
                                             onChange={event => this.handleChangeInput(event)}>
                                         <option value={''}>Izaberi državu</option>

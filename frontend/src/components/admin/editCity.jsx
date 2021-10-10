@@ -50,12 +50,14 @@ export default class EditCity extends Component {
                             </Card.Title>
                             <Form>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"cityName"}>Naziv grada</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"cityName"}>Naziv
+                                        grada</Form.Label>
                                     <Form.Control type={"text"} id={"cityName"} value={this.state.cityName}
                                                   onChange={event => this.handleInputFieldChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"postalCode"}>Poštanski broj</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"postalCode"}>Poštanski
+                                        broj</Form.Label>
                                     <Form.Control type={"text"} id={"postalCode"} value={this.state.postalCode}
                                                   onChange={event => this.handleInputFieldChange(event)}/>
                                 </Form.Group>

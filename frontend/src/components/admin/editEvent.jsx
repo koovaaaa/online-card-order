@@ -65,23 +65,27 @@ export default class EditEvent extends Component {
                             </Card.Title>
                             <Form>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"eventName"}>Naziv događaja</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"eventName"}>Naziv
+                                        događaja</Form.Label>
                                     <Form.Control id={"eventName"} type={"text"} value={this.state.eventName}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"eventDescription"}>Opis događaja</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"eventDescription"}>Opis
+                                        događaja</Form.Label>
                                     <Form.Control id={"eventDescription"} type={"text"}
                                                   value={this.state.eventDescription}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"eventDate"}>Datum događaja</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"eventDate"}>Datum
+                                        događaja</Form.Label>
                                     <Form.Control id={"eventDate"} type={"date"} value={this.state.eventDate}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label id={"event-photo"}>Fotografija događaja</Form.Label><br/>
+                                    <Form.Label className={"small fw-bold"} id={"event-photo"}>Fotografija
+                                        događaja</Form.Label><br/>
                                     <Form.Control type={"file"} id={"event-photo"}
                                                   onChange={event => this.handleFile(event)}/>
                                 </Form.Group>

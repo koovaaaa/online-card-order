@@ -62,7 +62,7 @@ export default class EventList extends Component {
             <>
                 <Row>
                     <Col xs={3}>
-                        <select id="category" className="form-select"
+                        <select id="category" className="form-select small fw-bold"
                                 onChange={event => this.onSelectListChange(event)}>
                             <option value={''}>Izaberi kategoriju</option>
                             {this.state.categories.map(category => <option
@@ -71,7 +71,8 @@ export default class EventList extends Component {
                         </select>
                     </Col>
                     <Col xs={3}>
-                        <select id="country" className="form-select" onChange={event => this.onSelectListChange(event)}>
+                        <select id="country" className="form-select small fw-bold"
+                                onChange={event => this.onSelectListChange(event)}>
                             <option value={''}>Izaberi državu</option>
                             {this.state.countries.map(country => <option
                                 key={country.countryId}

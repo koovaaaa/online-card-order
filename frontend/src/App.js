@@ -19,6 +19,7 @@ import EditUser from "./components/admin/editUser";
 import EventLocations from "./components/admin/eventLocations";
 import AddNewCity from "./components/admin/addNewCity";
 import EditCity from "./components/admin/editCity";
+import UserProfile from "./components/userProfile";
 
 class App extends React.Component {
     state = {}
@@ -39,6 +40,7 @@ class App extends React.Component {
                 <br/>
                 <Container>
                     <Switch>
+                        <Route path="/profile" component={UserProfile}/>
                         <Route path="/admin/edit-city/:id" component={EditCity}/>
                         <Route path="/admin/add-new-city" component={AddNewCity}/>
                         <Route path="/admin/location" component={EventLocations}/>

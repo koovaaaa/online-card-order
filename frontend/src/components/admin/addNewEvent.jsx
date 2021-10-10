@@ -77,24 +77,27 @@ export default class AddNewEvent extends Component {
                             </Card.Title>
                             <Form>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"eventName"}>Naziv događaja</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"eventName"}>Naziv
+                                        događaja</Form.Label>
                                     <Form.Control id={"eventName"} type={"text"} placeholder={"Unesite naziv"}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"eventDescription"}>Opis događaja</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"eventDescription"}>Opis
+                                        događaja</Form.Label>
                                     <Form.Control id={"eventDescription"} type={"text"}
                                                   placeholder={"Unesite opis"}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"eventDate"}>Datum događaja</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"eventDate"}>Datum
+                                        događaja</Form.Label>
                                     <Form.Control id={"eventDate"} type={"date"}
                                                   placeholder={"Unesite datum"}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"category"}>Kategorija</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"category"}>Kategorija</Form.Label>
                                     <select id="category" className={"form-select"}
                                             onChange={event => this.onInputChange(event)}>
                                         <option value={''}>Izaberi kategoriju</option>
@@ -105,7 +108,8 @@ export default class AddNewEvent extends Component {
                                     </select>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"select-country"}>Država</Form.Label>
+                                    <Form.Label className={"small fw-bold"}
+                                                htmlFor={"select-country"}>Država</Form.Label>
                                     <select id="select-country" className={"form-select"}
                                             onChange={event => this.handleCountryChange(event)}>
                                         <option value={''}>Izaberi državu</option>
@@ -116,7 +120,7 @@ export default class AddNewEvent extends Component {
                                     </select>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"city"}>Grad</Form.Label>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"city"}>Grad</Form.Label>
                                     <select id="city" className={"form-select"}
                                             onChange={event => this.onInputChange(event)}>
                                         <option value={''}>Izaberi grad</option>
@@ -126,7 +130,8 @@ export default class AddNewEvent extends Component {
                                     </select>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label htmlFor={"event-photo"}>Fotografija događaja</Form.Label><br/>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"event-photo"}>Fotografija
+                                        događaja</Form.Label><br/>
                                     <Form.Control id="event-photo" type={"file"}
                                                   onChange={event => this.handleFile(event)}/>
                                 </Form.Group>
