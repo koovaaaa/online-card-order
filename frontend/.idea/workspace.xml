@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/userProfile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../src/api/user/user-profile/dto/edit-user.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/addNewCity.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/addNewCity.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/addNewEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/addNewEvent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/editCity.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/editCity.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/editEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/editEvent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/editUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/editUser.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/eventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/eventList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +61,9 @@
       <workItem from="1633610901551" duration="13287000" />
       <workItem from="1633682315009" duration="37245000" />
       <workItem from="1633770496878" duration="26284000" />
-      <workItem from="1633873254381" duration="10377000" />
+      <workItem from="1633873254381" duration="11380000" />
+      <workItem from="1633943435787" duration="1400000" />
+      <workItem from="1633986138338" duration="514000" />
     </task>
     <servers />
   </component>
