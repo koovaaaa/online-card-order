@@ -2,7 +2,7 @@ import {Component} from "react";
 import EventCard from "./eventCard";
 import api from "../api/api";
 import {Alert, CardGroup, Col, Row} from "react-bootstrap";
-import Pagination from "./pagination";
+import Pagination from "./common/pagination";
 
 export default class EventList extends Component {
     state = {
