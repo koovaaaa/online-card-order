@@ -1,7 +1,7 @@
 import React from "react";
 import api from "../../api/api";
 import {CardGroup, Col, Row} from "react-bootstrap";
-import EventCard from "../eventCard";
+import EventCard from "./eventCard";
 
 export class HomePage extends React.Component {
     state = {
