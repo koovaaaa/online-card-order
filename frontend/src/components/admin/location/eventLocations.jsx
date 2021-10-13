@@ -1,14 +1,19 @@
 import {Component} from "react";
 import {Alert, Col, Row, Table} from "react-bootstrap";
-import api from "../../api/api";
+import api from "../../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus} from "@fortawesome/free-solid-svg-icons";
+import Pagination from "../../common/pagination";
 
 export default class EventLocations extends Component {
     state = {
         countries: [],
-        cities: []
+        cities: [],
+        numberOfCities: 0,
+        citiesPerPage: '',
+        currentPage: 1,
+        currentCountry: ''
     }
 
     async componentDidMount() {
@@ -19,7 +24,20 @@ export default class EventLocations extends Component {
     async onMenuClick(event) {
         const countryId = event.target.value;
         const cities = await api(`admin/places/city/get-cities-from-country/${countryId}`, 'get', '');
-        await this.setState({cities});
+        await this.setState({
+            cities: cities.cities,
+            numberOfCities: cities.numberOfCities,
+            citiesPerPage: cities.defaultPerPage,
+            currentPage: 1,
+            currentCountry: countryId
+        });
+    }
+
+    handlePageChange = async (page) => {
+        await this.setState({currentPage: page})
+        const cities = await api(`admin/places/city/get-cities-from-country/${this.state.currentCountry}?page=${this.state.currentPage}`, 'get', '');
+
+        await this.setState({cities: cities.cities, numberOfCities: cities.numberOfCities});
     }
 
     render() {
@@ -61,6 +79,10 @@ export default class EventLocations extends Component {
                         )}
                         </tbody>
                     </Table>
+                    <br/>
+                    {this.state.cities.length ?
+                        <Pagination eventsCount={this.state.numberOfCities} pageSize={this.state.citiesPerPage}
+                                    currentPage={this.state.currentPage} onPageChange={this.handlePageChange}/> : ''}
                     <br/>
                     <Alert variant="warning" className={!this.state.cities.length ? '' : 'd-none'}>
                         {'Izaberite državu!'}

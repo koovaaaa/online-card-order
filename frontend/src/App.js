@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./components/navBar";
+import NavBar from "./components/common/navBar";
 import {Container} from "react-bootstrap";
 import {Route, Switch} from "react-router-dom";
 import {HomePage} from "./components/homePage";
@@ -10,16 +10,16 @@ import jwtDecode from "jwt-decode";
 import Logout from "./components/auth/logoutPage";
 import {getToken} from "./api/api";
 import AdminHomePage from "./components/admin/adminHomePage";
-import AdminEventList from "./components/admin/adminEventList";
-import AddNewEvent from "./components/admin/addNewEvent";
-import EditEvent from "./components/admin/editEvent";
-import DeleteEvent from "./components/admin/deleteEvent";
-import AdminUserList from "./components/admin/adminUserList";
-import EditUser from "./components/admin/editUser";
-import EventLocations from "./components/admin/eventLocations";
-import AddNewCity from "./components/admin/addNewCity";
-import EditCity from "./components/admin/editCity";
-import UserProfile from "./components/userProfile";
+import AdminEventList from "./components/employee/event/adminEventList";
+import AddNewEvent from "./components/employee/event/addNewEvent";
+import EditEvent from "./components/employee/event/editEvent";
+import DeleteEvent from "./components/employee/event/deleteEvent";
+import AdminUserList from "./components/admin/user/adminUserList";
+import EditUser from "./components/admin/user/editUser";
+import EventLocations from "./components/admin/location/eventLocations";
+import AddNewCity from "./components/admin/location/addNewCity";
+import EditCity from "./components/admin/location/editCity";
+import UserProfile from "./components/common/userProfile";
 
 class App extends React.Component {
     state = {}

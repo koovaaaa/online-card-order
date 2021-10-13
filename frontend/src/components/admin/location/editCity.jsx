@@ -2,7 +2,7 @@ import {Component} from "react";
 import {Button, Card, Col, Container, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit} from "@fortawesome/free-solid-svg-icons";
-import api from "../../api/api";
+import api from "../../../api/api";
 import {Redirect} from "react-router-dom";
 
 export default class EditCity extends Component {

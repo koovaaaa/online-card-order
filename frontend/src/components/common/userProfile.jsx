@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import api from "../api/api";
+import api from "../../api/api";
 import {Alert, Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";

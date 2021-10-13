@@ -2,16 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../src/enum/pagination-type.enum.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/admin/user/adminUserList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/adminEventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/adminEventList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/addNewCity.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/location/addNewCity.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/addNewEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/addNewEvent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/adminEventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/adminEventList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/adminUserList.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/deleteEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/deleteEvent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/editCity.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/location/editCity.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/editEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/editEvent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/editUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/user/editUser.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/eventLocations.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/location/eventLocations.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/eventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/eventList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/navBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pagination.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/pagination.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/userProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/userProfile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-place/admin-place.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-place/admin-place.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-event/employee-event.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/helper/services/pagination.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/helper/services/pagination.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-place/admin-place.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-place/admin-place.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-place/admin-place.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-place/admin-place.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/admin/admin-user/admin-user.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +64,14 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2021.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\common" />
+      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\employee\event" />
+      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\admin\user" />
+      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\admin\location" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -73,7 +93,7 @@
       <workItem from="1633873254381" duration="11380000" />
       <workItem from="1633943435787" duration="1400000" />
       <workItem from="1633986138338" duration="514000" />
-      <workItem from="1634119778409" duration="6468000" />
+      <workItem from="1634119778409" duration="13266000" />
     </task>
     <servers />
   </component>

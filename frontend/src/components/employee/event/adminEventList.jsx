@@ -1,10 +1,10 @@
 import {Component} from "react";
 import {Button, Col, Row, Table} from "react-bootstrap";
-import api from "../../api/api";
+import api from "../../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faEye, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
-import Pagination from "../pagination";
+import Pagination from "../../common/pagination";
 
 
 export default class AdminEventList extends Component {
