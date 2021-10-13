@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -25,6 +26,7 @@ import { DeleteResult, UpdateResult } from 'typeorm';
 import { ChangeEventDto } from './dto/change-event.dto';
 import { ChangeFormatDateInterceptor } from '../../../interceptor/change-format-date.interceptor';
 import { ChangeDateInterceptor } from '../../../interceptor/change-date.interceptor';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
 
 @ApiTags('Employee Event')
 @ApiBearerAuth()
@@ -35,8 +37,12 @@ export class EmployeeEventController {
 
   @Get('get-events')
   @UseInterceptors(ChangeFormatDateInterceptor)
-  async getAllEvents(): Promise<{ events: Event[]; numberOfEvents: number }> {
-    return await this.employeeEventService.getAllEvents();
+  async getAllEvents(@Query() pagination: PaginationDto): Promise<{
+    events: Event[];
+    numberOfEvents: number;
+    eventsPerPage: number;
+  }> {
+    return await this.employeeEventService.getAllEvents(pagination);
   }
 
   @Get('get-event/:id')
@@ -47,20 +53,20 @@ export class EmployeeEventController {
 
   @Get('get-active-events')
   @UseInterceptors(ChangeFormatDateInterceptor)
-  async getActiveEvents(): Promise<{
+  async getActiveEvents(@Query() pagination: PaginationDto): Promise<{
     events: Event[];
     numberOfEvents: number;
   }> {
-    return await this.employeeEventService.getActiveEvents();
+    return await this.employeeEventService.getActiveEvents(pagination);
   }
 
   @Get('get-previous-events')
   @UseInterceptors(ChangeFormatDateInterceptor)
-  async getPreviousEvents(): Promise<{
+  async getPreviousEvents(@Query() pagination: PaginationDto): Promise<{
     events: Event[];
     numberOfEvents: number;
   }> {
-    return await this.employeeEventService.getPreviousEvents();
+    return await this.employeeEventService.getPreviousEvents(pagination);
   }
 
   @Post('add-event')

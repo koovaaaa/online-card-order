@@ -7,7 +7,9 @@ import { EventRepository } from '../../../repository/event/event.repository';
 import { User } from '../../../entity/user/user.entity';
 import { DeleteResult, LessThan, MoreThan, UpdateResult } from 'typeorm';
 import { ChangeEventDto } from './dto/change-event.dto';
-import * as moment from 'moment';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
+import { PaginationService } from '../../../helper/services/pagination.service';
+import { PaginationTypeEnum } from '../../../enum/pagination-type.enum';
 
 @Injectable()
 export class EmployeeEventService {
@@ -15,13 +17,28 @@ export class EmployeeEventService {
     @InjectRepository(Event)
     private readonly eventRepository: EventRepository,
     private readonly exceptionService: ExceptionService,
+    private readonly paginationService: PaginationService,
   ) {}
-  async getAllEvents(): Promise<{ events: Event[]; numberOfEvents: number }> {
+  async getAllEvents(pagination: PaginationDto): Promise<{
+    events: Event[];
+    numberOfEvents: number;
+    eventsPerPage: number;
+  }> {
     try {
+      const { limit, skip } = await this.paginationService.setPagination(
+        pagination,
+        PaginationTypeEnum.TABLE,
+      );
       const events = await this.eventRepository.findAndCount({
         relations: ['category', 'city', 'country'],
+        take: limit,
+        skip: skip,
       });
-      return { events: events[0], numberOfEvents: events[1] };
+      return {
+        events: events[0],
+        numberOfEvents: events[1],
+        eventsPerPage: parseInt(process.env.DEFAULT_PER_PAGE_FOR_TABLE),
+      };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
@@ -35,14 +52,20 @@ export class EmployeeEventService {
     }
   }
 
-  async getActiveEvents(): Promise<{
+  async getActiveEvents(pagination: PaginationDto): Promise<{
     events: Event[];
     numberOfEvents: number;
   }> {
     try {
+      const { limit, skip } = await this.paginationService.setPagination(
+        pagination,
+        PaginationTypeEnum.TABLE,
+      );
       const dateNow = new Date();
       const events = await this.eventRepository.findAndCount({
         where: { eventDate: MoreThan(dateNow) },
+        take: limit,
+        skip: skip,
         relations: ['category', 'country', 'city'],
       });
 
@@ -52,14 +75,20 @@ export class EmployeeEventService {
     }
   }
 
-  async getPreviousEvents(): Promise<{
+  async getPreviousEvents(pagination: PaginationDto): Promise<{
     events: Event[];
     numberOfEvents: number;
   }> {
     try {
+      const { limit, skip } = await this.paginationService.setPagination(
+        pagination,
+        PaginationTypeEnum.TABLE,
+      );
       const dateNow = new Date();
       const events = await this.eventRepository.findAndCount({
         where: { eventDate: LessThan(dateNow) },
+        take: limit,
+        skip: skip,
         relations: ['category', 'country', 'city'],
       });
       return { events: events[0], numberOfEvents: events[1] };

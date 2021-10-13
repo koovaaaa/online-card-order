@@ -21,6 +21,7 @@ import { PaginationDto } from '../../../helper/dto/pagination.dto';
 import { PaginationService } from '../../../helper/services/pagination.service';
 import { AdminGuard } from '../../auth/guards/admin.guard';
 import { JwtAuthGuard } from '../../auth/guards/jwt.guard';
+import { PaginationTypeEnum } from '../../../enum/pagination-type.enum';
 
 @ApiTags('Admin Place')
 @ApiBearerAuth()
@@ -58,7 +59,10 @@ export class AdminPlaceController {
 
   @Get('city/get-cities')
   async getAllCities(@Query() pagination: PaginationDto): Promise<City[]> {
-    const paginationSet = this.paginationService.setPagination(pagination);
+    const paginationSet = this.paginationService.setPagination(
+      pagination,
+      PaginationTypeEnum.TABLE,
+    );
     return await this.adminPlaceService.getAllCities(paginationSet);
   }
 

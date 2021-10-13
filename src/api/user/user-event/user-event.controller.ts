@@ -7,6 +7,7 @@ import { ChangeFormatDateInterceptor } from '../../../interceptor/change-format-
 import { FilterDto } from './dto/filter.dto';
 import { PaginationDto } from '../../../helper/dto/pagination.dto';
 import { PaginationService } from '../../../helper/services/pagination.service';
+import { PaginationTypeEnum } from '../../../enum/pagination-type.enum';
 
 @ApiTags('User Event')
 @Controller('user-event')
@@ -24,6 +25,7 @@ export class UserEventController {
   ): Promise<{ events: Event[]; eventsCount: number; eventsPerPage: number }> {
     const setPagination = await this.paginationService.setPagination(
       pagination,
+      PaginationTypeEnum.EVENT_LIST,
     );
     return await this.userEventService.getActiveEvents(filter, setPagination);
   }
