@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Put, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Put,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/guards/jwt.guard';
 import { AdminGuard } from '../../auth/guards/admin.guard';
@@ -6,6 +14,7 @@ import { AdminUserService } from './admin-user.service';
 import { ChangeRoleDto } from './dto/change-role.dto';
 import { UpdateResult } from 'typeorm';
 import { User } from '../../../entity/user/user.entity';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
 
 @ApiTags('Admin User')
 @ApiBearerAuth()
@@ -14,8 +23,10 @@ import { User } from '../../../entity/user/user.entity';
 export class AdminUserController {
   constructor(private readonly adminUserService: AdminUserService) {}
   @Get('get-users')
-  async getAllUsers(): Promise<User[]> {
-    return await this.adminUserService.getAllUsers();
+  async getAllUsers(
+    @Query() pagination: PaginationDto,
+  ): Promise<{ users: User[]; numberOfUsers: number; defaultPerPage: number }> {
+    return await this.adminUserService.getAllUsers(pagination);
   }
 
   @Get('get-user/:id')

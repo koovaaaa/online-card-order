@@ -11,6 +11,8 @@ import { CityRepository } from '../../../repository/city/city.repository';
 import { AddCitiesAdminDto } from './dto/add-cities.admin.dto';
 import { EditCityAdminDto } from './dto/edit-city.admin.dto';
 import { PaginationDto } from '../../../helper/dto/pagination.dto';
+import { PaginationTypeEnum } from '../../../enum/pagination-type.enum';
+import { PaginationService } from '../../../helper/services/pagination.service';
 
 @Injectable()
 export class AdminPlaceService {
@@ -20,6 +22,7 @@ export class AdminPlaceService {
     @InjectRepository(City)
     private readonly cityRepository: CityRepository,
     private readonly exceptionService: ExceptionService,
+    private readonly paginationService: PaginationService,
   ) {}
   async getAllCountries() {
     try {
@@ -95,11 +98,31 @@ export class AdminPlaceService {
     }
   }
 
-  async getCityFromCountry(countryId: string): Promise<City[]> {
+  async getCitiesFromCountry(
+    countryId: string,
+    pagination: PaginationDto,
+  ): Promise<{
+    cities: City[];
+    numberOfCities: number;
+    defaultPerPage: number;
+  }> {
     try {
-      return await this.cityRepository.find({
+      const { limit, skip } = await this.paginationService.setPagination(
+        pagination,
+        PaginationTypeEnum.TABLE,
+      );
+
+      const cities = await this.cityRepository.findAndCount({
         where: { country: countryId },
+        skip: skip,
+        take: limit,
       });
+
+      return {
+        cities: cities[0],
+        numberOfCities: cities[1],
+        defaultPerPage: parseInt(process.env.DEFAULT_PER_PAGE_FOR_TABLE),
+      };
     } catch (e) {
       this.exceptionService.handleException(e);
     }

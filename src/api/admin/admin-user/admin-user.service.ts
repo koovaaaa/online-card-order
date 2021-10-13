@@ -5,6 +5,9 @@ import { UserRepository } from '../../../repository/user/user.repository';
 import { ExceptionService } from '../../../helper/services/exception.service';
 import { UserRoleEnum } from '../../../enum/user-role.enum';
 import { UpdateResult } from 'typeorm';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
+import { PaginationTypeEnum } from '../../../enum/pagination-type.enum';
+import { PaginationService } from '../../../helper/services/pagination.service';
 
 @Injectable()
 export class AdminUserService {
@@ -12,13 +15,29 @@ export class AdminUserService {
     @InjectRepository(User)
     private readonly userRepository: UserRepository,
     private readonly exceptionService: ExceptionService,
+    private readonly paginationService: PaginationService,
   ) {}
 
-  async getAllUsers(): Promise<User[]> {
+  async getAllUsers(
+    pagination: PaginationDto,
+  ): Promise<{ users: User[]; numberOfUsers: number; defaultPerPage: number }> {
     try {
-      return await this.userRepository.find({
+      const { limit, skip } = await this.paginationService.setPagination(
+        pagination,
+        PaginationTypeEnum.TABLE,
+      );
+
+      const users = await this.userRepository.findAndCount({
         relations: ['country', 'city'],
+        take: limit,
+        skip: skip,
       });
+
+      return {
+        users: users[0],
+        numberOfUsers: users[1],
+        defaultPerPage: parseInt(process.env.DEFAULT_PER_PAGE_FOR_TABLE),
+      };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
