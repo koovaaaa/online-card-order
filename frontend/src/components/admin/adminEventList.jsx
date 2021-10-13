@@ -4,30 +4,61 @@ import api from "../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faEye, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons";
+import Pagination from "../pagination";
 
 
 export default class AdminEventList extends Component {
     state = {
         events: [],
         numberOfEvents: '',
+        eventsPerPage: '',
+        currentPage: 1,
+        targetValue: 'all'
     }
 
     async componentDidMount() {
-        const events = await api('employee-events/get-events', 'get', '');
+        const events = await api(`employee-events/get-events`, 'get', '');
 
-        await this.setState({events: events.events, numberOfEvents: events.numberOfEvents})
+        await this.setState({
+            events: events.events,
+            numberOfEvents: events.numberOfEvents,
+            eventsPerPage: events.eventsPerPage
+        })
     }
 
     async onSelectChange(event) {
         let events = '';
         if (event.target.value === 'active') {
-            events = await api('employee-events/get-active-events', 'get', '');
+            events = await api(`employee-events/get-active-events`, 'get', '');
         } else if (event.target.value === 'previous') {
             events = await api('employee-events/get-previous-events', 'get', '');
         } else {
             events = await api('employee-events/get-events', 'get', '');
         }
-        await this.setState({events: events.events, numberOfEvents: events.numberOfEvents})
+        await this.setState({
+            events: events.events,
+            numberOfEvents: events.numberOfEvents,
+            targetValue: event.target.value,
+            currentPage: 1
+        })
+    }
+
+    handlePageChange = async (page) => {
+        await this.setState({currentPage: page})
+        let events = '';
+
+        if (this.state.targetValue === 'active') {
+            events = await api(`employee-events/get-active-events?page=${this.state.currentPage}`, 'get', '');
+        } else if (this.state.targetValue === 'previous') {
+            events = await api(`employee-events/get-previous-events?page=${this.state.currentPage}`, 'get', '');
+        } else {
+            events = await api(`employee-events/get-events?page=${this.state.currentPage}`, 'get', '');
+        }
+
+        await this.setState({
+            events: events.events,
+            numberOfEvents: events.numberOfEvents,
+        })
     }
 
     render() {
@@ -85,6 +116,8 @@ export default class AdminEventList extends Component {
                     </tbody>
                 </Table>
                 <br/>
+                <Pagination eventsCount={this.state.numberOfEvents} pageSize={this.state.eventsPerPage}
+                            onPageChange={this.handlePageChange} currentPage={this.state.currentPage}/>
             </>
         );
     }
