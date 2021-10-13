@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/auth/routes/adminRoute.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auth/routes/commonRoute.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auth/routes/employeeRoute.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/auth/routes/userRoute.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/eventCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/guest/eventCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/eventCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/guest/eventCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/eventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/guest/eventList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/homePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/guest/homePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/adminHomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/adminEmployeeHomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/user/adminUserList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/user/adminUserList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/navBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/userProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/userProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/event/adminEventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/adminEmployeeEventList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +58,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\employee" />
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\guest" />
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\common" />
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\employee\event" />
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\admin\user" />
-      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\admin\location" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -78,7 +86,7 @@
       <workItem from="1633873254381" duration="11380000" />
       <workItem from="1633943435787" duration="1400000" />
       <workItem from="1633986138338" duration="514000" />
-      <workItem from="1634119778409" duration="14238000" />
+      <workItem from="1634119778409" duration="22758000" />
     </task>
     <servers />
   </component>

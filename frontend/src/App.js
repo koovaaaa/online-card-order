@@ -9,8 +9,8 @@ import EventList from "./components/guest/eventList";
 import jwtDecode from "jwt-decode";
 import Logout from "./components/auth/logoutPage";
 import {getToken} from "./api/api";
-import AdminHomePage from "./components/admin/adminHomePage";
-import AdminEventList from "./components/employee/event/adminEventList";
+import AdminEmployeeHomePage from "./components/employee/adminEmployeeHomePage";
+import AdminEmployeeEventList from "./components/employee/event/adminEmployeeEventList";
 import AddNewEvent from "./components/employee/event/addNewEvent";
 import EditEvent from "./components/employee/event/editEvent";
 import DeleteEvent from "./components/employee/event/deleteEvent";
@@ -20,6 +20,9 @@ import EventLocations from "./components/admin/location/eventLocations";
 import AddNewCity from "./components/admin/location/addNewCity";
 import EditCity from "./components/admin/location/editCity";
 import UserProfile from "./components/common/userProfile";
+import AdminRoute from "./components/auth/routes/adminRoute";
+import EmployeeRoute from "./components/auth/routes/employeeRoute";
+import CommonRoute from "./components/auth/routes/commonRoute";
 
 class App extends React.Component {
     state = {}
@@ -40,17 +43,17 @@ class App extends React.Component {
                 <br/>
                 <Container>
                     <Switch>
-                        <Route path="/profile" component={UserProfile}/>
-                        <Route path="/admin/edit-city/:id" component={EditCity}/>
-                        <Route path="/admin/add-new-city" component={AddNewCity}/>
-                        <Route path="/admin/location" component={EventLocations}/>
-                        <Route path="/admin/edit-user/:id" component={EditUser}/>
-                        <Route path="/admin/users" component={AdminUserList}/>
-                        <Route path="/admin/delete-event/:id" component={DeleteEvent}/>
-                        <Route path="/admin/edit-event/:id" component={EditEvent}/>
-                        <Route path="/admin/add-new-event" component={AddNewEvent}/>
-                        <Route path="/admin/events" component={AdminEventList}/>
-                        <Route path="/admin" component={AdminHomePage}/>
+                        <CommonRoute path="/profile" component={UserProfile}/>
+                        <AdminRoute path="/admin/edit-city/:id" component={EditCity}/>
+                        <AdminRoute path="/admin/add-new-city" component={AddNewCity}/>
+                        <AdminRoute path="/admin/location" component={EventLocations}/>
+                        <AdminRoute path="/admin/edit-user/:id" component={EditUser}/>
+                        <AdminRoute path="/admin/users" component={AdminUserList}/>
+                        <EmployeeRoute path="/employee/delete-event/:id" component={DeleteEvent}/>
+                        <EmployeeRoute path="/employee/edit-event/:id" component={EditEvent}/>
+                        <EmployeeRoute path="/employee/add-new-event" component={AddNewEvent}/>
+                        <EmployeeRoute path="/employee/events" component={AdminEmployeeEventList}/>
+                        <EmployeeRoute path="/employee" component={AdminEmployeeHomePage}/>
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/logout" component={Logout}/>
                         <Route path="/events" component={EventList}/>

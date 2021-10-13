@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 export default async function api(path, method, body) {
     const response = await axios({
@@ -38,4 +39,13 @@ export function saveToken(token) {
 
 export function removeToken() {
     localStorage.removeItem('token');
+}
+
+export function getCurrentUser() {
+    try {
+        const token = getToken();
+        return jwtDecode(token);
+    } catch {
+        return null;
+    }
 }

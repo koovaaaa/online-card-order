@@ -68,7 +68,6 @@ export default class AdminUserList extends Component {
                         </tr>)
                     }
                     </tbody>
-                    <br/>
                 </Table>
                 <br/>
                 <Pagination eventsCount={this.state.numberOfUsers} pageSize={this.state.defaultPerPage}

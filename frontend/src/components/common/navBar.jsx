@@ -15,16 +15,16 @@ const NavBar = ({user}) => {
             <Container>
                 {(!user || (user && user.role === userRole.user)) &&
                 <Link className="navbar-brand" to="/"> <FontAwesomeIcon icon={faHome}/> Početna strana</Link>}
-                {user && user.role === userRole.admin &&
-                <Link className="navbar-brand" to="/admin"> <FontAwesomeIcon icon={faHome}/> Početna strana</Link>}
+                {user && (user.role === userRole.admin || user.role === userRole.employee) &&
+                <Link className="navbar-brand" to="/employee"> <FontAwesomeIcon icon={faHome}/> Početna strana</Link>}
                 <Nav className="me-auto">
                     {(!user || (user && user.role === userRole.user)) &&
                     <Link className="nav-link" to="/events">Lista događaja</Link>}
-                    {((user && user.role === userRole.admin)) &&
-                    <Link className="nav-link" to="/admin/events">Događaji</Link>}
-                    {((user && user.role === userRole.admin)) &&
+                    {(user && (user.role === userRole.admin || user.role === userRole.employee)) &&
+                    <Link className="nav-link" to="/employee/events">Događaji</Link>}
+                    {(user && user.role === userRole.admin) &&
                     <Link className="nav-link" to="/admin/users">Korisnici</Link>}
-                    {((user && user.role === userRole.admin)) &&
+                    {(user && user.role === userRole.admin) &&
                     <Link className="nav-link" to="/admin/location">Lokacije</Link>}
                     {!user &&
                     <>

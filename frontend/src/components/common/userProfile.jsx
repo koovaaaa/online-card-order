@@ -21,24 +21,28 @@ export default class UserProfile extends Component {
     }
 
     async componentDidMount() {
-        const countries = await api('user-place/get-countries', 'get', '');
-        const cities = await api('user-place/get-cities', 'get', '');
-        const user = await api('user-profile/my-profile', 'get', '');
-        await this.setState({
-            name: user.name,
-            surname: user.surname,
-            username: user.username,
-            email: user.email,
-            address: user.address,
-            contactPhone: user.contactPhone,
-            country: user.country.countryId,
-            city: user.city.cityId,
-            role: user.role,
-            countries,
-            cities,
-            isEdited: false,
-            errorMessage: ''
-        })
+        try {
+            const countries = await api('user-place/get-countries', 'get', '');
+            const cities = await api('user-place/get-cities', 'get', '');
+            const user = await api('user-profile/my-profile', 'get', '');
+            await this.setState({
+                name: user.name,
+                surname: user.surname,
+                username: user.username,
+                email: user.email,
+                address: user.address,
+                contactPhone: user.contactPhone,
+                country: user.country.countryId,
+                city: user.city.cityId,
+                role: user.role,
+                countries,
+                cities,
+                isEdited: false,
+                errorMessage: ''
+            });
+        } catch (e) {
+
+        }
     }
 
     async handleInputChange(event) {
@@ -76,7 +80,7 @@ export default class UserProfile extends Component {
     }
 
     render() {
-        if (this.state.isEdited) return (<Redirect to={this.state.role === 'Korisnik' ? '/' : '/admin'}/>);
+        if (this.state.isEdited) return (<Redirect to={this.state.role === 'Korisnik' ? '/' : '/employee'}/>);
 
         return (
             <Container>

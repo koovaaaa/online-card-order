@@ -7,7 +7,7 @@ import {faEdit, faEye, faPlus, faTrash} from "@fortawesome/free-solid-svg-icons"
 import Pagination from "../../common/pagination";
 
 
-export default class AdminEventList extends Component {
+export default class AdminEmployeeEventList extends Component {
     state = {
         events: [],
         numberOfEvents: '',

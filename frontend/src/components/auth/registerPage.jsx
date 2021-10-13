@@ -2,7 +2,8 @@ import {Component} from "react";
 import {Alert, Button, Card, Col, Container, Form, InputGroup, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
-import api from "../../api/api";
+import api, {getToken} from "../../api/api";
+import {Redirect} from "react-router-dom";
 
 export default class RegisterPage extends Component {
     state = {
@@ -19,6 +20,7 @@ export default class RegisterPage extends Component {
         city: '',
         message: '',
         errorMessage: '',
+        isLogged: false
     }
 
     async componentDidMount() {
@@ -26,6 +28,9 @@ export default class RegisterPage extends Component {
             api('user-place/get-countries', 'get', '');
 
         this.setState({countries: countries})
+
+        const token = getToken();
+        if (token) await this.setState({isLogged: true});
     }
 
 
@@ -40,7 +45,7 @@ export default class RegisterPage extends Component {
                 password: this.state.password,
                 address: this.state.address,
                 city: +this.state.city,
-                country: +this.state.country
+                country: +this.state.country,
             })
 
             if (response.role === 'user') {
@@ -74,6 +79,8 @@ export default class RegisterPage extends Component {
 
 
     render() {
+        if (this.state.isLogged) return (<Redirect to={'/'}/>);
+
         return (
             <Container>
                 <Card>
