@@ -2,7 +2,7 @@ import {Component} from "react";
 import {Alert, Button, Card, Col, Container, Form, InputGroup, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
-import api, {getToken} from "../../api/api";
+import api, {getCurrentUser, getToken} from "../../api/api";
 import {Redirect} from "react-router-dom";
 
 export default class RegisterPage extends Component {
@@ -79,7 +79,7 @@ export default class RegisterPage extends Component {
 
 
     render() {
-        if (this.state.isLogged) return (<Redirect to={'/'}/>);
+        if (this.state.isLogged) return (<Redirect to={getCurrentUser().role === 'Korisnik' ? '/' : '/employee'}/>);
 
         return (
             <Container>

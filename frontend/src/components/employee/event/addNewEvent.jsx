@@ -23,13 +23,13 @@ export default class AddNewEvent extends Component {
     }
 
     async componentDidMount() {
-        const categories = await api('admin/categories/get-categories', 'get', '');
-        const countries = await api('admin/places/country/get-countries', 'get', '');
+        const categories = await api('user-event/get-categories', 'get', '');
+        const countries = await api('user-place/get-countries', 'get', '');
         await this.setState({categories, countries})
     }
 
     async handleCountryChange(event) {
-        const cities = await api(`admin/places/city/get-cities-from-country/${event.target.value}`, 'get', null);
+        const cities = await api(`user-place/get-cities/${event.target.value}`, 'get', null);
         await this.setState({cities});
         await this.setState({country: event.target.value});
     }

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Alert, Button, Card, Col, Container, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSignInAlt} from "@fortawesome/free-solid-svg-icons";
-import api, {getToken, saveToken} from "../../api/api";
+import api, {getCurrentUser, getToken, saveToken} from "../../api/api";
 import jwtDecode from "jwt-decode";
 import {Redirect} from "react-router-dom";
 
@@ -48,7 +48,7 @@ export default class LoginPage extends Component {
     }
 
     render() {
-        if (this.state.isLogged) return (<Redirect to={'/'}/>)
+        if (this.state.isLogged) return (<Redirect to={getCurrentUser().role === 'Korisnik' ? '/' : '/employee'}/>)
         return (
             <Container>
                 <Col md={{span: 6, offset: 3}}>

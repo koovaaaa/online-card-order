@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/auth/routes/adminRoute.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth/routes/commonRoute.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth/routes/employeeRoute.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/auth/routes/userRoute.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/adminHomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/adminEmployeeHomePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/admin/user/adminUserList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/user/adminUserList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/loginPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/navBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/userProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/userProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/employee/event/adminEventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/adminEmployeeEventList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/event/addNewEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/addNewEvent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +76,7 @@
       <workItem from="1633873254381" duration="11380000" />
       <workItem from="1633943435787" duration="1400000" />
       <workItem from="1633986138338" duration="514000" />
-      <workItem from="1634119778409" duration="22758000" />
+      <workItem from="1634119778409" duration="24842000" />
     </task>
     <servers />
   </component>
