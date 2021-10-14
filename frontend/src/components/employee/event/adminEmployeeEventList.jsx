@@ -89,9 +89,7 @@ export default class AdminEmployeeEventList extends Component {
                         <th>Kategorija</th>
                         <th>Grad</th>
                         <th>Država</th>
-                        <th>Datum objavljivanja</th>
-                        <th>Datum održavanja</th>
-
+                        <th>Datum i vrijeme</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -102,7 +100,6 @@ export default class AdminEmployeeEventList extends Component {
                             <td>{event.category.categoryName}</td>
                             <td>{event.city.cityName}</td>
                             <td>{event.country.countryName}</td>
-                            <td>{event.createdAt}</td>
                             <td>{event.eventDate}</td>
                             <td><Button><FontAwesomeIcon icon={faEye}/> Pregledaj</Button></td>
                             <td><Link className="btn btn-warning" to={`edit-event/${event.eventId}`}><FontAwesomeIcon

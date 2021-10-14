@@ -17,11 +17,16 @@ export class HomePage extends React.Component {
     render() {
         return (
             <Row>
-                {this.state.events.map(event => <Col key={event.eventId}><CardGroup><EventCard
-                    eventName={event.eventName}
-                    eventPhoto={event.eventPhoto}
-                    country={event.country.countryName} city={event.city.cityName}
-                    eventDate={event.eventDate}/></CardGroup></Col>)}
+                {this.state.events.map(event =>
+                    <Col key={event.eventId}>
+                        <CardGroup>
+                            <EventCard eventId={event.eventId}
+                                       eventName={event.eventName}
+                                       eventPhoto={event.eventPhoto}
+                                       country={event.country.countryName} city={event.city.cityName}
+                                       eventDate={event.eventDate}/>
+                        </CardGroup>
+                    </Col>)}
             </Row>
         );
     }

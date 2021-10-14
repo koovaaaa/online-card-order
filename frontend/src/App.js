@@ -23,6 +23,7 @@ import UserProfile from "./components/common/userProfile";
 import AdminRoute from "./components/auth/routes/adminRoute";
 import EmployeeRoute from "./components/auth/routes/employeeRoute";
 import CommonRoute from "./components/auth/routes/commonRoute";
+import {EventPage} from "./components/guest/eventPage";
 
 class App extends React.Component {
     state = {}
@@ -54,9 +55,10 @@ class App extends React.Component {
                         <EmployeeRoute path="/employee/add-new-event" component={AddNewEvent}/>
                         <EmployeeRoute path="/employee/events" component={AdminEmployeeEventList}/>
                         <EmployeeRoute path="/employee" component={AdminEmployeeHomePage}/>
+                        <Route path="/event/:id" component={EventPage}/>
+                        <Route path="/events" component={EventList}/>
                         <Route path="/login" component={LoginPage}/>
                         <Route path="/logout" component={Logout}/>
-                        <Route path="/events" component={EventList}/>
                         <Route path="/register" component={RegisterPage}/>
                         <Route path="/" component={HomePage}/>
                     </Switch>

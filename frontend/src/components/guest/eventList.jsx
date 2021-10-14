@@ -85,7 +85,8 @@ export default class EventList extends Component {
                     {this.state.events.map(event =>
                         <Col key={event.eventId}>
                             <CardGroup>
-                                <EventCard eventPhoto={event.eventPhoto}
+                                <EventCard eventId={event.eventId}
+                                           eventPhoto={event.eventPhoto}
                                            eventName={event.eventName}
                                            eventDate={event.eventDate}
                                            city={event.city.cityName}

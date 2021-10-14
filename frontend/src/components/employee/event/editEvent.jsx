@@ -80,7 +80,7 @@ export default class EditEvent extends Component {
                                 <Form.Group>
                                     <Form.Label className={"small fw-bold"} htmlFor={"eventDate"}>Datum
                                         događaja</Form.Label>
-                                    <Form.Control id={"eventDate"} type={"date"} value={this.state.eventDate}
+                                    <Form.Control id={"eventDate"} type={"datetime-local"} value={this.state.eventDate}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>

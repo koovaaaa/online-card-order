@@ -1,0 +1,18 @@
+.event-img {
+    width: 100%;
+    object-fit: cover;
+    height: 24vw;
+    border-radius: 10px;
+}
+
+.event-card {
+    background: red;
+}
+
+.button-card {
+    background: white;
+}
+
+.button-card:hover {
+    background: lightgrey;
+}

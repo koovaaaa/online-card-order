@@ -1,6 +1,9 @@
 import {Component} from "react";
-import {Button, Card} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import './eventCard.css';
+import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCalendarDay, faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 
 export default class EventCard extends Component {
     render() {
@@ -10,11 +13,12 @@ export default class EventCard extends Component {
                           src={`${process.env.REACT_APP_API_URL}${this.props.eventPhoto}`}/>
                 <Card.Body>
                     <Card.Title>{this.props.eventName}</Card.Title>
-                    <Button variant="outline-primary">Saznaj više</Button>
+                    <Link className={"btn btn-outline-primary"} to={`event/${this.props.eventId}`}> Saznaj više</Link>
                 </Card.Body>
                 <Card.Footer>
-                    <Card.Text>Mjesto: {`${this.props.city} / ${this.props.country}`}</Card.Text>
-                    <Card.Text>Datum: {this.props.eventDate}</Card.Text>
+                    <Card.Text><FontAwesomeIcon
+                        icon={faMapMarkerAlt}/> Mjesto: {`${this.props.city} / ${this.props.country}`}</Card.Text>
+                    <Card.Text><FontAwesomeIcon icon={faCalendarDay}/> Datum: {this.props.eventDate}</Card.Text>
                 </Card.Footer>
             </Card>
         );

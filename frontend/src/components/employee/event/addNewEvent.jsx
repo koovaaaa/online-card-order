@@ -92,7 +92,7 @@ export default class AddNewEvent extends Component {
                                 <Form.Group>
                                     <Form.Label className={"small fw-bold"} htmlFor={"eventDate"}>Datum
                                         događaja</Form.Label>
-                                    <Form.Control id={"eventDate"} type={"date"}
+                                    <Form.Control id={"eventDate"} type={"datetime-local"}
                                                   placeholder={"Unesite datum"}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
