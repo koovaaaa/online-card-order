@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsOptional, IsString } from 'class-validator';
+import { City } from '../../../../entity/city/city.entity';
 
 export class ChangeEventDto {
   @ApiProperty({ required: false })
@@ -16,4 +17,7 @@ export class ChangeEventDto {
   eventDate: Date;
   @ApiProperty({ type: 'string', format: 'binary', required: false })
   eventPhoto: any;
+  @ApiProperty()
+  @IsOptional()
+  city: City;
 }
