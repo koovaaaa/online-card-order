@@ -9,7 +9,7 @@ export class ChangeDateInterceptor implements NestInterceptor {
   ): Observable<any> | Promise<Observable<any>> {
     return next.handle().pipe(
       tap(async (event) => {
-        event.eventDate = moment(event.eventDate).format('YYYY-MM-DD');
+        event.eventDate = moment(event.eventDate).format('YYYY-MM-DDTHH:mm');
       }),
     );
   }

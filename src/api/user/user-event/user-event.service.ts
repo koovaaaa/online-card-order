@@ -67,7 +67,9 @@ export class UserEventService {
 
   async getEvent(eventId: string): Promise<Event> {
     try {
-      return await this.eventRepository.findOneOrFail(eventId);
+      return await this.eventRepository.findOneOrFail(eventId, {
+        relations: ['country', 'city'],
+      });
     } catch (e) {
       this.exceptionService.handleException(e);
     }

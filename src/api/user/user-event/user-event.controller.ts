@@ -8,6 +8,7 @@ import { FilterDto } from './dto/filter.dto';
 import { PaginationDto } from '../../../helper/dto/pagination.dto';
 import { PaginationService } from '../../../helper/services/pagination.service';
 import { PaginationTypeEnum } from '../../../enum/pagination-type.enum';
+import { EventDateInterceptor } from '../../../interceptor/event-date.interceptor';
 
 @ApiTags('User Event')
 @Controller('user-event')
@@ -55,6 +56,7 @@ export class UserEventController {
   }
 
   @Get('get-event/:id')
+  @UseInterceptors(EventDateInterceptor)
   async getEvent(@Param('id') eventId: string): Promise<Event> {
     return await this.userEventService.getEvent(eventId);
   }
