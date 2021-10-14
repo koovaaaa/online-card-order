@@ -11,6 +11,7 @@
 
 .button-card {
     background: white;
+    padding: 8px;
 }
 
 .button-card:hover {
