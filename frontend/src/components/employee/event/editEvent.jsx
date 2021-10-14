@@ -12,6 +12,10 @@ export default class EditEvent extends Component {
         eventDescription: '',
         eventDate: '',
         eventPhoto: '',
+        country: '',
+        city: '',
+        cityName: '',
+        cities: [],
         isEdited: false
     }
 
@@ -22,7 +26,13 @@ export default class EditEvent extends Component {
             eventDescription: event.description,
             eventDate: event.eventDate,
             eventPhoto: event.eventPhoto,
+            country: event.country.countryId,
+            city: event.city.cityId,
+            cityName: event.city.cityName
         })
+
+        const cities = await api(`user-place/get-cities/${this.state.country}`, 'get', '');
+        this.setState({cities});
     }
 
     async onInputChange(event) {
@@ -45,6 +55,7 @@ export default class EditEvent extends Component {
             formData.append('description', this.state.eventDescription);
             formData.append('eventDate', this.state.eventDate);
             formData.append('eventPhoto', this.state.eventPhoto);
+            formData.append('city', this.state.city);
 
             const response = await apiFile(`employee-events/edit-event/${this.state.eventId}`, 'put', formData);
             if (response) await this.setState({isEdited: true})
@@ -76,6 +87,15 @@ export default class EditEvent extends Component {
                                     <Form.Control id={"eventDescription"} type={"text"}
                                                   value={this.state.eventDescription}
                                                   onChange={event => this.onInputChange(event)}/>
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"city"}>Grad</Form.Label>
+                                    <select id={"city"} className={"form-select"} value={this.state.city}
+                                            onChange={event => this.onInputChange(event)}>
+                                        {this.state.cities.map(city =>
+                                            <option key={city.cityId} value={city.cityId}>{city.cityName}</option>
+                                        )}
+                                    </select>
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label className={"small fw-bold"} htmlFor={"eventDate"}>Datum
