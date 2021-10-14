@@ -26,6 +26,8 @@ const NavBar = ({user}) => {
                     <Link className="nav-link" to="/admin/users">Korisnici</Link>}
                     {(user && user.role === userRole.admin) &&
                     <Link className="nav-link" to="/admin/location">Lokacije</Link>}
+                </Nav>
+                <Nav>
                     {!user &&
                     <>
                         <Link className="nav-link" to="/login">Prijava</Link>
