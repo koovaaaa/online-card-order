@@ -3,7 +3,7 @@ import api, {getCurrentUser} from "../../api/api";
 import {Card, Col, Image, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHourglassHalf, faMapMarkerAlt, faShoppingCart, faSignInAlt} from "@fortawesome/free-solid-svg-icons";
-import './eventPage.css';
+import '../../assets/css/eventPage.css';
 import {Link} from "react-router-dom";
 
 
@@ -19,7 +19,7 @@ export class EventPage extends Component {
 
     async componentDidMount() {
         const event = await api(`user-event/get-event/${this.state.eventId}`, 'get', '');
-        console.log(event);
+
         await this.setState({
             city: event.city.cityName,
             eventName: event.eventName,
@@ -40,7 +40,7 @@ export class EventPage extends Component {
                     <h5><FontAwesomeIcon icon={faMapMarkerAlt}/> {this.state.city.toUpperCase()}</h5>
                     <h5><FontAwesomeIcon icon={faHourglassHalf}/> {this.state.eventDate}</h5>
                     <br/>
-                    <p className={"text-justify"}>{this.state.description}</p>
+                    <span>{this.state.description}</span>
                 </Col>
                 <Col>
                     <Card className={'event-card'} text={'white'}>
@@ -63,7 +63,10 @@ export class EventPage extends Component {
                                     Da bi ste započeli proces kupovine karata potrebno je da se ulogujete!<br/><br/>
                                     <Card.Text className={"text-md-center"}>
                                         <Link className={"btn  button-card"}
-                                              to={`/login`}><FontAwesomeIcon icon={faSignInAlt}/> Prijavi se</Link>
+                                              to={{
+                                                  pathname: '/login', state: {from: this.props.location}
+                                              }}>
+                                            <FontAwesomeIcon icon={faSignInAlt}/> Prijavi se</Link>
                                     </Card.Text>
                                 </Card.Text>
                             }

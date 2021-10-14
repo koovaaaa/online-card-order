@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {Card} from "react-bootstrap";
-import './eventCard.css';
+import '../../assets/css/eventCard.css';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarDay, faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";

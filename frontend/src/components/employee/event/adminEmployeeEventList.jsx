@@ -84,12 +84,12 @@ export default class AdminEmployeeEventList extends Component {
                 <Table hover bordered striped>
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Naziv događaja</th>
-                        <th>Kategorija</th>
-                        <th>Grad</th>
-                        <th>Država</th>
-                        <th>Datum i vrijeme</th>
+                        <th className={"text-md-center"}>#</th>
+                        <th className={"text-md-center"}>Naziv događaja</th>
+                        <th className={"text-md-center"}>Kategorija</th>
+                        <th className={"text-md-center"}>Grad</th>
+                        <th className={"text-md-center"}>Država</th>
+                        <th className={"text-md-center"}>Datum i vrijeme</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -101,11 +101,14 @@ export default class AdminEmployeeEventList extends Component {
                             <td>{event.city.cityName}</td>
                             <td>{event.country.countryName}</td>
                             <td>{event.eventDate}</td>
-                            <td><Button><FontAwesomeIcon icon={faEye}/> Pregledaj</Button></td>
-                            <td><Link className="btn btn-warning" to={`edit-event/${event.eventId}`}><FontAwesomeIcon
+                            <td className={"text-md-center"}><Button><FontAwesomeIcon icon={faEye}/> Pregledaj</Button>
+                            </td>
+                            <td className={"text-md-center"}><Link className="btn btn-warning"
+                                                                   to={`edit-event/${event.eventId}`}><FontAwesomeIcon
                                 icon={faEdit}/>Izmijeni</Link>
                             </td>
-                            <td><Link className="btn btn-danger" to={`delete-event/${event.eventId}`}><FontAwesomeIcon
+                            <td className={"text-md-center"}><Link className="btn btn-danger"
+                                                                   to={`delete-event/${event.eventId}`}><FontAwesomeIcon
                                 icon={faTrash}/> Obriši</Link>
                             </td>
                         </tr>

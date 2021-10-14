@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit} from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../../common/pagination";
 
+
 export default class AdminUserList extends Component {
     state = {
         users: [],
@@ -35,16 +36,16 @@ export default class AdminUserList extends Component {
                 <Table striped bordered hover>
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Ime</th>
-                        <th>Prezime</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Telefon</th>
-                        <th>Adresa</th>
-                        <th>Grad</th>
-                        <th>Država</th>
-                        <th>Uloga</th>
+                        <th className={"text-md-center"}>#</th>
+                        <th className={"text-md-center"}>Ime</th>
+                        <th className={"text-md-center"}>Prezime</th>
+                        <th className={"text-md-center"}>Username</th>
+                        <th className={"text-md-center"}>Email</th>
+                        <th className={"text-md-center"}>Telefon</th>
+                        <th className={"text-md-center"}>Adresa</th>
+                        <th className={"text-md-center"}>Grad</th>
+                        <th className={"text-md-center"}>Država</th>
+                        <th className={"text-md-center"}>Uloga</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -61,8 +62,8 @@ export default class AdminUserList extends Component {
                             <td>{user.city.cityName}</td>
                             <td>{user.country.countryName}</td>
                             <td>{user.role}</td>
-                            <td><Link className="btn btn-warning"
-                                      to={`edit-user/${user.userId}`}><FontAwesomeIcon
+                            <td className={"text-md-center"}><Link className="btn btn-warning"
+                                                                   to={`edit-user/${user.userId}`}><FontAwesomeIcon
                                 icon={faEdit}/></Link>
                             </td>
                         </tr>)

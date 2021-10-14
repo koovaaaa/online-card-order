@@ -60,9 +60,9 @@ export default class EventLocations extends Component {
                     <Table striped bordered hover>
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Naziv</th>
-                            <th>Poštanski broj</th>
+                            <th className={"text-md-center"}>#</th>
+                            <th className={"text-md-center"}>Naziv</th>
+                            <th className={"text-md-center"}>Poštanski broj</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -71,8 +71,8 @@ export default class EventLocations extends Component {
                                 <td>{city.cityId}</td>
                                 <td>{city.cityName}</td>
                                 <td>{city.postalCode}</td>
-                                <td><Link className="btn btn-warning"
-                                          to={`edit-city/${city.cityId}`}><FontAwesomeIcon
+                                <td className={"text-md-center"}><Link className="btn btn-warning"
+                                                                       to={`edit-city/${city.cityId}`}><FontAwesomeIcon
                                     icon={faEdit}/></Link>
                                 </td>
                             </tr>

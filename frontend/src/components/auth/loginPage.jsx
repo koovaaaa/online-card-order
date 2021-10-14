@@ -38,8 +38,9 @@ export default class LoginPage extends Component {
             if (response) {
                 saveToken(response);
                 const user = jwtDecode(response);
+                const {state} = this.props.location;
                 if (user.role === 'Admin' || user.role === 'Zaposleni') window.location = '/employee';
-                else window.location = '/';
+                else window.location = state ? state.from.pathname : '/';
                 await this.setState({isLogged: true, errorMessage: ''})
             }
         } catch (e) {

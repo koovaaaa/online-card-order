@@ -17,7 +17,7 @@ const NavBar = ({user}) => {
                 <Link className="navbar-brand" to="/"> <FontAwesomeIcon icon={faHome}/> Početna strana</Link>}
                 {user && (user.role === userRole.admin || user.role === userRole.employee) &&
                 <Link className="navbar-brand" to="/employee"> <FontAwesomeIcon icon={faHome}/> Početna strana</Link>}
-                <Nav className="me-auto">
+                <Nav className={"me-auto"}>
                     {(!user || (user && user.role === userRole.user)) &&
                     <Link className="nav-link" to="/events">Lista događaja</Link>}
                     {(user && (user.role === userRole.admin || user.role === userRole.employee)) &&
