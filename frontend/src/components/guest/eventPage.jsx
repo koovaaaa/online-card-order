@@ -1,6 +1,6 @@
 import {Component} from "react";
 import api, {getCurrentUser} from "../../api/api";
-import {Card, Col, Image, Row} from "react-bootstrap";
+import {Card, Col, Container, Image, Row} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHourglassHalf, faMapMarkerAlt, faShoppingCart, faSignInAlt} from "@fortawesome/free-solid-svg-icons";
 import '../../assets/css/eventPage.css';
@@ -25,7 +25,7 @@ export class EventPage extends Component {
             eventName: event.eventName,
             description: event.description,
             image: event.eventPhoto,
-            eventDate: event.eventDate
+            eventDate: event.eventDate,
         });
     }
 
@@ -34,13 +34,15 @@ export class EventPage extends Component {
         return (
             <Row>
                 <Col xs={9}>
-                    <Image className={'event-img'}
-                           src={process.env.REACT_APP_API_URL + this.state.image}/><br/><br/>
-                    <h2>{this.state.eventName.toUpperCase()}</h2> <br/>
-                    <h5><FontAwesomeIcon icon={faMapMarkerAlt}/> {this.state.city.toUpperCase()}</h5>
-                    <h5><FontAwesomeIcon icon={faHourglassHalf}/> {this.state.eventDate}</h5>
-                    <br/>
-                    <span>{this.state.description}</span>
+                    <Container>
+                        <Image className={'event-img'}
+                               src={process.env.REACT_APP_API_URL + this.state.image}/><br/><br/>
+                        <h2>{this.state.eventName.toUpperCase()}</h2> <br/>
+                        <h5><FontAwesomeIcon icon={faMapMarkerAlt}/> {this.state.city.toUpperCase()}</h5>
+                        <h5><FontAwesomeIcon icon={faHourglassHalf}/> {this.state.eventDate}</h5>
+                        <br/>
+                        <span>{this.state.description}</span>
+                    </Container>
                 </Col>
                 <Col>
                     <Card className={'event-card'} text={'white'}>
@@ -56,7 +58,8 @@ export class EventPage extends Component {
                                     <strong className={"text-md-center"}>{this.state.eventDate}</strong><br/><br/>
                                     <Card.Text className={"text-md-center"}>
                                         <Link className={"btn  button-card"}
-                                              to={``}><FontAwesomeIcon icon={faShoppingCart}/> Naruči kartu</Link>
+                                              to={`${this.state.eventId}/tickets`}><FontAwesomeIcon
+                                            icon={faShoppingCart}/> Naruči kartu</Link>
                                     </Card.Text>
                                 </Card.Text> :
                                 <Card.Text className={"text-sm-start"}>

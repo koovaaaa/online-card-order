@@ -6,9 +6,7 @@ import {HomePage} from "./components/guest/homePage";
 import LoginPage from "./components/auth/loginPage";
 import RegisterPage from "./components/auth/registerPage";
 import EventList from "./components/guest/eventList";
-import jwtDecode from "jwt-decode";
 import Logout from "./components/auth/logoutPage";
-import {getToken} from "./api/api";
 import AdminEmployeeHomePage from "./components/employee/adminEmployeeHomePage";
 import AdminEmployeeEventList from "./components/employee/event/adminEmployeeEventList";
 import AddNewEvent from "./components/employee/event/addNewEvent";
@@ -24,26 +22,18 @@ import AdminRoute from "./components/auth/routes/adminRoute";
 import EmployeeRoute from "./components/auth/routes/employeeRoute";
 import CommonRoute from "./components/auth/routes/commonRoute";
 import {EventPage} from "./components/guest/eventPage";
+import UserRoute from "./components/auth/routes/userRoute";
+import {TicketsPage} from "./components/user/ticketsPage";
 
 class App extends React.Component {
-    state = {}
-
-    async componentDidMount() {
-        try {
-            const jwt = getToken();
-            const user = jwtDecode(jwt);
-            await this.setState({user})
-        } catch (e) {
-        }
-    }
-
     render() {
         return (
             <React.Fragment>
-                <NavBar user={this.state.user}/>
+                <NavBar/>
                 <br/>
                 <Container>
                     <Switch>
+                        <UserRoute path="/event/:id/tickets" component={TicketsPage}/>
                         <CommonRoute path="/profile" component={UserProfile}/>
                         <AdminRoute path="/admin/edit-city/:id" component={EditCity}/>
                         <AdminRoute path="/admin/add-new-city" component={AddNewCity}/>
