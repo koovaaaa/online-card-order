@@ -47,7 +47,7 @@ export class EmployeeEventService {
   async getEvent(id: string): Promise<Event> {
     try {
       return await this.eventRepository.findOneOrFail(id, {
-        relations: ['city', 'country'],
+        relations: ['city', 'country', 'category', 'createdBy', 'changedBy'],
       });
     } catch (e) {
       this.exceptionService.handleException(e);
