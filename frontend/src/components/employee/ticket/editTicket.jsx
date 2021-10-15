@@ -93,7 +93,7 @@ export default class EditTicket extends Component {
                             <Button variant={'primary'} onClick={async () => this.doEdit()}>Potvrdi</Button>
                         </Form>
                         <br/>
-                        <Alert variant="danger" className={this.state.errorMessage ? '' : 'd-none'}>
+                        <Alert variant="danger" className={this.state.errorMessage ? 'fw-bold' : 'd-none'}>
                             {this.state.errorMessage}
                         </Alert>
                     </Card.Body>
