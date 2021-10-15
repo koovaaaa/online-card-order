@@ -33,8 +33,8 @@ export default class AdminUserList extends Component {
     render() {
         return (
             <>
-                <Table striped bordered hover>
-                    <thead>
+                <Table striped borderless hover>
+                    <thead className={'border-bottom'}>
                     <tr>
                         <th className={"text-md-center"}>#</th>
                         <th className={"text-md-center"}>Ime</th>

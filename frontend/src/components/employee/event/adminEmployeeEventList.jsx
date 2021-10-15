@@ -81,8 +81,8 @@ export default class AdminEmployeeEventList extends Component {
                     </Col>
                 </Row>
                 <br/>
-                <Table hover bordered striped>
-                    <thead>
+                <Table hover borderless striped>
+                    <thead className={'border-bottom'}>
                     <tr>
                         <th className={"text-md-center"}>#</th>
                         <th className={"text-md-center"}>Naziv događaja</th>

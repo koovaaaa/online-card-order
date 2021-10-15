@@ -57,8 +57,8 @@ export default class EventLocations extends Component {
                         grad</Link>
                 </Col>
                 <Col xs={4}>
-                    <Table striped bordered hover>
-                        <thead>
+                    <Table striped borderless hover>
+                        <thead className={'border-bottom'}>
                         <tr>
                             <th className={"text-md-center"}>#</th>
                             <th className={"text-md-center"}>Naziv</th>
@@ -70,7 +70,7 @@ export default class EventLocations extends Component {
                             <tr key={city.cityId}>
                                 <td>{city.cityId}</td>
                                 <td>{city.cityName}</td>
-                                <td>{city.postalCode}</td>
+                                <td className={'text-md-center'}>{city.postalCode}</td>
                                 <td className={"text-md-center"}><Link className="btn btn-warning"
                                                                        to={`edit-city/${city.cityId}`}><FontAwesomeIcon
                                     icon={faEdit}/></Link>
