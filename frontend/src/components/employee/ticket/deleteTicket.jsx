@@ -2,8 +2,6 @@ import {Component} from "react";
 import api from "../../../api/api";
 import {Link, Redirect} from "react-router-dom";
 import {Alert} from "react-bootstrap";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBackward, faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 
 export default class DeleteTicket extends Component {
     state = {

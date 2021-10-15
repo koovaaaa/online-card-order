@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
 import api from "../../../api/api";
 import * as moment from 'moment';
-
+ 
 export default class AdminEmployeeEventPage extends Component {
     state = {
         eventId: this.props.match.params.id,
