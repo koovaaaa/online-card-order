@@ -36,7 +36,9 @@ export class EmployeeTicketService {
 
   async getTicket(id: string): Promise<Ticket> {
     try {
-      return await this.ticketRepository.findOneOrFail(id);
+      return await this.ticketRepository.findOneOrFail(id, {
+        relations: ['event'],
+      });
     } catch (e) {
       this.exceptionService.handleException(e);
     }
