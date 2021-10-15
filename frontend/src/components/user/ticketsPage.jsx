@@ -47,7 +47,7 @@ export class TicketsPage extends Component {
                         </tr>)}
                         </tbody>
                     </Table> :
-                    <Alert className={'text-md-center'} variant={'warning'}>Za ovaj događaj ulaznice još
+                    <Alert className={'text-md-center fw-bold'} variant={'warning'}>Za ovaj događaj ulaznice još
                         nisu objavljene!</Alert>
                 }
             </Container>

@@ -84,7 +84,8 @@ export default class EventLocations extends Component {
                         <Pagination eventsCount={this.state.numberOfCities} pageSize={this.state.citiesPerPage}
                                     currentPage={this.state.currentPage} onPageChange={this.handlePageChange}/> : ''}
                     <br/>
-                    <Alert variant="warning" className={!this.state.cities.length ? '' : 'd-none'}>
+                    <Alert variant="warning"
+                           className={!this.state.cities.length ? 'text-md-center fw-bold' : 'd-none'}>
                         {'Izaberite državu!'}
                     </Alert>
                 </Col>

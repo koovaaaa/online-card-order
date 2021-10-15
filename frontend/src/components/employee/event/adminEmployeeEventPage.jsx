@@ -116,7 +116,8 @@ export default class AdminEmployeeEventPage extends Component {
                                     )}
                                     </tbody>
                                 </Table> :
-                                <Alert className={'text-md-center'} variant={'warning'}>Za ovaj događaj ulaznice još
+                                <Alert className={'fw-bold text-md-center'} variant={'warning'}>Za ovaj događaj ulaznice
+                                    još
                                     nisu objavljene!</Alert>
                             }
 
