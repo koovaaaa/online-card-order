@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Button, Col, Container, Image, Row, Table} from "react-bootstrap";
+import {Alert, Button, Col, Container, Image, Row, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
@@ -91,29 +91,35 @@ export default class AdminEmployeeEventPage extends Component {
                         <Link className={"btn btn-primary"} to={'/'}><FontAwesomeIcon icon={faPlus}/> Dodaj novu
                             ulaznicu</Link><br/><br/>
                         <div>
-                            <Table hover borderless className={"table "}>
-                                <thead>
-                                <tr className={"border-bottom"}>
-                                    <th></th>
-                                    <th className={"text-md-end"}>Stanje ulaznica</th>
-                                    <th className={"text-md-end"}>Cijena</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {tickets.map(ticket =>
-                                    <tr>
-                                        <td>{ticket.ticketName}</td>
-                                        <td className={"text-md-end"}>{ticket.ticketCount}</td>
-                                        <td className={"text-md-end"}>{ticket.ticketPrice} BAM</td>
-                                        <td className={'text-md-end'}><Button variant={'warning'}><FontAwesomeIcon
-                                            icon={faEdit}/></Button></td>
-                                        <td className={'text-md-center'}><Button variant={'danger'}><FontAwesomeIcon
-                                            icon={faTimes}/></Button>
-                                        </td>
+                            {tickets.length ?
+                                <Table hover borderless className={"table "}>
+                                    <thead>
+                                    <tr className={"border-bottom"}>
+                                        <th></th>
+                                        <th className={"text-md-end"}>Stanje ulaznica</th>
+                                        <th className={"text-md-end"}>Cijena</th>
                                     </tr>
-                                )}
-                                </tbody>
-                            </Table>
+                                    </thead>
+                                    <tbody>
+                                    {tickets.map(ticket =>
+                                        <tr key={ticket.ticketId}>
+                                            <td>{ticket.ticketName}</td>
+                                            <td className={"text-md-end"}>{ticket.ticketCount}</td>
+                                            <td className={"text-md-end"}>{ticket.ticketPrice} BAM</td>
+                                            <td className={'text-md-end'}><Link to={`edit-ticket/${ticket.ticketId}`}
+                                                                                className={'btn btn-warning'}><FontAwesomeIcon
+                                                icon={faEdit}/></Link></td>
+                                            <td className={'text-md-center'}><Button variant={'danger'}><FontAwesomeIcon
+                                                icon={faTimes}/></Button>
+                                            </td>
+                                        </tr>
+                                    )}
+                                    </tbody>
+                                </Table> :
+                                <Alert className={'text-md-center'} variant={'warning'}>Za ovaj događaj ulaznice još
+                                    nisu objavljene!</Alert>
+                            }
+
                         </div>
                     </Col>
                 </Row>
