@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Alert, Button, Col, Container, Image, Row, Table} from "react-bootstrap";
+import {Alert, Button, Col, Container, Image, Modal, Row, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +15,9 @@ export default class AdminEmployeeEventPage extends Component {
         cityName: '',
         createdBy: '',
         changedBy: '',
-        tickets: []
+        tickets: [],
+        show: false,
+        ticketId: ''
     }
 
     async componentDidMount() {
@@ -36,9 +38,28 @@ export default class AdminEmployeeEventPage extends Component {
         });
     }
 
+    handleClose = () => {
+        this.setState({show: false});
+    }
+
+    handleShow = (ticketId) => {
+        this.setState({show: true, ticketId});
+
+    }
 
     render() {
-        const {eventId, event, cityName, categoryName, countryName, changedBy, createdBy, tickets} = this.state;
+        const {
+            eventId,
+            event,
+            cityName,
+            categoryName,
+            countryName,
+            changedBy,
+            createdBy,
+            tickets,
+            show,
+            ticketId
+        } = this.state;
 
         return (
             <Container>
@@ -110,7 +131,8 @@ export default class AdminEmployeeEventPage extends Component {
                                             <td className={'text-md-end'}><Link to={`edit-ticket/${ticket.ticketId}`}
                                                                                 className={'btn btn-warning'}><FontAwesomeIcon
                                                 icon={faEdit}/></Link></td>
-                                            <td className={'text-md-center'}><Button variant={'danger'}><FontAwesomeIcon
+                                            <td className={'text-md-center'}><Button variant={'danger'}
+                                                                                     onClick={() => this.handleShow(ticket.ticketId)}><FontAwesomeIcon
                                                 icon={faTimes}/></Button>
                                             </td>
                                         </tr>
@@ -121,10 +143,25 @@ export default class AdminEmployeeEventPage extends Component {
                                     još
                                     nisu objavljene!</Alert>
                             }
-
                         </div>
                     </Col>
                 </Row>
+                <Modal show={show} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Izbriši ulaznicu</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <span className={'fw-bold'}> Da li ste sigurni da želite da izbrišete ulaznicu?</span>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant={'success'} onClick={this.handleClose}>Izađi</Button>
+                        <Link className={'btn btn-danger'} to={{
+                            pathname: `${eventId}/delete-ticket/${ticketId}`,
+                            state: {from: this.props.location}
+                        }}> Potvrdi
+                            akciju</Link>
+                    </Modal.Footer>
+                </Modal>
             </Container>
         );
     }
