@@ -65,7 +65,8 @@ export default class EditEvent extends Component {
 
 
     render() {
-        if (this.state.isEdited) return (<Redirect to={'../events'}/>)
+        const {state} = this.props.location;
+        if (this.state.isEdited) return (<Redirect to={state ? state.from.pathname : '../events'}/>)
         return (
             <Container>
                 <Col md={{span: 6, offset: 3}}>

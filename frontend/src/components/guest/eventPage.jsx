@@ -36,7 +36,7 @@ export class EventPage extends Component {
                 <Col xs={9}>
                     <Container>
                         <Image className={'event-img'}
-                               src={process.env.REACT_APP_API_URL + this.state.image}/><br/><br/>
+                               src={this.state.image ? process.env.REACT_APP_API_URL + this.state.image : ''}/><br/><br/>
                         <h2>{this.state.eventName.toUpperCase()}</h2> <br/>
                         <h5><FontAwesomeIcon icon={faMapMarkerAlt}/> {this.state.city.toUpperCase()}</h5>
                         <h5><FontAwesomeIcon icon={faHourglassHalf}/> {this.state.eventDate}</h5>

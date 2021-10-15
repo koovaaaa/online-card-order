@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Button, Col, Row, Table} from "react-bootstrap";
+import {Col, Row, Table} from "react-bootstrap";
 import api from "../../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -101,7 +101,9 @@ export default class AdminEmployeeEventList extends Component {
                             <td>{event.city.cityName}</td>
                             <td>{event.country.countryName}</td>
                             <td>{event.eventDate}</td>
-                            <td className={"text-md-center"}><Button><FontAwesomeIcon icon={faEye}/> Pregledaj</Button>
+                            <td className={"text-md-center"}><Link className="btn btn-primary"
+                                                                   to={`/employee/event/${event.eventId}`}><FontAwesomeIcon
+                                icon={faEye}/> Pregledaj</Link>
                             </td>
                             <td className={"text-md-center"}><Link className="btn btn-warning"
                                                                    to={`edit-event/${event.eventId}`}><FontAwesomeIcon
