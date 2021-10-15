@@ -88,7 +88,8 @@ export default class AdminEmployeeEventPage extends Component {
                         </div>
                     </Col>
                     <Col xs={6}>
-                        <Link className={"btn btn-primary"} to={'/'}><FontAwesomeIcon icon={faPlus}/> Dodaj novu
+                        <Link className={"btn btn-primary"} to={'/employee/event/3/add-new-ticket'}><FontAwesomeIcon
+                            icon={faPlus}/> Dodaj novu
                             ulaznicu</Link><br/><br/>
                         <div>
                             {tickets.length ?
