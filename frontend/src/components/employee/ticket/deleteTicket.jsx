@@ -29,7 +29,8 @@ export default class DeleteTicket extends Component {
         return (
             <div className={'justify-content-center align-items-center'}>
                 <Alert variant={"danger"} className={"fw-bold text-md-center"}>
-                    <span>Za željenu ulaznicu postoje narudbže, te je zbog toga nije moguće obrisati!</span><br/>
+                    <span>Za željenu ulaznicu postoje narudbže, te je zbog toga nije dozvoljeno obrisati!</span><br/>
+                    <span>Ulaznicu je moguće obrisati samo dok ne postoji nijedna narudžba vezana za nju!</span><br/>
                     <Link to={state.from.pathname}>Vrati se nazad!</Link>
                 </Alert>
             </div>

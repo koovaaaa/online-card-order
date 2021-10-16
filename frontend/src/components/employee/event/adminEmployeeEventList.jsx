@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Col, Row, Table} from "react-bootstrap";
+import {Button, Col, Modal, Row, Table} from "react-bootstrap";
 import api from "../../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -13,7 +13,17 @@ export default class AdminEmployeeEventList extends Component {
         numberOfEvents: '',
         eventsPerPage: '',
         currentPage: 1,
-        targetValue: 'all'
+        targetValue: 'all',
+        show: false,
+        eventId: ''
+    }
+
+    handleClose = () => {
+        this.setState({show: false});
+    }
+
+    handleShow = (eventId) => {
+        this.setState({show: true, eventId});
     }
 
     async componentDidMount() {
@@ -109,9 +119,10 @@ export default class AdminEmployeeEventList extends Component {
                                                                    to={`edit-event/${event.eventId}`}><FontAwesomeIcon
                                 icon={faEdit}/>Izmijeni</Link>
                             </td>
-                            <td className={"text-md-center"}><Link className="btn btn-danger"
-                                                                   to={`delete-event/${event.eventId}`}><FontAwesomeIcon
-                                icon={faTrash}/> Obriši</Link>
+                            <td className={"text-md-center"}><Button className="btn btn-danger"
+                                                                     onClick={() => this.handleShow(event.eventId)}><FontAwesomeIcon
+                                icon={faTrash}/> Obriši
+                            </Button>
                             </td>
                         </tr>
                     )}
@@ -120,6 +131,20 @@ export default class AdminEmployeeEventList extends Component {
                 <br/>
                 <Pagination eventsCount={this.state.numberOfEvents} pageSize={this.state.eventsPerPage}
                             onPageChange={this.handlePageChange} currentPage={this.state.currentPage}/>
+
+                <Modal show={this.state.show} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Izbriši događaj</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <span className={'fw-bold'}> Da li ste sigurni da želite da izbrišete događaj?</span>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant={'success'} onClick={this.handleClose}>Izađi</Button>
+                        <Link className={'btn btn-danger'} to={`delete-event/${this.state.eventId}`}> Potvrdi
+                            akciju</Link>
+                    </Modal.Footer>
+                </Modal>
             </>
         );
     }

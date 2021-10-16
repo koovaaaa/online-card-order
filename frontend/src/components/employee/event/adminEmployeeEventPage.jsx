@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
 import api from "../../../api/api";
 import * as moment from 'moment';
- 
+
 export default class AdminEmployeeEventPage extends Component {
     state = {
         eventId: this.props.match.params.id,
@@ -27,6 +27,9 @@ export default class AdminEmployeeEventPage extends Component {
         event.eventDate = Date.parse(event.eventDate);
         event.eventDate = moment(event.eventDate).format('DD/MM/YYYY u HH:MM');
         event.changedAt = moment(event.changedAt).format('DD/MM/YYYY u HH:MM');
+        if (!event.changedBy) this.setState({changedBy: '/'})
+        else this.setState({changedBy: event.changedBy.username})
+
         this.setState({
             event,
             tickets,
@@ -34,7 +37,6 @@ export default class AdminEmployeeEventPage extends Component {
             categoryName: event.category.categoryName,
             cityName: event.city.cityName,
             createdBy: event.createdBy.username,
-            changedBy: event.changedBy.username
         });
     }
 
@@ -44,7 +46,6 @@ export default class AdminEmployeeEventPage extends Component {
 
     handleShow = (ticketId) => {
         this.setState({show: true, ticketId});
-
     }
 
     render() {
@@ -102,14 +103,16 @@ export default class AdminEmployeeEventPage extends Component {
                                 </tr>
                                 <tr>
                                     <td className={'fw-bold'}>Događaj editovan</td>
-                                    <td>{event.changedAt} by <span className={'fw-bold'}>{changedBy}</span></td>
+                                    <td>{event.changedAt} by <span
+                                        className={'fw-bold'}>{changedBy ? changedBy : ''}</span></td>
                                 </tr>
                                 </tbody>
                             </Table>
                         </div>
                     </Col>
                     <Col xs={6}>
-                        <Link className={"btn btn-primary"} to={'/employee/event/3/add-new-ticket'}><FontAwesomeIcon
+                        <Link className={"btn btn-primary"}
+                              to={`/employee/event/${eventId}/add-new-ticket`}><FontAwesomeIcon
                             icon={faPlus}/> Dodaj novu
                             ulaznicu</Link><br/><br/>
                         <div>
