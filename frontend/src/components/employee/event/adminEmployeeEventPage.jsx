@@ -2,7 +2,7 @@ import {Component} from "react";
 import {Alert, Button, Col, Container, Image, Modal, Row, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEdit, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faEye, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
 import api from "../../../api/api";
 import * as moment from 'moment';
 
@@ -17,18 +17,21 @@ export default class AdminEmployeeEventPage extends Component {
         changedBy: '',
         tickets: [],
         show: false,
-        ticketId: ''
+        ticketId: '',
+        changedAt: ''
     }
 
     async componentDidMount() {
         const event = await api(`employee-events/get-event/${this.state.eventId}`, 'get', '');
         const tickets = await api(`employee-ticket/get-tickets/${this.state.eventId}`, 'get', '')
-        event.createdAt = moment(event.createdAt).format('DD/MM/YYYY u HH:MM');
+        event.createdAt = moment(event.createdAt).format('DD/MM/YYYY u HH:mm');
         event.eventDate = Date.parse(event.eventDate);
-        event.eventDate = moment(event.eventDate).format('DD/MM/YYYY u HH:MM');
-        event.changedAt = moment(event.changedAt).format('DD/MM/YYYY u HH:MM');
-        if (!event.changedBy) this.setState({changedBy: '/'})
-        else this.setState({changedBy: event.changedBy.username})
+        event.eventDate = moment(event.eventDate).format('DD/MM/YYYY u HH:mm');
+
+        if (event.changedAt) {
+            event.changedAt = moment(event.changedAt).format('DD/MM/YYYY u HH:mm');
+            this.setState({changedAt: event.changedAt, changedBy: event.changedBy.username})
+        }
 
         this.setState({
             event,
@@ -59,7 +62,8 @@ export default class AdminEmployeeEventPage extends Component {
             createdBy,
             tickets,
             show,
-            ticketId
+            ticketId,
+            changedAt
         } = this.state;
 
         return (
@@ -78,7 +82,7 @@ export default class AdminEmployeeEventPage extends Component {
                             <Table hover className={"table"}>
                                 <tbody>
                                 <tr>
-                                    <td className={'fw-bold'} width={'23%'}>Naziv događaja</td>
+                                    <td className={'fw-bold'} width={'24%'}>Naziv događaja</td>
                                     <td>{event.eventName}</td>
                                 </tr>
                                 <tr>
@@ -99,13 +103,24 @@ export default class AdminEmployeeEventPage extends Component {
                                 </tr>
                                 <tr>
                                     <td className={'fw-bold'}>Događaj kreiran</td>
-                                    <td>{event.createdAt} by <span className={'fw-bold'}>{createdBy}</span></td>
+                                    <td>{event.createdAt} </td>
                                 </tr>
                                 <tr>
-                                    <td className={'fw-bold'}>Događaj editovan</td>
-                                    <td>{event.changedAt} by <span
-                                        className={'fw-bold'}>{changedBy ? changedBy : ''}</span></td>
+                                    <td className={'fw-bold'}>Događaj kreirao</td>
+                                    <td>{createdBy}</td>
                                 </tr>
+                                {changedAt ?
+                                    <>
+                                        <tr>
+                                            <td className={'fw-bold'}>Događaj izmjenjen</td>
+                                            <td>{changedAt}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={'fw-bold'}>Događaj izmjenio</td>
+                                            <td>{changedBy}</td>
+                                        </tr>
+                                    </> : ''
+                                }
                                 </tbody>
                             </Table>
                         </div>
@@ -131,11 +146,14 @@ export default class AdminEmployeeEventPage extends Component {
                                             <td>{ticket.ticketName}</td>
                                             <td className={"text-md-end"}>{ticket.ticketCount}</td>
                                             <td className={"text-md-end"}>{ticket.ticketPrice} BAM</td>
-                                            <td className={'text-md-end'}><Link to={`edit-ticket/${ticket.ticketId}`}
-                                                                                className={'btn btn-warning'}><FontAwesomeIcon
+                                            <td className={"text-md-end"}><Link className={'btn btn-primary'}
+                                                                                to={`view-ticket/${ticket.ticketId}`}><FontAwesomeIcon
+                                                icon={faEye}/></Link></td>
+                                            <td className={'text-md-center'}><Link to={`edit-ticket/${ticket.ticketId}`}
+                                                                                   className={'btn btn-warning'}><FontAwesomeIcon
                                                 icon={faEdit}/></Link></td>
-                                            <td className={'text-md-center'}><Button variant={'danger'}
-                                                                                     onClick={() => this.handleShow(ticket.ticketId)}><FontAwesomeIcon
+                                            <td className={'text-md-start'}><Button variant={'danger'}
+                                                                                    onClick={() => this.handleShow(ticket.ticketId)}><FontAwesomeIcon
                                                 icon={faTimes}/></Button>
                                             </td>
                                         </tr>
@@ -143,8 +161,7 @@ export default class AdminEmployeeEventPage extends Component {
                                     </tbody>
                                 </Table> :
                                 <Alert className={'fw-bold text-md-center'} variant={'warning'}>Za ovaj događaj ulaznice
-                                    još
-                                    nisu objavljene!</Alert>
+                                    još nisu objavljene!</Alert>
                             }
                         </div>
                     </Col>
