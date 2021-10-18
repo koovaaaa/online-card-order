@@ -37,7 +37,7 @@ export class EmployeeTicketService {
   async getTicket(id: string): Promise<Ticket> {
     try {
       return await this.ticketRepository.findOneOrFail(id, {
-        relations: ['event'],
+        relations: ['event', 'createdBy', 'editedBy'],
       });
     } catch (e) {
       this.exceptionService.handleException(e);
@@ -83,6 +83,7 @@ export class EmployeeTicketService {
       let ticket = await this.ticketRepository.findOneOrFail(id);
       ticket = { ...ticket, ...ticketData };
       ticket.editedBy = user;
+      ticket.editedAt = new Date();
       return await this.ticketRepository.update(ticket.ticketId, ticket);
     } catch (e) {
       this.exceptionService.handleException(e);

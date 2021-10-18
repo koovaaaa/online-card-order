@@ -42,6 +42,6 @@ export class Ticket {
   @ManyToOne(() => User, { nullable: true })
   editedBy: User;
 
-  @UpdateDateColumn({ default: null })
+  @Column({ default: null })
   editedAt: Date;
 }

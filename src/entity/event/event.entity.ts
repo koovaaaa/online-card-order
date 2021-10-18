@@ -47,7 +47,7 @@ export class Event {
   @Column()
   eventPhoto: string;
 
-  @UpdateDateColumn({ default: null })
+  @Column({ default: null })
   changedAt: Date;
 
   @ManyToOne(() => User, { nullable: true })

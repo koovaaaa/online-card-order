@@ -133,6 +133,7 @@ export class EmployeeEventService {
       let event = await this.eventRepository.findOneOrFail(eventId);
       event = { ...event, ...eventData };
       event.changedBy = user;
+      event.changedAt = new Date();
       if (file)
         event.eventPhoto =
           file.destination.replace('./uploads/', '') + file.filename;
