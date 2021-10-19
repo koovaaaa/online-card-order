@@ -57,37 +57,38 @@ export default class EventLocations extends Component {
                         grad</Link>
                 </Col>
                 <Col xs={4}>
-                    <Table striped borderless hover>
-                        <thead className={'border-bottom'}>
-                        <tr>
-                            <th className={"text-md-center"}>#</th>
-                            <th className={"text-md-center"}>Naziv</th>
-                            <th className={"text-md-center"}>Poštanski broj</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.state.cities.map(city =>
-                            <tr key={city.cityId}>
-                                <td>{city.cityId}</td>
-                                <td>{city.cityName}</td>
-                                <td className={'text-md-center'}>{city.postalCode}</td>
-                                <td className={"text-md-center"}><Link className="btn btn-warning"
-                                                                       to={`edit-city/${city.cityId}`}><FontAwesomeIcon
-                                    icon={faEdit}/></Link>
-                                </td>
+                    {this.state.cities.length ?
+                        <Table striped borderless hover>
+                            <thead className={'border-bottom'}>
+                            <tr>
+                                <th className={"text-md-center"}>#</th>
+                                <th className={"text-md-center"}>Naziv</th>
+                                <th className={"text-md-center"}>Poštanski broj</th>
                             </tr>
-                        )}
-                        </tbody>
-                    </Table>
-                    <br/>
+                            </thead>
+                            <tbody>
+                            {this.state.cities.map(city =>
+                                <tr key={city.cityId}>
+                                    <td>{city.cityId}</td>
+                                    <td>{city.cityName}</td>
+                                    <td className={'text-md-center'}>{city.postalCode}</td>
+                                    <td className={"text-md-center"}><Link className="btn btn-warning"
+                                                                           to={`edit-city/${city.cityId}`}><FontAwesomeIcon
+                                        icon={faEdit}/></Link>
+                                    </td>
+                                </tr>
+                            )}
+                            </tbody>
+                        </Table> :
+                        <Alert variant="warning"
+                               className={'text-md-center fw-bold'}>
+                            {'Izaberite državu!'}
+                        </Alert>
+                    }
+                    
                     {this.state.cities.length ?
                         <Pagination eventsCount={this.state.numberOfCities} pageSize={this.state.citiesPerPage}
                                     currentPage={this.state.currentPage} onPageChange={this.handlePageChange}/> : ''}
-                    <br/>
-                    <Alert variant="warning"
-                           className={!this.state.cities.length ? 'text-md-center fw-bold' : 'd-none'}>
-                        {'Izaberite državu!'}
-                    </Alert>
                 </Col>
             </Row>
         );
