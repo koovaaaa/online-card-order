@@ -10,6 +10,9 @@ import { Ticket } from '../../../entity/ticket/ticket.entity';
 import { TicketRepository } from '../../../repository/ticket/ticketRepository';
 import { UpdateResult } from 'typeorm';
 import { MailService } from '../../../mail/mail.service';
+import { PaginationDto } from '../../../helper/dto/pagination.dto';
+import { PaginationService } from '../../../helper/services/pagination.service';
+import { PaginationTypeEnum } from '../../../enum/pagination-type.enum';
 
 @Injectable()
 export class EmployeeOrderService {
@@ -20,26 +23,69 @@ export class EmployeeOrderService {
     private readonly ticketRepository: TicketRepository,
     private readonly exceptionService: ExceptionService,
     private readonly mailService: MailService,
+    private readonly paginationService: PaginationService,
   ) {}
-  async getOrdersWithStatusPending(): Promise<Order[]> {
+  async getOrdersWithStatusPending(pagination: PaginationDto): Promise<{
+    orders: Order[];
+    numberOfOrders: number;
+    ordersPerPage: number;
+  }> {
     try {
-      return await this.orderRepository.find({
+      const { limit, skip } = await this.paginationService.setPagination(
+        pagination,
+        PaginationTypeEnum.TABLE,
+      );
+      const orders = await this.orderRepository.findAndCount({
         where: { orderStatus: OrderStatusEnum.PENDING },
-        relations: ['cart', 'cart.cartTickets', 'cart.cartTickets.ticket'],
+        relations: [
+          'cart',
+          'cart.cartTickets',
+          'cart.cartTickets.ticket',
+          'cart.createdBy',
+        ],
+        take: limit,
+        skip,
       });
+
+      return {
+        orders: orders[0],
+        numberOfOrders: orders[1],
+        ordersPerPage: parseInt(process.env.DEFAULT_PER_PAGE_FOR_TABLE),
+      };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
   }
 
-  async getOrderHistory(): Promise<Order[]> {
+  async getOrderHistory(pagination: PaginationDto): Promise<{
+    orders: Order[];
+    numberOfOrders: number;
+    ordersPerPage: number;
+  }> {
     try {
-      return await this.orderRepository.find({
+      const { limit, skip } = await this.paginationService.setPagination(
+        pagination,
+        PaginationTypeEnum.TABLE,
+      );
+      const orders = await this.orderRepository.findAndCount({
         where: [
           { orderStatus: OrderStatusEnum.ACCEPTED },
           { orderStatus: OrderStatusEnum.REJECTED },
         ],
+        relations: [
+          'cart',
+          'cart.cartTickets',
+          'cart.cartTickets.ticket',
+          'cart.createdBy',
+        ],
+        take: limit,
+        skip,
       });
+      return {
+        orders: orders[0],
+        numberOfOrders: orders[1],
+        ordersPerPage: parseInt(process.env.DEFAULT_PER_PAGE_FOR_TABLE),
+      };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
