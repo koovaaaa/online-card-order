@@ -41,7 +41,7 @@ export class UserOrderService {
         user,
         false,
       );
-      newOrder.orderPrice = parseInt(sum);
+      newOrder.orderPrice = parseFloat(sum);
 
       newOrder = await this.orderRepository.save(newOrder);
       await this.cartRepository.update(cart.cartId, {
