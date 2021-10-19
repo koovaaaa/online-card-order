@@ -91,6 +91,24 @@ export class EmployeeOrderService {
     }
   }
 
+  async getOrderById(orderId: string): Promise<Order> {
+    try {
+      return await this.orderRepository.findOneOrFail(orderId, {
+        relations: [
+          'cart',
+          'cart.cartTickets',
+          'cart.cartTickets.ticket',
+          'cart.cartTickets.ticket.event',
+          'cart.createdBy',
+          'cart.createdBy.country',
+          'cart.createdBy.city',
+        ],
+      });
+    } catch (e) {
+      this.exceptionService.handleException(e);
+    }
+  }
+
   async acceptOrRejectOrder(
     orderId: string,
     orderStatus: OrderStatusEnum,
