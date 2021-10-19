@@ -2,6 +2,9 @@ import {Component} from "react";
 import {Col, Container, Row, Table} from "react-bootstrap";
 import api from "../../../api/api";
 import * as moment from "moment";
+import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleDoubleLeft, faEdit} from "@fortawesome/free-solid-svg-icons";
 
 export default class TicketPage extends Component {
     state = {
@@ -14,7 +17,8 @@ export default class TicketPage extends Component {
         createdBy: '',
         editedAt: '',
         editedBy: '',
-        eventName: ''
+        eventName: '',
+        eventId: ''
     }
 
     async componentDidMount() {
@@ -33,7 +37,8 @@ export default class TicketPage extends Component {
             ticketCount: ticket.ticketCount,
             createdAt: ticket.createdAt,
             createdBy: ticket.createdBy.username,
-            eventName: ticket.event.eventName
+            eventName: ticket.event.eventName,
+            eventId: ticket.event.eventId
         })
     }
 
@@ -48,11 +53,24 @@ export default class TicketPage extends Component {
             editedAt,
             editedBy,
             eventName,
-            description
+            description,
+            ticketId,
+            eventId
         } = this.state;
+        const {state} = this.props.location;
         return (
             <Container>
                 <Row>
+                    <div>
+                        <Link className={'btn btn-danger m-1'}
+                              to={state ? state.from.pathname : `../${eventId}`}><FontAwesomeIcon
+                            icon={faAngleDoubleLeft}/> Nazad</Link>
+                        <Link className={'btn btn-warning'} to={{
+                            pathname: `../edit-ticket/${ticketId}`,
+                            state: {from: this.props.location}
+                        }}><FontAwesomeIcon icon={faEdit}/> Izmjeni</Link>
+                    </div>
+                    <br/><br/>
                     <Col xs={6}>
                         <Table hover className={"table"}>
                             <tbody>

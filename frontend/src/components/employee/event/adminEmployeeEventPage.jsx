@@ -2,7 +2,7 @@ import {Component} from "react";
 import {Alert, Button, Col, Container, Image, Modal, Row, Table} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEdit, faEye, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDoubleLeft, faEdit, faEye, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
 import api from "../../../api/api";
 import * as moment from 'moment';
 
@@ -66,10 +66,13 @@ export default class AdminEmployeeEventPage extends Component {
             changedAt
         } = this.state;
 
+
         return (
             <Container>
                 <Row>
                     <Col xs={6}>
+                        <Link className={'btn btn-danger m-1'} to={'../events'}><FontAwesomeIcon
+                            icon={faAngleDoubleLeft}/> Nazad</Link>
                         <Link className={"btn btn-warning"} to={{
                             pathname: `../edit-event/${eventId}`,
                             state: {from: this.props.location}
@@ -147,9 +150,15 @@ export default class AdminEmployeeEventPage extends Component {
                                             <td className={"text-md-end"}>{ticket.ticketCount}</td>
                                             <td className={"text-md-end"}>{ticket.ticketPrice} BAM</td>
                                             <td className={"text-md-end"}><Link className={'btn btn-primary'}
-                                                                                to={`view-ticket/${ticket.ticketId}`}><FontAwesomeIcon
+                                                                                to={{
+                                                                                    pathname: `view-ticket/${ticket.ticketId}`,
+                                                                                    state: {from: this.props.location}
+                                                                                }}><FontAwesomeIcon
                                                 icon={faEye}/></Link></td>
-                                            <td className={'text-md-center'}><Link to={`edit-ticket/${ticket.ticketId}`}
+                                            <td className={'text-md-center'}><Link to={{
+                                                pathname: `edit-ticket/${ticket.ticketId}`,
+                                                state: {from: this.props.location}
+                                            }}
                                                                                    className={'btn btn-warning'}><FontAwesomeIcon
                                                 icon={faEdit}/></Link></td>
                                             <td className={'text-md-start'}><Button variant={'danger'}

@@ -53,8 +53,9 @@ export default class EditTicket extends Component {
 
     render() {
         const {ticketName, isEdited, ticketPrice, ticketCount, description, eventId} = this.state;
-
-        if (isEdited) return (<Redirect to={`../${eventId}`}/>);
+        const {state} = this.props.location;
+        console.log(state.from.pathname);
+        if (isEdited) return (<Redirect to={state.from.pathname}/>);
 
         return (
             <Col md={{span: 6, offset: 3}}>
