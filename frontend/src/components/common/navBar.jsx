@@ -23,6 +23,8 @@ const NavBar = () => {
                     <Link className="nav-link" to="/events">Lista događaja</Link>}
                     {(getCurrentUser() && (getCurrentUser().role === userRole.admin || getCurrentUser().role === userRole.employee)) &&
                     <Link className="nav-link" to="/employee/events">Događaji</Link>}
+                    {(getCurrentUser() && (getCurrentUser().role === userRole.admin || getCurrentUser().role === userRole.employee)) &&
+                    <Link className="nav-link" to="/employee/orders">Narudžbe</Link>}
                     {(getCurrentUser() && getCurrentUser().role === userRole.admin) &&
                     <Link className="nav-link" to="/admin/users">Korisnici</Link>}
                     {(getCurrentUser() && getCurrentUser().role === userRole.admin) &&
