@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/employee/order/orderPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/employee/order/ordersPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/interceptor/order-change-date-format.interceptor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/order/orderPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/order/orderPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/order/ordersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/order/ordersPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-order/employee-order.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-order/employee-order.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-order/employee-order.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-order/employee-order.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-order/employee-order.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-order/employee-order.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/interceptor/change-format-date.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/interceptor/change-format-date.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/user/user-order/user-order.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-order/user-order.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/helper/services/calculate-sum.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/helper/services/calculate-sum.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +53,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\assets\images" />
+      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\employee\order" />
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\assets\css" />
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\employee" />
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\guest" />
-      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\common" />
-      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\employee\event" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -86,7 +87,7 @@
       <workItem from="1634291321633" duration="8046000" />
       <workItem from="1634334201051" duration="11070000" />
       <workItem from="1634591304172" duration="10746000" />
-      <workItem from="1634634508008" duration="9054000" />
+      <workItem from="1634634508008" duration="23065000" />
     </task>
     <servers />
   </component>

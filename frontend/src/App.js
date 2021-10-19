@@ -29,6 +29,8 @@ import EditTicket from "./components/employee/ticket/editTicket";
 import AddNewTicket from "./components/employee/ticket/addNewTicket";
 import DeleteTicket from "./components/employee/ticket/deleteTicket";
 import TicketPage from "./components/employee/ticket/ticketPage";
+import OrdersPage from "./components/employee/order/ordersPage";
+import OrderPage from "./components/employee/order/orderPage";
 
 class App extends React.Component {
     render() {
@@ -45,6 +47,8 @@ class App extends React.Component {
                         <AdminRoute path="/admin/location" component={EventLocations}/>
                         <AdminRoute path="/admin/edit-user/:id" component={EditUser}/>
                         <AdminRoute path="/admin/users" component={AdminUserList}/>
+                        <EmployeeRoute path='/employee/view-order/:id' component={OrderPage}/>
+                        <EmployeeRoute path="/employee/orders" component={OrdersPage}/>
                         <EmployeeRoute path="/employee/event/view-ticket/:id" component={TicketPage}/>
                         <EmployeeRoute path="/employee/event/:eventId/delete-ticket/:id" component={DeleteTicket}/>
                         <EmployeeRoute path="/employee/event/:id/add-new-ticket" component={AddNewTicket}/>

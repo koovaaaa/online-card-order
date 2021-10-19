@@ -6,6 +6,7 @@ import {
   Put,
   Query,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/guards/jwt.guard';
@@ -15,6 +16,7 @@ import { Order } from '../../../entity/order/order.entity';
 import { EditOrderDto } from './dto/edit-order.dto';
 import { UpdateResult } from 'typeorm';
 import { PaginationDto } from '../../../helper/dto/pagination.dto';
+import { OrderChangeDateFormatInterceptor } from '../../../interceptor/order-change-date-format.interceptor';
 
 @ApiTags('Employee Order')
 @ApiBearerAuth()
@@ -23,6 +25,7 @@ import { PaginationDto } from '../../../helper/dto/pagination.dto';
 export class EmployeeOrderController {
   constructor(private readonly employeeOrderService: EmployeeOrderService) {}
   @Get('get-active-orders')
+  @UseInterceptors(OrderChangeDateFormatInterceptor)
   async getActiveOrders(
     @Query() pagination: PaginationDto,
   ): Promise<{ orders: Order[]; numberOfOrders: number }> {
@@ -32,10 +35,16 @@ export class EmployeeOrderController {
   }
 
   @Get('get-order-history')
+  @UseInterceptors(OrderChangeDateFormatInterceptor)
   async getOrderHistory(
     @Query() pagination: PaginationDto,
   ): Promise<{ orders: Order[]; numberOfOrders: number }> {
     return await this.employeeOrderService.getOrderHistory(pagination);
+  }
+
+  @Get('get-order/:id')
+  async getOrder(@Param('id') orderId: string): Promise<Order> {
+    return await this.employeeOrderService.getOrderById(orderId);
   }
 
   @Put('change-order-status/:id')
