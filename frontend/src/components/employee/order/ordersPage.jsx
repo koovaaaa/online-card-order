@@ -4,31 +4,63 @@ import api from "../../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faEye, faTimes} from "@fortawesome/free-solid-svg-icons";
+import Pagination from "../../common/pagination";
 
-export default class OrderPage extends Component {
+export default class OrdersPage extends Component {
     state = {
-        orders: []
+        orders: [],
+        numberOfOrders: '',
+        ordersPerPage: '',
+        currentPage: 1,
+        targetValue: 'active'
     }
 
     async componentDidMount() {
         const orders = await api(`employee-order/get-active-orders`, 'get', '');
-        this.setState({orders});
+        this.setState({
+            orders: orders.orders,
+            numberOfOrders: orders.numberOfOrders,
+            ordersPerPage: orders.ordersPerPage
+        });
     }
 
     async getOrdersHistory() {
         const orders = await api(`employee-order/get-order-history`, 'get', '');
-        this.setState({orders});
-        console.log(this.state.orders);
+        this.setState({
+            orders: orders.orders,
+            numberOfOrders: orders.numberOfOrders,
+            ordersPerPage: orders.ordersPerPage,
+            targetValue: 'history',
+            currentPage: 1
+        });
+    }
+
+    handlePageChange = async (page) => {
+        await this.setState({currentPage: page});
+        console.log(this.state.currentPage);
+        let orders = '';
+        if (this.state.targetValue === 'active') {
+            orders = await api(`employee-order/get-active-orders?page=${this.state.currentPage}`, 'get', '');
+        } else {
+            orders = await api(`employee-order/get-order-history?page=${this.state.currentPage}`, 'get', '');
+        }
+
+        this.setState({orders: orders.orders, numberOfOrders: orders.numberOfOrders})
     }
 
     async getActiveOrders() {
         const orders = await api(`employee-order/get-active-orders`, 'get', '');
-        this.setState({orders});
-        console.log(this.state.orders);
+        this.setState({
+            orders: orders.orders,
+            numberOfOrders: orders.numberOfOrders,
+            ordersPerPage: orders.ordersPerPage,
+            targetValue: 'active',
+            currentPage: 1
+        });
     }
 
     render() {
-        const {orders} = this.state;
+        const {orders, numberOfOrders, ordersPerPage, currentPage} = this.state;
         const orderStatus = {
             pending: 'Na čekanju',
             rejected: 'Odbijeno',
@@ -93,6 +125,9 @@ export default class OrderPage extends Component {
                             )}
                             </tbody>
                         </Table>
+                        {orders.length ? <Pagination eventsCount={numberOfOrders} currentPage={currentPage}
+                                                     pageSize={ordersPerPage}
+                                                     onPageChange={this.handlePageChange}/> : ''}
                     </Col>
                 </Row>
             </Container>
