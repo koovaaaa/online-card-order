@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Table} from "react-bootstrap";
+import {Card, Table} from "react-bootstrap";
 import api from "../../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -32,7 +32,7 @@ export default class AdminUserList extends Component {
 
     render() {
         return (
-            <>
+            <Card>
                 <Table striped borderless hover>
                     <thead className={'border-bottom'}>
                     <tr>
@@ -73,7 +73,7 @@ export default class AdminUserList extends Component {
                 <br/>
                 <Pagination eventsCount={this.state.numberOfUsers} pageSize={this.state.defaultPerPage}
                             currentPage={this.state.currentPage} onPageChange={this.handlePageChange}/>
-            </>
+            </Card>
 
         );
     }

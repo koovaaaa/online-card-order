@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Button, Col, Modal, Row, Table} from "react-bootstrap";
+import {Button, Card, Col, Modal, Row, Table} from "react-bootstrap";
 import api from "../../../api/api";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -91,43 +91,45 @@ export default class AdminEmployeeEventList extends Component {
                     </Col>
                 </Row>
                 <br/>
-                <Table hover borderless striped>
-                    <thead className={'border-bottom'}>
-                    <tr>
-                        <th className={"text-md-center"}>#</th>
-                        <th className={"text-md-center"}>Naziv događaja</th>
-                        <th className={"text-md-center"}>Kategorija</th>
-                        <th className={"text-md-center"}>Grad</th>
-                        <th className={"text-md-center"}>Država</th>
-                        <th className={"text-md-center"}>Datum i vrijeme</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.events.map(event =>
-                        <tr key={event.eventId}>
-                            <td>{event.eventId}</td>
-                            <td>{event.eventName}</td>
-                            <td>{event.category.categoryName}</td>
-                            <td>{event.city.cityName}</td>
-                            <td>{event.country.countryName}</td>
-                            <td>{event.eventDate}</td>
-                            <td className={"text-md-center"}><Link className="btn btn-primary"
-                                                                   to={`/employee/event/${event.eventId}`}><FontAwesomeIcon
-                                icon={faEye}/> Pregledaj</Link>
-                            </td>
-                            <td className={"text-md-center"}><Link className="btn btn-warning"
-                                                                   to={`edit-event/${event.eventId}`}><FontAwesomeIcon
-                                icon={faEdit}/>Izmijeni</Link>
-                            </td>
-                            <td className={"text-md-center"}><Button className="btn btn-danger"
-                                                                     onClick={() => this.handleShow(event.eventId)}><FontAwesomeIcon
-                                icon={faTrash}/> Obriši
-                            </Button>
-                            </td>
+                <Card>
+                    <Table hover borderless striped>
+                        <thead className={'border-bottom'}>
+                        <tr>
+                            <th className={"text-md-center"}>#</th>
+                            <th className={"text-md-center"}>Naziv događaja</th>
+                            <th className={"text-md-center"}>Kategorija</th>
+                            <th className={"text-md-center"}>Grad</th>
+                            <th className={"text-md-center"}>Država</th>
+                            <th className={"text-md-center"}>Datum i vrijeme</th>
                         </tr>
-                    )}
-                    </tbody>
-                </Table>
+                        </thead>
+                        <tbody>
+                        {this.state.events.map(event =>
+                            <tr key={event.eventId}>
+                                <td>{event.eventId}</td>
+                                <td>{event.eventName}</td>
+                                <td>{event.category.categoryName}</td>
+                                <td>{event.city.cityName}</td>
+                                <td>{event.country.countryName}</td>
+                                <td>{event.eventDate}</td>
+                                <td className={"text-md-center"}><Link className="btn btn-primary"
+                                                                       to={`/employee/event/${event.eventId}`}><FontAwesomeIcon
+                                    icon={faEye}/> Pregledaj</Link>
+                                </td>
+                                <td className={"text-md-center"}><Link className="btn btn-warning"
+                                                                       to={`edit-event/${event.eventId}`}><FontAwesomeIcon
+                                    icon={faEdit}/>Izmijeni</Link>
+                                </td>
+                                <td className={"text-md-center"}><Button className="btn btn-danger"
+                                                                         onClick={() => this.handleShow(event.eventId)}><FontAwesomeIcon
+                                    icon={faTrash}/> Obriši
+                                </Button>
+                                </td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </Table>
+                </Card>
                 <br/>
                 <Pagination eventsCount={this.state.numberOfEvents} pageSize={this.state.eventsPerPage}
                             onPageChange={this.handlePageChange} currentPage={this.state.currentPage}/>
