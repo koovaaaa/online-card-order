@@ -44,7 +44,6 @@ export class TicketsPage extends Component {
                 quantity: +this.state.quantity
             })
         } catch (e) {
-            console.log(e.response.data.message);
         }
     }
 
