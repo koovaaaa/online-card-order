@@ -47,8 +47,10 @@ export default class EventLocations extends Component {
                     <ul className={"nav nav-tabs flex-column"}>
                         {this.state.countries.map(country =>
                             <li key={country.countryId} className={"nav-item"}>
-                                <button className={"nav-link "} value={country.countryId}
-                                        onClick={event => this.onMenuClick(event)}>{country.countryName}</button>
+                                <button
+                                    className={+this.state.currentCountry === country.countryId ? "fw-bold nav-link" : "nav-link"}
+                                    value={country.countryId}
+                                    onClick={event => this.onMenuClick(event)}>{country.countryName}</button>
                             </li>
                         )}
                     </ul>
