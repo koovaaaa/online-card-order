@@ -74,7 +74,6 @@ export default class OrderPage extends Component {
         this.setState({showReject: true});
     }
 
-
     render() {
         const {
             orderStatus,
