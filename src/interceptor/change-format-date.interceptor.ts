@@ -10,7 +10,9 @@ export class ChangeFormatDateInterceptor implements NestInterceptor {
     return next.handle().pipe(
       tap(async (response) => {
         for (const event of response.events) {
-          event.eventDate = moment(event.eventDate).format('DD/MM/YYYY HH:mm');
+          event.eventDate = moment(event.eventDate).format(
+            'DD/MM/YYYY u HH:mm',
+          );
         }
       }),
     );
