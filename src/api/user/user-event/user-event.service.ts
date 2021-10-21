@@ -5,7 +5,7 @@ import { CategoryRepository } from '../../../repository/category/category.reposi
 import { ExceptionService } from '../../../helper/services/exception.service';
 import { Event } from '../../../entity/event/event.entity';
 import { EventRepository } from '../../../repository/event/event.repository';
-import { MoreThan } from 'typeorm';
+import { MoreThan, MoreThanOrEqual } from 'typeorm';
 import { Country } from '../../../entity/country/country.entity';
 import { City } from '../../../entity/city/city.entity';
 import { CountryRepository } from '../../../repository/country/country.repository';
@@ -101,9 +101,10 @@ export class UserEventService {
   }> {
     try {
       const events = await this.eventRepository.find({
-        order: { eventDate: 'DESC' },
+        where: { eventDate: MoreThanOrEqual(new Date()) },
+        order: { eventDate: 'ASC' },
         relations: ['country', 'city'],
-        take: 3,
+        take: 5,
       });
 
       return { events, numberOfEvents: events.length };
