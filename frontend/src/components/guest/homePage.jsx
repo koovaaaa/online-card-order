@@ -46,16 +46,17 @@ export class HomePage extends React.Component {
                                         <Carousel.Caption
                                             className={' border-3 rounded border-radius-2  carousel-caption '}>
                                             <h2>{event.eventName}</h2>
+                                            <h3>{event.city.cityName}</h3>
                                             <h4 className={'fw-bold'}>{event.eventDate}</h4>
                                         </Carousel.Caption>
                                     </Link>
                                 </Carousel.Item>
                             )}
                         </Carousel>
-                        <FormText className={'small fw-bold'}>Napomena: Na Početnoj stranici je
-                            prikazano
-                            pet narednih događaja! Sve događaje možete pogledati
-                            <Link to={'events'} className={'text-decoration-none'}> ovdje!</Link></FormText>
+                        <FormText className={'small fw-bold'}><i>Napomena: Na početnoj stranici
+                            prikazano je
+                            pet narednih događaja! Listu svih događaja možete pogledati
+                            <Link to={'events'} className={'text-decoration-none'}> ovdje!</Link></i></FormText>
                     </Col>
                     <Col>
                         {events.map((event, index) =>
@@ -71,7 +72,6 @@ export class HomePage extends React.Component {
                                 <br/><br/>
                             </Container>
                         )}
-
                     </Col>
                 </Row>
             </>
