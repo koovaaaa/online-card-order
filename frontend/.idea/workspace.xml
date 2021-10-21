@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/logo.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/admin/location/eventLocations.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/admin/location/eventLocations.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/order/orderPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/order/orderPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/guest/homePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/guest/homePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/api/user/user-event/user-event.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-event/user-event.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="format.on.save" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -46,6 +51,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\assets\images" />
       <recent name="C:\Users\User\Desktop\Diplomski rad\Aplikacija\online-ticket-order\frontend\src\components\employee\order" />
@@ -82,7 +90,7 @@
       <workItem from="1634334201051" duration="11070000" />
       <workItem from="1634591304172" duration="10746000" />
       <workItem from="1634634508008" duration="29577000" />
-      <workItem from="1634721659143" duration="25473000" />
+      <workItem from="1634721659143" duration="27915000" />
     </task>
     <servers />
   </component>
