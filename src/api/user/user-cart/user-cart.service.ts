@@ -31,7 +31,12 @@ export class UserCartService {
     try {
       const carts = await this.cartRepository.find({
         where: { createdBy: user },
-        relations: ['order', 'cartTickets', 'cartTickets.ticket'],
+        relations: [
+          'order',
+          'cartTickets',
+          'cartTickets.ticket',
+          'cartTickets.ticket.event',
+        ],
         order: { createdAt: 'DESC' },
         take: 1,
       });
@@ -101,7 +106,11 @@ export class UserCartService {
   async getCartById(id: number, user: User) {
     try {
       const cart = await this.cartRepository.findOneOrFail(id, {
-        relations: ['cartTickets', 'cartTickets.ticket'],
+        relations: [
+          'cartTickets',
+          'cartTickets.ticket',
+          'cartTickets.ticket.event',
+        ],
       });
 
       const sum = await this.calculateSumService.calculateSum(cart, user, true);
