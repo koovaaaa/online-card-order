@@ -60,7 +60,7 @@ export default class OrdersPage extends Component {
     }
 
     render() {
-        const {orders, numberOfOrders, ordersPerPage, currentPage} = this.state;
+        const {orders, numberOfOrders, ordersPerPage, currentPage, targetValue} = this.state;
         const orderStatus = {
             pending: 'Na čekanju',
             rejected: 'Odbijeno',
@@ -72,17 +72,18 @@ export default class OrdersPage extends Component {
                     <Col xs={2}>
                         <ul className={'nav nav-tabs flex-column'}>
                             <li value={'active-orders'}>
-                                <button className={'nav-link'}
+                                <button className={targetValue === 'active' ? 'nav-link fw-bold text-dark' : 'nav-link'}
                                         onClick={async () => {
                                             await this.getActiveOrders()
                                         }}> Aktivne narudžbe
                                 </button>
                             </li>
                             <li value={'history-orders'}>
-                                <button className={'nav-link'}
-                                        onClick={async () => {
-                                            await this.getOrdersHistory()
-                                        }}> Istorija narudžbi
+                                <button
+                                    className={targetValue === 'history' ? 'nav-link fw-bold text-dark' : 'nav-link'}
+                                    onClick={async () => {
+                                        await this.getOrdersHistory()
+                                    }}> Istorija narudžbi
                                 </button>
                             </li>
                         </ul>
