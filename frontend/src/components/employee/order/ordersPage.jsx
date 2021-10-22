@@ -102,14 +102,21 @@ export default class OrdersPage extends Component {
                                     </thead>
                                     <tbody>
                                     {orders.map(order =>
-                                        <tr className={order.orderStatus === orderStatus.rejected ? 'bg-danger text-white' :
-                                            (order.orderStatus === orderStatus.accepted ? 'bg-success  text-white' : '')}
-                                            key={order.orderId}>
+                                        <tr key={order.orderId}>
                                             <td>{order.orderId}</td>
                                             <td>{order.createdAt}</td>
                                             <td className={'text-md-end'}>{order.orderPrice + ' BAM'}</td>
                                             <td>{order.cart.createdBy.email}</td>
-                                            <td>{order.orderStatus}</td>
+                                            <td>{order.orderStatus === orderStatus.rejected ?
+                                                <span
+                                                    className={'fw-bold text-danger'}>{orderStatus.rejected.toUpperCase()}</span> :
+                                                (order.orderStatus === orderStatus.accepted ?
+                                                        <span
+                                                            className={'fw-bold text-success'}>{orderStatus.accepted.toUpperCase()}</span> :
+                                                        <span
+                                                            className={'fw-bold text-primary'}>{orderStatus.pending.toUpperCase()}</span>
+                                                )}
+                                            </td>
                                             <td><Link to={`view-order/${order.orderId}`} className={'btn btn-primary'}>
                                                 <FontAwesomeIcon
                                                     icon={faEye}/> Pregledaj</Link></td>
