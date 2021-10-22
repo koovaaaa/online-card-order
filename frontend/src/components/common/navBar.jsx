@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHome} from "@fortawesome/free-solid-svg-icons";
 import {getCurrentUser} from "../../api/api";
+import Cart from "../user/cart";
 
 const NavBar = () => {
     const userRole = {
@@ -31,6 +32,8 @@ const NavBar = () => {
                     <Link className="nav-link" to="/admin/location">Lokacije</Link>}
                 </Nav>
                 <Nav>
+                    {(getCurrentUser() && getCurrentUser().role === userRole.user) &&
+                    <Cart/>}
                     {!getCurrentUser() &&
                     <>
                         <Link className="nav-link" to="/login">Prijava</Link>
