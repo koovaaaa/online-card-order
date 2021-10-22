@@ -28,6 +28,17 @@ export default class Cart extends Component {
         }
     }
 
+    async componentWillUpdate(nextProps, nextState, nextContext) {
+        const response = await api(`user-cart/get-current-cart`, 'get', '');
+
+        if (response) {
+            this.setState({
+                cart: response.cart,
+                totalPrice: response.totalPrice,
+                cartLength: response.cart.cartTickets.length
+            });
+        }
+    }
 
     handleShow = () => {
         this.setState({show: true});
@@ -39,6 +50,7 @@ export default class Cart extends Component {
 
     closeNotification = () => {
         this.setState({notification: false});
+        window.location.reload();
     }
 
     handleIncrement = async (id, quantity) => {
