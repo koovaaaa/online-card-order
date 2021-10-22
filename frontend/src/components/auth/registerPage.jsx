@@ -82,7 +82,7 @@ export default class RegisterPage extends Component {
         if (this.state.isLogged) return (<Redirect to={getCurrentUser().role === 'Korisnik' ? '/' : '/employee'}/>);
 
         return (
-            <Container>
+            <Container className={'mt-5'}>
                 <Card>
                     <Card.Body>
                         <Card.Title>

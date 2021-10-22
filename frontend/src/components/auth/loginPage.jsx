@@ -51,7 +51,7 @@ export default class LoginPage extends Component {
     render() {
         if (this.state.isLogged) return (<Redirect to={getCurrentUser().role === 'Korisnik' ? '/' : '/employee'}/>)
         return (
-            <Container>
+            <Container className={'mt-5'}>
                 <Col md={{span: 6, offset: 3}}>
                     <Card>
                         <Card.Body>
