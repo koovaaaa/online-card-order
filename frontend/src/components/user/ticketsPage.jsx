@@ -43,6 +43,7 @@ export class TicketsPage extends Component {
                 ticket: +this.state.ticketId,
                 quantity: +this.state.quantity
             })
+            window.location.reload();
         } catch (e) {
         }
     }
@@ -64,8 +65,8 @@ export class TicketsPage extends Component {
                     <Table hover className={"table table-borderless"}>
                         <thead className={"border-bottom"}>
                         <tr>
-                            <th></th>
-                            <th></th>
+                            <th/>
+                            <th/>
                             <th className={"text-md-end"}>Broj ulaznica na stanju</th>
                             <th className={"text-md-end"}>Cijena</th>
                         </tr>
