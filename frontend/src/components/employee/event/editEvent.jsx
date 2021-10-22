@@ -85,7 +85,7 @@ export default class EditEvent extends Component {
                                 <Form.Group>
                                     <Form.Label className={"small fw-bold"} htmlFor={"eventDescription"}>Opis
                                         događaja</Form.Label>
-                                    <Form.Control id={"eventDescription"} type={"text"}
+                                    <Form.Control id={"eventDescription"} as={'textarea'}
                                                   value={this.state.eventDescription}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
