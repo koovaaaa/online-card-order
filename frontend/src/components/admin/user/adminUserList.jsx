@@ -34,7 +34,7 @@ export default class AdminUserList extends Component {
         return (
             <Card>
                 <Table striped borderless hover>
-                    <thead className={'border-bottom'}>
+                    <thead className={'bg-success text-white'}>
                     <tr>
                         <th className={"text-md-center"}>#</th>
                         <th className={"text-md-center"}>Ime</th>

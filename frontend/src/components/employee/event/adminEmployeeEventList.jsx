@@ -93,7 +93,7 @@ export default class AdminEmployeeEventList extends Component {
                 <br/>
                 <Card>
                     <Table hover borderless striped>
-                        <thead className={'border-bottom'}>
+                        <thead className={'bg-success text-white'}>
                         <tr>
                             <th className={"text-md-center"}>#</th>
                             <th className={"text-md-center"}>Naziv događaja</th>
@@ -101,6 +101,7 @@ export default class AdminEmployeeEventList extends Component {
                             <th className={"text-md-center"}>Grad</th>
                             <th className={"text-md-center"}>Država</th>
                             <th className={"text-md-center"}>Datum i vrijeme</th>
+                            <th colSpan={3}/>
                         </tr>
                         </thead>
                         <tbody>

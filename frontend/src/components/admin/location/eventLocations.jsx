@@ -48,7 +48,7 @@ export default class EventLocations extends Component {
                         {this.state.countries.map(country =>
                             <li key={country.countryId} className={"nav-item"}>
                                 <button
-                                    className={+this.state.currentCountry === country.countryId ? "fw-bold nav-link" : "nav-link"}
+                                    className={+this.state.currentCountry === country.countryId ? "fw-bold text-dark nav-link" : "nav-link"}
                                     value={country.countryId}
                                     onClick={event => this.onMenuClick(event)}>{country.countryName}</button>
                             </li>
@@ -62,11 +62,12 @@ export default class EventLocations extends Component {
                     {this.state.cities.length ?
                         <Card>
                             <Table striped borderless hover>
-                                <thead className={'border-bottom'}>
+                                <thead className={'bg-success text-white'}>
                                 <tr>
                                     <th className={"text-md-center"}>#</th>
                                     <th className={"text-md-center"}>Naziv</th>
                                     <th className={"text-md-center"}>Poštanski broj</th>
+                                    <th/>
                                 </tr>
                                 </thead>
                                 <tbody>

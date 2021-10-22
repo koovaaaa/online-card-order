@@ -91,13 +91,14 @@ export default class OrdersPage extends Component {
                         {orders.length ?
                             <Card>
                                 <Table striped borderless hover>
-                                    <thead className={'border-bottom'}>
+                                    <thead className={'bg-success text-white'}>
                                     <tr>
                                         <th className={'text-md-center'}>#</th>
                                         <th>Datum kreiranja narudžbe</th>
                                         <th>Cijena narudžbe</th>
                                         <th>Narudžbu kreirao</th>
                                         <th>Status narudžbe</th>
+                                        <th/>
                                     </tr>
                                     </thead>
                                     <tbody>
