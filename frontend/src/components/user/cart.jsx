@@ -24,22 +24,11 @@ export default class Cart extends Component {
                 cart: response.cart,
                 totalPrice: response.totalPrice,
                 cartLength: response.cart.cartTickets.length
+
             });
         }
     }
-
-    async componentWillUpdate(nextProps, nextState, nextContext) {
-        const response = await api(`user-cart/get-current-cart`, 'get', '');
-
-        if (response) {
-            this.setState({
-                cart: response.cart,
-                totalPrice: response.totalPrice,
-                cartLength: response.cart.cartTickets.length
-            });
-        }
-    }
-
+    
     handleShow = () => {
         this.setState({show: true});
     }
@@ -116,7 +105,7 @@ export default class Cart extends Component {
                             <Table borderless>
                                 <tbody>
                                 {cart.cartTickets.map(ticket =>
-                                    <tr>
+                                    <tr key={ticket.ticket.ticketId}>
                                         <td className={'w-25'}>
                                             <img className={'w-100'} alt={'eventPhoto'}
                                                  src={process.env.REACT_APP_API_URL + ticket.ticket.event.eventPhoto}/>
