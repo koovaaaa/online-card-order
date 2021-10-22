@@ -50,20 +50,26 @@ export class EventPage extends Component {
                         <Card.Title className={"text-lg-center"}>Naruči kartu</Card.Title>
                         <Card.Body>
                             {getCurrentUser() ?
-                                <Card.Text className={"text-sm-start"}>
-                                    Klikom na dugme <strong>Naruči kartu</strong> započinjete proces kupovine karata
-                                    za događaj: <br/>
-                                    <strong>{this.state.eventName}</strong><br/>
-                                    u terminu: <br/>
-                                    <strong className={"text-md-center"}>{this.state.eventDate}</strong><br/><br/>
+                                <>
+                                    <Card.Text className={"text-sm-start"}>
+                                        Klikom na dugme <strong>Naruči kartu</strong> započinjete proces kupovine karata
+                                        za događaj: <br/>
+                                        <strong>{this.state.eventName}</strong><br/>
+                                        u terminu: <br/>
+                                        <strong className={"text-md-center"}>{this.state.eventDate}</strong><br/><br/>
+
+                                    </Card.Text>
                                     <Card.Text className={"text-md-center"}>
                                         <Link className={"btn  button-card"}
                                               to={`${this.state.eventId}/tickets`}><FontAwesomeIcon
                                             icon={faShoppingCart}/> Naruči kartu</Link>
                                     </Card.Text>
-                                </Card.Text> :
-                                <Card.Text className={"text-sm-start"}>
-                                    Da bi ste započeli proces kupovine karata potrebno je da se ulogujete!<br/><br/>
+                                </>
+                                :
+                                <>
+                                    <Card.Text className={"text-sm-start"}>
+                                        Da bi ste započeli proces kupovine karata potrebno je da se ulogujete!<br/><br/>
+                                    </Card.Text>
                                     <Card.Text className={"text-md-center"}>
                                         <Link className={"btn  button-card"}
                                               to={{
@@ -71,7 +77,7 @@ export class EventPage extends Component {
                                               }}>
                                             <FontAwesomeIcon icon={faSignInAlt}/> Prijavi se</Link>
                                     </Card.Text>
-                                </Card.Text>
+                                </>
                             }
                         </Card.Body>
                     </Card>
