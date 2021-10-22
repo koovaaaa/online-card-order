@@ -9,8 +9,8 @@ export default class EventCard extends Component {
     render() {
         return (
             <Card>
-                <Card.Img className={"card-img-top"} variant="top"
-                          src={`${process.env.REACT_APP_API_URL}${this.props.eventPhoto}`}/>
+                <Link to={`event/${this.props.eventId}`}><Card.Img className={"card-img-top"} variant="top"
+                                                                   src={`${process.env.REACT_APP_API_URL}${this.props.eventPhoto}`}/></Link>
                 <Card.Body>
                     <Card.Title>{this.props.eventName}</Card.Title>
                     <Link className={"btn btn-outline-primary"} to={`event/${this.props.eventId}`}> Saznaj više</Link>
