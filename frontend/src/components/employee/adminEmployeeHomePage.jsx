@@ -7,8 +7,8 @@ import '../../assets/css/adminEmployeeHomePage.css';
 export default class AdminEmployeeHomePage extends Component {
     render() {
         return (
-            <div className={'mt-5 justify-content-center'}>
-                <Row xs={1} md={2} className={'g-4'}>
+            <div className={"container h-100"}>
+                <Row xs={1} md={2} className={'g-4 h-100 justify-content-center align-items-center'}>
                     <Col>
                         <Link className={'text-decoration-none'} to={'employee/events'}>
                             <Card className={'l-bg-cherry'}>
