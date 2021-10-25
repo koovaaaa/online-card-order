@@ -38,6 +38,9 @@ export class Event {
   @Column()
   eventDate: Date;
 
+  @Column()
+  address: string;
+
   @ManyToOne(() => City)
   city: City;
 
