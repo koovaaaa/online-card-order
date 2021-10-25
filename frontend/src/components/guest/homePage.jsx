@@ -31,9 +31,9 @@ export class HomePage extends React.Component {
         const {events, index} = this.state;
         return (
             <>
-                <Row>
+                <Row className={'mt-5'}>
                     <Col xs={10}>
-                        <Carousel fade activeIndex={index} onSelect={this.handleSelect}>
+                        <Carousel interval={3000} fade activeIndex={index} onSelect={this.handleSelect}>
                             {events.map(event =>
                                 <Carousel.Item key={event.eventId}>
                                     <Link to={`event/${event.eventId}`}>
@@ -46,7 +46,7 @@ export class HomePage extends React.Component {
                                         <Carousel.Caption
                                             className={' border-3 rounded border-radius-2  carousel-caption '}>
                                             <h2>{event.eventName}</h2>
-                                            <h3>{event.city.cityName}</h3>
+                                            <h3>{event.address}, {event.city.cityName}</h3>
                                             <h4 className={'fw-bold'}>{event.eventDate}</h4>
                                         </Carousel.Caption>
                                     </Link>
@@ -63,9 +63,9 @@ export class HomePage extends React.Component {
                             <Container key={event.eventId}>
                                 <img
                                     src={process.env.REACT_APP_API_URL + event.eventPhoto}
-                                    className={'w-100 rounded'} height={'105px'}
+                                    className={'w-100 rounded border-danger'} height={'105px'}
                                     id={index}
-                                    border={this.checkIndex(index) ? '4px' : ''}
+                                    border={this.checkIndex(index) ? '4px ' : ''}
                                     onClick={event => this.imageClicked(event)}
                                     alt={'eventPhoto'}
                                 />
@@ -75,8 +75,6 @@ export class HomePage extends React.Component {
                     </Col>
                 </Row>
             </>
-
-
         );
     }
 }

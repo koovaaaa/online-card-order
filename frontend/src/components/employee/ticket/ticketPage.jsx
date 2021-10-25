@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Col, Container, Row, Table} from "react-bootstrap";
+import {Card, Col, Container, Row, Table} from "react-bootstrap";
 import api from "../../../api/api";
 import * as moment from "moment";
 import {Link} from "react-router-dom";
@@ -72,56 +72,66 @@ export default class TicketPage extends Component {
                     </div>
                     <br/><br/>
                     <Col xs={6}>
-                        <Table hover className={"table"}>
-                            <tbody>
-                            <tr>
-                                <td className={'fw-bold'}>Naziv ulaznice</td>
-                                <td>{ticketName}</td>
-                            </tr>
-                            <tr>
-                                <td className={'fw-bold'}>Opis ulaznice</td>
-                                <td>{description}</td>
-                            </tr>
-                            <tr>
-                                <td className={'fw-bold'}>Događaj</td>
-                                <td>{eventName}</td>
-                            </tr>
-                            <tr>
-                                <td className={'fw-bold'}>Cijena ulaznice</td>
-                                <td>{ticketPrice + ' BAM'}</td>
-                            </tr>
-                            <tr>
-                                <td className={'fw-bold'}>Dostupne ulaznice</td>
-                                <td>{ticketCount}</td>
-                            </tr>
-                            </tbody>
-                        </Table>
+                        <Card className={'mt-3'}>
+                            <Card.Body>
+                                <h4 className={'text-md-center'}>Informacije o ulaznici</h4>
+                                <Table hover className={"table"}>
+                                    <tbody>
+                                    <tr>
+                                        <td className={'fw-bold'}>Naziv ulaznice</td>
+                                        <td>{ticketName}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className={'fw-bold'}>Opis ulaznice</td>
+                                        <td>{description}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className={'fw-bold'}>Događaj</td>
+                                        <td>{eventName}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className={'fw-bold'}>Cijena ulaznice</td>
+                                        <td>{ticketPrice + ' BAM'}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className={'fw-bold'}>Dostupne ulaznice</td>
+                                        <td>{ticketCount}</td>
+                                    </tr>
+                                    </tbody>
+                                </Table>
+                            </Card.Body>
+                        </Card>
                     </Col>
                     <Col xs={6}>
-                        <Table hover className={"table"}>
-                            <tbody>
-                            <tr>
-                                <td className={'fw-bold'}>Ulaznica dodata</td>
-                                <td>{createdAt}</td>
-                            </tr>
-                            <tr>
-                                <td className={'fw-bold'}>Ulaznicu dodao</td>
-                                <td>{createdBy}</td>
-                            </tr>
-                            {editedAt ?
-                                <>
+                        <Card className={'mt-3'}>
+                            <Card.Body>
+                                <h4 className={'text-md-center'}>Informacije o akcijama</h4>
+                                <Table hover className={"table"}>
+                                    <tbody>
                                     <tr>
-                                        <td className={'fw-bold'}>Ulaznica izmjenjena</td>
-                                        <td>{editedAt}</td>
+                                        <td className={'fw-bold'}>Ulaznica dodata</td>
+                                        <td>{createdAt}</td>
                                     </tr>
                                     <tr>
-                                        <td className={'fw-bold'}>Ulaznicu izmjenio</td>
-                                        <td>{editedBy}</td>
+                                        <td className={'fw-bold'}>Ulaznicu dodao</td>
+                                        <td>{createdBy}</td>
                                     </tr>
-                                </>
-                                : ''}
-                            </tbody>
-                        </Table>
+                                    {editedAt ?
+                                        <>
+                                            <tr>
+                                                <td className={'fw-bold'}>Ulaznica izmjenjena</td>
+                                                <td>{editedAt}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className={'fw-bold'}>Ulaznicu izmjenio</td>
+                                                <td>{editedBy}</td>
+                                            </tr>
+                                        </>
+                                        : ''}
+                                    </tbody>
+                                </Table>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 </Row>
             </Container>

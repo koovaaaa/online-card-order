@@ -28,7 +28,7 @@ export default class Cart extends Component {
             });
         }
     }
-    
+
     handleShow = () => {
         this.setState({show: true});
     }
@@ -115,7 +115,7 @@ export default class Cart extends Component {
                                             <span
                                                 className={'small font-italic'}><i>{ticket.ticket.ticketName}</i></span>
                                         </td>
-                                        <td>
+                                        <td className={'w-25'}>
                                             <Button
                                                 onClick={() => this.handleDecrement(ticket.ticket.ticketId, ticket.quantity)}
                                                 variant={'danger'}><FontAwesomeIcon
