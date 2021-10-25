@@ -8,9 +8,12 @@ export class OrderRepository extends Repository<Order> {
     const orders = this.createQueryBuilder('order')
       .innerJoinAndSelect('order.cart', 'cart')
       .innerJoinAndSelect('cart.createdBy', 'user')
+      .innerJoinAndSelect('cart.cartTickets', 'cartTickets')
+      .innerJoinAndSelect('cartTickets.ticket', 'ticket')
+      .innerJoinAndSelect('ticket.event', 'event')
       .where(`cart.createdBy = ${user.userId}`)
       .innerJoinAndSelect('user.country', 'country');
 
-    return orders.getMany();
+    return orders.getManyAndCount();
   }
 }
