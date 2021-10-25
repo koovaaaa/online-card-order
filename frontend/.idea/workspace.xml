@@ -2,8 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60d836d8-45cd-42fa-9777-66ccd862e7c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/user/myOrders.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/registerPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/navBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/adminEmployeeHomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/adminEmployeeHomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/event/addNewEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/addNewEvent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/event/adminEmployeeEventList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/adminEmployeeEventList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/event/adminEmployeeEventPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/adminEmployeeEventPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/event/editEvent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/event/editEvent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/employee/ticket/ticketPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/employee/ticket/ticketPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/guest/eventPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/guest/eventPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/guest/homePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/guest/homePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/user/cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/cart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-event/dto/add-event.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-event/dto/add-event.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/employee/employee-event/dto/change-event.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/employee/employee-event/dto/change-event.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/user/user-order/user-order.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-order/user-order.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/api/user/user-order/user-order.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/api/user/user-order/user-order.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/entity/event/event.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/entity/event/event.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/helper/services/password.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/helper/services/password.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/interceptor/change-value.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/interceptor/change-value.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/repository/order/order.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/repository/order/order.repository.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +107,9 @@
       <workItem from="1634591304172" duration="10746000" />
       <workItem from="1634634508008" duration="29577000" />
       <workItem from="1634721659143" duration="53871000" />
-      <workItem from="1634924875676" duration="1545000" />
+      <workItem from="1634924875676" duration="13846000" />
+      <workItem from="1634995760291" duration="4818000" />
+      <workItem from="1635147509813" duration="1525000" />
     </task>
     <servers />
   </component>

@@ -32,6 +32,7 @@ import TicketPage from "./components/employee/ticket/ticketPage";
 import OrdersPage from "./components/employee/order/ordersPage";
 import OrderPage from "./components/employee/order/orderPage";
 import Footer from "./components/common/footer";
+import MyOrders from "./components/user/myOrders";
 
 class App extends React.Component {
     render() {
@@ -42,6 +43,7 @@ class App extends React.Component {
                     <br/>
                     <Container>
                         <Switch>
+                            <UserRoute path="/my-orders" component={MyOrders}/>
                             <UserRoute path="/event/:id/tickets" component={TicketsPage}/>
                             <CommonRoute path="/profile" component={UserProfile}/>
                             <AdminRoute path="/admin/edit-city/:id" component={EditCity}/>

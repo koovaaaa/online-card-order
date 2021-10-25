@@ -18,7 +18,8 @@ export default class AdminEmployeeEventPage extends Component {
         tickets: [],
         show: false,
         ticketId: '',
-        changedAt: ''
+        changedAt: '',
+        address: ''
     }
 
     async componentDidMount() {
@@ -39,7 +40,7 @@ export default class AdminEmployeeEventPage extends Component {
             countryName: event.country.countryName,
             categoryName: event.category.categoryName,
             cityName: event.city.cityName,
-            createdBy: event.createdBy.username,
+            createdBy: event.createdBy.username
         });
     }
 
@@ -82,6 +83,7 @@ export default class AdminEmployeeEventPage extends Component {
                         <div>
                             <Image className={"img-fluid rounded shadow-2-strong"}
                                    src={event.eventPhoto ? process.env.REACT_APP_API_URL + event.eventPhoto : ''}/>
+
                             <Table hover className={"table"}>
                                 <tbody>
                                 <tr>
@@ -98,7 +100,7 @@ export default class AdminEmployeeEventPage extends Component {
                                 </tr>
                                 <tr>
                                     <td className={'fw-bold'}>Lokacija</td>
-                                    <td>{cityName} / {countryName}</td>
+                                    <td>{event.address}, {cityName} / {countryName}</td>
                                 </tr>
                                 <tr>
                                     <td className={'fw-bold'}>Datum i vrijeme</td>
@@ -138,7 +140,7 @@ export default class AdminEmployeeEventPage extends Component {
                                 <Table hover borderless className={"table "}>
                                     <thead>
                                     <tr className={"border-bottom"}>
-                                        <th></th>
+                                        <th/>
                                         <th className={"text-md-end"}>Stanje ulaznica</th>
                                         <th className={"text-md-end"}>Cijena</th>
                                     </tr>
@@ -168,7 +170,8 @@ export default class AdminEmployeeEventPage extends Component {
                                         </tr>
                                     )}
                                     </tbody>
-                                </Table> :
+                                </Table>
+                                :
                                 <Alert className={'fw-bold text-md-center'} variant={'warning'}>Za ovaj događaj ulaznice
                                     još nisu objavljene!</Alert>
                             }

@@ -19,7 +19,8 @@ export default class AddNewEvent extends Component {
         country: '',
         eventPhoto: null,
         errorMessage: '',
-        isAdded: false
+        isAdded: false,
+        address: ''
     }
 
     async componentDidMount() {
@@ -54,6 +55,7 @@ export default class AddNewEvent extends Component {
             formData.append('description', this.state.eventDescription);
             formData.append('category', this.state.category);
             formData.append('eventDate', this.state.eventDate);
+            formData.append('address', this.state.address);
             formData.append('city', this.state.city);
             formData.append('country', this.state.country);
             formData.append('eventPhoto', this.state.eventPhoto)
@@ -106,6 +108,11 @@ export default class AddNewEvent extends Component {
                                                     value={category.categoryId}>{category.categoryName}</option>
                                         )}
                                     </select>
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label htmlFor={'address'} className={'small fw-bold'}>Adresa</Form.Label>
+                                    <Form.Control id={'address'} type={'text'} placeholder={'Unesi adresu'}
+                                                  onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label className={"small fw-bold"}

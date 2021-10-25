@@ -16,7 +16,8 @@ export default class EditEvent extends Component {
         city: '',
         cityName: '',
         cities: [],
-        isEdited: false
+        isEdited: false,
+        address: ''
     }
 
     async componentDidMount() {
@@ -28,7 +29,8 @@ export default class EditEvent extends Component {
             eventPhoto: event.eventPhoto,
             country: event.country.countryId,
             city: event.city.cityId,
-            cityName: event.city.cityName
+            cityName: event.city.cityName,
+            address: event.address
         })
 
         const cities = await api(`user-place/get-cities/${this.state.country}`, 'get', '');
@@ -55,6 +57,7 @@ export default class EditEvent extends Component {
             formData.append('description', this.state.eventDescription);
             formData.append('eventDate', this.state.eventDate);
             formData.append('eventPhoto', this.state.eventPhoto);
+            formData.append('address', this.state.address);
             formData.append('city', this.state.city);
 
             const response = await apiFile(`employee-events/edit-event/${this.state.eventId}`, 'put', formData);
@@ -87,6 +90,11 @@ export default class EditEvent extends Component {
                                         događaja</Form.Label>
                                     <Form.Control id={"eventDescription"} as={'textarea'}
                                                   value={this.state.eventDescription}
+                                                  onChange={event => this.onInputChange(event)}/>
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label htmlFor={'address'} className={'small fw-bold'}>Adresa</Form.Label>
+                                    <Form.Control id={'address'} type={'text'} value={this.state.address}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
                                 <Form.Group>

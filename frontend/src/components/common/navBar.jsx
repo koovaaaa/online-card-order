@@ -22,6 +22,8 @@ const NavBar = () => {
                 <Nav className={"me-auto"}>
                     {(!getCurrentUser() || (getCurrentUser() && getCurrentUser().role === userRole.user)) &&
                     <Link className="nav-link" to="/events">Lista događaja</Link>}
+                    {(getCurrentUser() && getCurrentUser().role === userRole.user) &&
+                    <Link className="nav-link" to="/my-orders">Moje narudžbe</Link>}
                     {(getCurrentUser() && (getCurrentUser().role === userRole.admin || getCurrentUser().role === userRole.employee)) &&
                     <Link className="nav-link" to="/employee/events">Događaji</Link>}
                     {(getCurrentUser() && (getCurrentUser().role === userRole.admin || getCurrentUser().role === userRole.employee)) &&

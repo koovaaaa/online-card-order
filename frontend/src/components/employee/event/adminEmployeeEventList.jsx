@@ -97,9 +97,9 @@ export default class AdminEmployeeEventList extends Component {
                         <tr>
                             <th className={"text-md-center"}>#</th>
                             <th className={"text-md-center"}>Naziv događaja</th>
-                            <th className={"text-md-center"}>Kategorija</th>
-                            <th className={"text-md-center"}>Grad</th>
-                            <th className={"text-md-center"}>Država</th>
+                            <th className={"text-md-start"}>Kategorija</th>
+                            <th className={"text-md-start"}>Grad</th>
+                            <th className={"text-md-start"}>Država</th>
                             <th className={"text-md-center"}>Datum i vrijeme</th>
                             <th colSpan={3}/>
                         </tr>
@@ -112,7 +112,7 @@ export default class AdminEmployeeEventList extends Component {
                                 <td>{event.category.categoryName}</td>
                                 <td>{event.city.cityName}</td>
                                 <td>{event.country.countryName}</td>
-                                <td>{event.eventDate}</td>
+                                <td className={'text-md-center'}>{event.eventDate}</td>
                                 <td className={"text-md-center"}><Link className="btn btn-primary"
                                                                        to={`/employee/event/${event.eventId}`}><FontAwesomeIcon
                                     icon={faEye}/> Pregledaj</Link>

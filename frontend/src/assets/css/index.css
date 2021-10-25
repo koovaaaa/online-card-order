@@ -26,7 +26,8 @@ body, html, .App, #root, .outer {
 }
 
 .carousel-caption {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.65);
+    color: yellow;
 }
 
 #page-container {
@@ -37,6 +38,10 @@ body, html, .App, #root, .outer {
 
 #content-wrap {
     flex: 1;
+}
+
+textarea {
+    white-space: pre-wrap;
 }
 
 

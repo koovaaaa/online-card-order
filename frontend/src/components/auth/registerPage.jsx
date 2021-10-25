@@ -48,7 +48,7 @@ export default class RegisterPage extends Component {
                 country: +this.state.country,
             })
 
-            if (response.role === 'user') {
+            if (response.role === 'Korisnik') {
                 await this.setState({errorMessage: ''})
                 await this.setState({message: 'Uspješno ste registrovani!'})
             }
@@ -147,15 +147,16 @@ export default class RegisterPage extends Component {
                                 </Col>
                             </Row>
                             <br/>
-                            <Button variant="primary" onClick={async () => {
+                            <div className={'text-md-center'}><Button variant="primary" onClick={async () => {
                                 await this.doRegister()
-                            }}>Registruj se</Button>
+                            }}>Registruj se</Button></div>
                         </Form>
                         <br/>
-                        <Alert variant="success" className={this.state.message ? '' : 'd-none'}>
+                        <Alert variant="success" className={this.state.message ? 'fw-bold text-md-center' : 'd-none'}>
                             {this.state.message}
                         </Alert>
-                        <Alert variant="danger" className={this.state.errorMessage ? '' : 'd-none'}>
+                        <Alert variant="danger"
+                               className={this.state.errorMessage ? 'fw-bold text-md-center' : 'd-none'}>
                             {this.state.errorMessage}
                         </Alert>
                     </Card.Body>
