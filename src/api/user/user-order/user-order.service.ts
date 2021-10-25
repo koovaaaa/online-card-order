@@ -62,7 +62,8 @@ export class UserOrderService {
 
   async getMyOrders(user: User) {
     try {
-      return await this.orderRepository.getMyOrders(user);
+      const orders = await this.orderRepository.getMyOrders(user);
+      return { orders: orders[0], numberOfOrders: orders[1] };
     } catch (e) {
       this.exceptionService.handleException(e);
     }
