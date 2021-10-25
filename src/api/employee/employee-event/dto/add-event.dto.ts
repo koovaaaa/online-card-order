@@ -21,6 +21,10 @@ export class AddEventDto {
   @IsDateString()
   eventDate: Date;
   @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  address: string;
+  @ApiProperty()
   @IsNotEmpty()
   city: City;
   @ApiProperty()

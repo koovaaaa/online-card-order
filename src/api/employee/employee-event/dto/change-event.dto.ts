@@ -19,5 +19,8 @@ export class ChangeEventDto {
   eventPhoto: any;
   @ApiProperty()
   @IsOptional()
+  address: string;
+  @ApiProperty()
+  @IsOptional()
   city: City;
 }

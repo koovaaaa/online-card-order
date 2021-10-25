@@ -12,6 +12,7 @@ import { GetUser } from '../../auth/get-user.decorator';
 import { User } from '../../../entity/user/user.entity';
 import { Order } from '../../../entity/order/order.entity';
 import { ChangeValueInterceptor } from '../../../interceptor/change-value.interceptor';
+import { OrderChangeDateFormatInterceptor } from '../../../interceptor/order-change-date-format.interceptor';
 
 @ApiTags('User Order')
 @ApiBearerAuth()
@@ -26,7 +27,7 @@ export class UserOrderController {
   }
 
   @Get('my-orders')
-  @UseInterceptors(ChangeValueInterceptor)
+  @UseInterceptors(ChangeValueInterceptor, OrderChangeDateFormatInterceptor)
   async getMyOrders(@GetUser() user: User) {
     return await this.userOrderService.getMyOrders(user);
   }
