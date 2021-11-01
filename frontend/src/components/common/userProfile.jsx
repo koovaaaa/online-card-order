@@ -83,13 +83,15 @@ export default class UserProfile extends Component {
         if (this.state.isEdited) return (<Redirect to={this.state.role === 'Korisnik' ? '/' : '/employee'}/>);
 
         return (
-            <Container>
+            <Container className={'center-content'}>
                 <Col md={{span: 4, offset: 4}}>
                     <Card>
-                        <Card.Body>
-                            <Card.Title>
+                        <Card.Header className={'p-3 bg-warning'}>
+                            <Card.Title className={'text-md-center'}>
                                 <FontAwesomeIcon icon={faUser}/> Moj profil
                             </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
                             <Form>
                                 <Form.Group>
                                     <Form.Label htmlFor={"name"} className={"small fw-bold"}>Ime</Form.Label>
@@ -154,8 +156,11 @@ export default class UserProfile extends Component {
                                     </Col>
                                 </Row>
                                 <br/>
-                                <Button variant={"primary"} onClick={async () => await this.doEdit()}>Spasi
-                                    promjene</Button>
+                                <div className={'text-md-center'}>
+                                    <Button variant={"warning"} className={'fw-bold ps-4 pe-4 p-2'}
+                                            onClick={async () => await this.doEdit()}>Spasi
+                                        promjene</Button>
+                                </div>
                             </Form>
                             <br/>
                             <Alert variant="danger" className={this.state.errorMessage ? '' : 'd-none'}>

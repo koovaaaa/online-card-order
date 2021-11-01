@@ -17,17 +17,17 @@ export class UserRegistrationDto {
   @IsString()
   name: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: "Polje 'Prezime' ne smije biti prazno! " })
   @IsString()
   surname: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: "Polje 'Korisničko ime' ne smije biti prazno! " })
   @IsString()
   @MinLength(4)
   @MaxLength(32)
   username: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: "Polje 'e-mail ne smije biti prazno! " })
   @IsEmail()
   email: string;
   @ApiProperty()
@@ -38,19 +38,19 @@ export class UserRegistrationDto {
   })
   contactPhone: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: "Polje 'Lozinka' ne smije biti prazno! " })
   @IsString()
   @MinLength(8)
   @MaxLength(40)
   password: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: "Polje 'Adresa' ne smije biti prazno! " })
   @IsString()
   address: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Izaberite grad! ' })
   city: City;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Izaberite državu! ' })
   country: Country;
 }

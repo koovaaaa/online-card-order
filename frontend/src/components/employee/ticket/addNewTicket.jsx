@@ -45,44 +45,51 @@ export default class AddNewTicket extends Component {
         const {eventId, isAdded} = this.state
         if (isAdded) return (<Redirect to={`../${eventId}`}/>);
         return (
-            <Col md={{span: 6, offset: 3}}>
-                <Card>
-                    <Card.Body>
-                        <Card.Title>
-                            <FontAwesomeIcon icon={faFolderPlus}/> <span
-                            className={'fw-bold'}>Dodaj novu ulaznicu</span>
-                        </Card.Title>
-                        <Form>
-                            <Form.Group>
-                                <Form.Label htmlFor={'ticketName'}>Naziv ulaznice</Form.Label>
-                                <Form.Control id={'ticketName'} type={'text'}
-                                              onChange={event => this.handleInputChange(event)}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label htmlFor={'description'}>Opis ulaznice</Form.Label>
-                                <Form.Control id={'description'} type={'text'}
-                                              onChange={event => this.handleInputChange(event)}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label htmlFor={'ticketPrice'}>Cijena ulaznice</Form.Label>
-                                <Form.Control id={'ticketPrice'} type={'text'}
-                                              onChange={event => this.handleInputChange(event)}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label htmlFor={'ticketCount'}>Broj ulaznica</Form.Label>
-                                <input className={'form-control'} type={'number'} min={0} id={'ticketCount'}
-                                       onChange={event => this.handleInputChange(event)}/>
-                            </Form.Group>
+            <div className={'center-content'}>
+                <Col md={{span: 4, offset: 4}}>
+                    <Card>
+                        <Card.Header className={'p-3 bg-primary text-white'}>
+                            <Card.Title className={'text-md-center'}>
+                                <FontAwesomeIcon icon={faFolderPlus}/> <span
+                                className={'fw-bold'}>Dodaj novu ulaznicu</span>
+                            </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
+                            <Form>
+                                <Form.Group className={'text-md-center fw-bold small'}>
+                                    <Form.Label htmlFor={'ticketName'}>Naziv ulaznice</Form.Label>
+                                    <Form.Control id={'ticketName'} type={'text'}
+                                                  onChange={event => this.handleInputChange(event)}/>
+                                </Form.Group>
+                                <Form.Group className={'text-md-center fw-bold small'}>
+                                    <Form.Label htmlFor={'description'}>Opis ulaznice</Form.Label>
+                                    <Form.Control id={'description'} type={'text'}
+                                                  onChange={event => this.handleInputChange(event)}/>
+                                </Form.Group>
+                                <Form.Group className={'text-md-center fw-bold small'}>
+                                    <Form.Label htmlFor={'ticketPrice'}>Cijena ulaznice</Form.Label>
+                                    <Form.Control id={'ticketPrice'} type={'text'}
+                                                  onChange={event => this.handleInputChange(event)}/>
+                                </Form.Group>
+                                <Form.Group className={'text-md-center fw-bold small'}>
+                                    <Form.Label htmlFor={'ticketCount'}>Broj ulaznica</Form.Label>
+                                    <input className={'form-control'} type={'number'} min={0} id={'ticketCount'}
+                                           onChange={event => this.handleInputChange(event)}/>
+                                </Form.Group>
+                                <br/>
+                                <div className={'text-md-center'}>
+                                    <Button variant={'primary fw-bold'} className={'p-2 pe-4 ps-4'}
+                                            onClick={async () => await this.addNewEvent()}>Potvrdi</Button>
+                                </div>
+                            </Form>
                             <br/>
-                            <Button variant={'primary'} onClick={async () => await this.addNewEvent()}>Sačuvaj</Button>
-                        </Form>
-                        <br/>
-                        <Alert variant="danger" className={this.state.errorMessage ? 'fw-bold' : 'd-none'}>
-                            {this.state.errorMessage}
-                        </Alert>
-                    </Card.Body>
-                </Card>
-            </Col>
+                            <Alert variant="danger" className={this.state.errorMessage ? 'fw-bold' : 'd-none'}>
+                                {this.state.errorMessage}
+                            </Alert>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </div>
         );
     }
 }

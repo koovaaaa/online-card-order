@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Button, Card, Col, Container, Form} from "react-bootstrap";
+import {Button, Card, Col, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit} from "@fortawesome/free-solid-svg-icons";
 import api from "../../../api/api";
@@ -36,20 +36,23 @@ export default class EditUser extends Component {
         if (this.state.isEdited) return (<Redirect to={'../users'}/>);
 
         return (
-            <Container>
+            <div className={'mt-5'}>
                 <Col md={{span: 3, offset: 4}}>
                     <Card>
-                        <Card.Body>
-                            <Card.Title>
+                        <Card.Header className={'p-3 bg-warning'}>
+                            <Card.Title className={'text-md-center'}>
                                 <FontAwesomeIcon icon={faEdit}/> Promijeni ulogu korisnika
                             </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
+
                             <Form>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label
                                         className={"small fw-bold"}>{this.state.user.role}: {this.state.user.name + ' ' + this.state.user.surname}</Form.Label>
                                 </Form.Group>
-                                <Form.Group>
-                                    <Form.Label className={"small fw-bold"} htmlFor={"role"}>Uloga: </Form.Label>
+                                <Form.Group className={'text-md-center'}>
+                                    <Form.Label className={"small fw-bold"} htmlFor={"role"}>Nova uloga: </Form.Label>
                                     <select id={"role"} className={"form-select"}
                                             onChange={event => this.onSelectChange(event)}>
                                         <option value={''}>Izaberi ulogu</option>
@@ -59,13 +62,15 @@ export default class EditUser extends Component {
                                     </select>
                                 </Form.Group>
                                 <br/>
-                                <Button variant={"primary"}
-                                        onClick={async () => await this.doEdit()}>Potvrdi</Button>
+                                <div className={'text-md-center'}>
+                                    <Button variant={"warning"} className={'fw-bold pe-4 ps-4 p-2'}
+                                            onClick={async () => await this.doEdit()}>Potvrdi</Button>
+                                </div>
                             </Form>
                         </Card.Body>
                     </Card>
                 </Col>
-            </Container>
+            </div>
         );
     }
 }

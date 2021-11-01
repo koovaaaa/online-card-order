@@ -58,48 +58,55 @@ export default class EditTicket extends Component {
         if (isEdited) return (<Redirect to={state.from.pathname}/>);
 
         return (
-            <Col md={{span: 6, offset: 3}}>
-                <Card>
-                    <Card.Body>
-                        <Card.Title>
-                            <FontAwesomeIcon icon={faEdit}/> <span
-                            className={'fw-bold'}>Promijeni informacije o ulaznici</span>
-                        </Card.Title>
-                        <Form>
-                            <Form.Group>
-                                <Form.Label htmlFor={"ticketName"} className={"small fw-bold"}>Naziv
-                                    ulaznice</Form.Label>
-                                <Form.Control id={"ticketName"} type={"text"} value={ticketName}
-                                              onChange={event => this.handleInputChange(event)}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label htmlFor={"description"} className={"small fw-bold"}>Opis
-                                    ulaznice</Form.Label>
-                                <Form.Control id={"description"} type={"text"} value={description}
-                                              onChange={event => this.handleInputChange(event)}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label htmlFor={"ticketPrice"} className={"small fw-bold"}>Cijena
-                                    ulaznice</Form.Label>
-                                <Form.Control id={'ticketPrice'} type={'text'} value={ticketPrice}
-                                              onChange={event => this.handleInputChange(event)}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label htmlFor={"ticketCount"} className={"small fw-bold"}>Broj
-                                    ulaznica</Form.Label>
-                                <input className={'form-control'} id={'ticketCount'} type={"number"} min={"0"}
-                                       value={ticketCount} onChange={event => this.handleInputChange(event)}/>
-                            </Form.Group>
+            <div className={'center-content'}>
+                <Col md={{span: 4, offset: 4}}>
+                    <Card>
+                        <Card.Header className={'p-3 bg-warning'}>
+                            <Card.Title className={'text-md-center'}>
+                                <FontAwesomeIcon icon={faEdit}/> <span
+                                className={'fw-bold'}>Promijeni informacije o ulaznici</span>
+                            </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
+                            <Form>
+                                <Form.Group className={'text-md-center'}>
+                                    <Form.Label htmlFor={"ticketName"} className={"small fw-bold"}>Naziv
+                                        ulaznice</Form.Label>
+                                    <Form.Control id={"ticketName"} type={"text"} value={ticketName}
+                                                  onChange={event => this.handleInputChange(event)}/>
+                                </Form.Group>
+                                <Form.Group className={'text-md-center'}>
+                                    <Form.Label htmlFor={"description"} className={"small fw-bold"}>Opis
+                                        ulaznice</Form.Label>
+                                    <Form.Control id={"description"} type={"text"} value={description}
+                                                  onChange={event => this.handleInputChange(event)}/>
+                                </Form.Group>
+                                <Form.Group className={'text-md-center'}>
+                                    <Form.Label htmlFor={"ticketPrice"} className={"small fw-bold"}>Cijena
+                                        ulaznice</Form.Label>
+                                    <Form.Control id={'ticketPrice'} type={'text'} value={ticketPrice}
+                                                  onChange={event => this.handleInputChange(event)}/>
+                                </Form.Group>
+                                <Form.Group className={'text-md-center'}>
+                                    <Form.Label htmlFor={"ticketCount"} className={"small fw-bold"}>Broj
+                                        ulaznica</Form.Label>
+                                    <input className={'form-control'} id={'ticketCount'} type={"number"} min={"0"}
+                                           value={ticketCount} onChange={event => this.handleInputChange(event)}/>
+                                </Form.Group>
+                                <br/>
+                                <div className={'text-md-center'}>
+                                    <Button variant={'warning'} className={'fw-bold ps-4 pe-4 p-2'}
+                                            onClick={async () => this.doEdit()}>Potvrdi izmjene</Button>
+                                </div>
+                            </Form>
                             <br/>
-                            <Button variant={'primary'} onClick={async () => this.doEdit()}>Potvrdi</Button>
-                        </Form>
-                        <br/>
-                        <Alert variant="danger" className={this.state.errorMessage ? 'fw-bold' : 'd-none'}>
-                            {this.state.errorMessage}
-                        </Alert>
-                    </Card.Body>
-                </Card>
-            </Col>
+                            <Alert variant="danger" className={this.state.errorMessage ? 'fw-bold' : 'd-none'}>
+                                {this.state.errorMessage}
+                            </Alert>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </div>
         );
     }
 }

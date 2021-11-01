@@ -23,7 +23,7 @@ export default class DeleteEvent extends Component {
         if (this.state.isDeleted) return (<Redirect to={'../events'}/>)
 
         return (
-            <div className={'justify-content-center align-items-center'}>
+            <div className={'center-content justify-content-center'}>
                 <Alert variant={"danger"} className={"fw-bold text-md-center"}>
                     <span>Za izabrani događaj postoje aktivne ulaznice, te ga zbog toga nije dozvoljeno obrisati!</span><br/>
                     <span>Događaj je moguće obrisati samo dok ne postoji nijedna aktivna ulaznica vezana za njega!</span><br/>

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import {Alert, Button, Card, Col, Container, Form} from "react-bootstrap";
+import {Alert, Button, Card, Col, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSignInAlt} from "@fortawesome/free-solid-svg-icons";
 import api, {getCurrentUser, getToken, saveToken} from "../../api/api";
 import jwtDecode from "jwt-decode";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 export default class LoginPage extends Component {
     state = {
@@ -51,39 +51,55 @@ export default class LoginPage extends Component {
     render() {
         if (this.state.isLogged) return (<Redirect to={getCurrentUser().role === 'Korisnik' ? '/' : '/employee'}/>)
         return (
-            <Container className={'mt-5'}>
-                <Col md={{span: 6, offset: 3}}>
+            <div className={'center-content'}>
+                <Col md={{span: 4, offset: 4}}>
                     <Card>
-                        <Card.Body>
-                            <Card.Title>
+                        <Card.Header className={'p-3 bg-success text-white'}>
+                            <Card.Title className={'text-md-center'}>
                                 <FontAwesomeIcon icon={faSignInAlt}/> Prijava korisnika
                             </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
                             <Form>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor="username">Korisničko ime /
                                         Email</Form.Label>
                                     <Form.Control type="text" id="usernameOrEmail"
+                                                  className={'text-md-center'}
                                                   placeholder="Unesite korisničko ime ili email"
                                                   onChange={event => this.onInputFieldChange(event)}/>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'mt-2 text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor="password">Lozinka</Form.Label>
-                                    <Form.Control type="password" id="password" placeholder="Unesite lozinku"
+                                    <Form.Control className={'text-md-center'} type="password" id="password"
+                                                  placeholder="Unesite lozinku"
                                                   onChange={event => this.onInputFieldChange(event)}/>
                                 </Form.Group>
                                 <br/>
-                                <Button variant="primary" onClick={async () => {
-                                    await this.doLogin()
-                                }}>Prijavi se</Button>
+                                <div className={'text-md-center'}>
+                                    <Button variant="success" className={'fw-bold p-2 ps-4 pe-4'} onClick={async () => {
+                                        await this.doLogin()
+                                    }}>Prijavi se</Button>
+                                </div>
                             </Form>
-                            <br/>
-                            <Alert variant="danger" className={this.state.errorMessage ? '' : 'd-none'}>
+                            <Alert variant="danger"
+                                   className={this.state.errorMessage ? 'mt-3 text-md-center fw-bold' : 'd-none'}>
                                 {this.state.errorMessage}
                             </Alert>
                         </Card.Body>
+                        <Card.Footer>
+                            <div className={'mt-1 d-flex justify-content-center align-content-center'}>
+                                <p>
+                                    <span className={'fw-bold'}>Nemate profil? </span>
+                                    <span>
+                                        <Link className={'font-italic text-decoration-none'} to={'/register'}>Registruj se</Link>
+                                    </span>
+                                </p>
+                            </div>
+                        </Card.Footer>
                     </Card>
                 </Col>
-            </Container>
+            </div>
         );
     }
 }

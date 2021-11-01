@@ -130,11 +130,11 @@ export default class OrderPage extends Component {
                                     <thead>
                                     <tr>
                                         <th className={'text-md-center'}>#</th>
-                                        <th className={'text-md-center'}>Ulaznica</th>
+                                        <th className={'text-md-start'}>Ulaznica</th>
                                         <th className={'text-md-center'}>Događaj</th>
                                         <th className={'text-md-center'}>Količina</th>
-                                        <th className={'text-md-center'}>Cijena</th>
-                                        <th className={'text-md-center'}>Ukupno</th>
+                                        <th width={'18%'} className={'text-md-center'}>Cijena</th>
+                                        <th width={'18%'} className={'text-md-center'}>Ukupno</th>
                                     </tr>
                                     </thead>
                                     <tbody>

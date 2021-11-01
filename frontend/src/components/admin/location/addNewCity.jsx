@@ -43,28 +43,30 @@ export default class AddNewCity extends Component {
     render() {
         if (this.state.isAdded) return (<Redirect to={'location'}/>)
         return (
-            <Container>
+            <Container className={'mt-5'}>
                 <Col md={{span: 4, offset: 4}}>
                     <Card>
-                        <Card.Body>
-                            <Card.Title>
+                        <Card.Header className={'p-3 bg-primary text-white'}>
+                            <Card.Title className={'text-md-center'}>
                                 <FontAwesomeIcon icon={faCity}/> Dodaj novi grad
                             </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
                             <Form>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"city"}>Naziv grada</Form.Label>
                                     <Form.Control id={"city"} type={"text"}
                                                   placeholder={"Unesite naziv grada"}
                                                   onChange={event => this.handleChangeInput(event)}/>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"postalCode"}>Poštanski
                                         broj</Form.Label>
                                     <Form.Control id={"postalCode"} type={"text"}
                                                   placeholder={"Unesite poštanski broj"}
                                                   onChange={event => this.handleChangeInput(event)}/>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"country"}>Država</Form.Label>
                                     <select id={"country"} className={"form-select"}
                                             onChange={event => this.handleChangeInput(event)}>
@@ -76,7 +78,10 @@ export default class AddNewCity extends Component {
                                     </select>
                                 </Form.Group>
                                 <br/>
-                                <Button variant={"primary"} onClick={async () => await this.addCity()}>Potvrdi</Button>
+                                <div className={'text-md-center'}>
+                                    <Button variant={"primary"} className={'fw-bold pe-4 ps-4 p-2'}
+                                            onClick={async () => await this.addCity()}>Potvrdi</Button>
+                                </div>
                             </Form>
                             <br/>
                             <Alert variant="danger" className={this.state.errorMessage ? '' : 'd-none'}>

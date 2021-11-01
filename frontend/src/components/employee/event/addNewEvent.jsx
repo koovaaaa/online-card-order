@@ -1,9 +1,8 @@
 import {Component} from "react";
-import {Alert, Card, Col, Container, Form} from "react-bootstrap";
+import {Alert, Button, Card, Col, Form} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFolderPlus} from "@fortawesome/free-solid-svg-icons";
 import api, {apiFile} from "../../../api/api";
-import {Button} from "react-bootstrap";
 import {Redirect} from "react-router-dom";
 
 export default class AddNewEvent extends Component {
@@ -70,35 +69,37 @@ export default class AddNewEvent extends Component {
         if (this.state.isAdded) return (<Redirect to={'events'}/>);
 
         return (
-            <Container className="justify-content-center">
-                <Col md={{span: 6, offset: 3}}>
+            <div className={'center-content'}>
+                <Col md={{span: 4, offset: 4}}>
                     <Card>
-                        <Card.Body>
-                            <Card.Title>
+                        <Card.Header className={'p-3 bg-primary text-white'}>
+                            <Card.Title className={'text-md-center'}>
                                 <FontAwesomeIcon icon={faFolderPlus}/> Dodaj novi događaj
                             </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
                             <Form>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"eventName"}>Naziv
                                         događaja</Form.Label>
-                                    <Form.Control id={"eventName"} type={"text"} placeholder={"Unesite naziv"}
+                                    <Form.Control id={"eventName"} type={"text"} placeholder={"Unesite naziv događaja"}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"eventDescription"}>Opis
                                         događaja</Form.Label>
                                     <Form.Control id={"eventDescription"} as={'textarea'}
-                                                  placeholder={"Unesite opis"}
+                                                  placeholder={"Unesite opis događaja"}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"eventDate"}>Datum
                                         događaja</Form.Label>
                                     <Form.Control id={"eventDate"} type={"datetime-local"}
                                                   placeholder={"Unesite datum"}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"category"}>Kategorija</Form.Label>
                                     <select id="category" className={"form-select"}
                                             onChange={event => this.onInputChange(event)}>
@@ -109,12 +110,12 @@ export default class AddNewEvent extends Component {
                                         )}
                                     </select>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label htmlFor={'address'} className={'small fw-bold'}>Adresa</Form.Label>
                                     <Form.Control id={'address'} type={'text'} placeholder={'Unesi adresu'}
                                                   onChange={event => this.onInputChange(event)}/>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"}
                                                 htmlFor={"select-country"}>Država</Form.Label>
                                     <select id="select-country" className={"form-select"}
@@ -126,7 +127,7 @@ export default class AddNewEvent extends Component {
                                         )}
                                     </select>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"city"}>Grad</Form.Label>
                                     <select id="city" className={"form-select"}
                                             onChange={event => this.onInputChange(event)}>
@@ -136,23 +137,27 @@ export default class AddNewEvent extends Component {
                                         )}
                                     </select>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"event-photo"}>Fotografija
                                         događaja</Form.Label><br/>
                                     <Form.Control id="event-photo" type={"file"}
                                                   onChange={event => this.handleFile(event)}/>
                                 </Form.Group>
                                 <br/>
-                                <Button variant={"primary"} onClick={async () => await this.doUpload()}>Potvrdi</Button>
+                                <div className={'text-md-center'}>
+                                    <Button variant={"primary"} className={'fw-bold p-2 pe-4 ps-4'}
+                                            onClick={async () => await this.doUpload()}>Potvrdi</Button>
+                                </div>
                             </Form>
                             <br/>
-                            <Alert variant="danger" className={this.state.errorMessage ? '' : 'd-none'}>
+                            <Alert variant="danger"
+                                   className={this.state.errorMessage ? 'small fw-bold text-md-center' : 'd-none'}>
                                 {this.state.errorMessage}
                             </Alert>
                         </Card.Body>
                     </Card>
                 </Col>
-            </Container>
+            </div>
         );
     }
 }

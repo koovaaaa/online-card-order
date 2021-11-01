@@ -6,30 +6,31 @@ import { IsDateString, IsNotEmpty, IsString } from 'class-validator';
 
 export class AddEventDto {
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Unesite naziv događaja! ' })
   @IsString()
   eventName: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Unesite opis događaja! ' })
   @IsString()
   description: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Izaberite kategoriju! ' })
   category: Category;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Izaberite datum! ' })
   @IsDateString()
   eventDate: Date;
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Unesite adresu! ' })
   address: string;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Izaberite grad! ' })
   city: City;
   @ApiProperty()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Izaberite državu ' })
   country: Country;
   @ApiProperty({ type: 'string', format: 'binary' })
+  @IsNotEmpty({ message: 'Dodajte fotografiju!' })
   eventPhoto: any;
 }

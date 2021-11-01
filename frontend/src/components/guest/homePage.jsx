@@ -30,8 +30,8 @@ export class HomePage extends React.Component {
     render() {
         const {events, index} = this.state;
         return (
-            <>
-                <Row className={'mt-5'}>
+            <div className={'mt-5'}>
+                <Row>
                     <Col xs={10}>
                         <Carousel interval={3000} fade activeIndex={index} onSelect={this.handleSelect}>
                             {events.map(event =>
@@ -74,7 +74,7 @@ export class HomePage extends React.Component {
                         )}
                     </Col>
                 </Row>
-            </>
+            </div>
         );
     }
 }

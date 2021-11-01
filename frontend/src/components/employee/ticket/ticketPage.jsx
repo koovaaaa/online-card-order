@@ -68,7 +68,7 @@ export default class TicketPage extends Component {
                         <Link className={'btn btn-warning'} to={{
                             pathname: `../edit-ticket/${ticketId}`,
                             state: {from: this.props.location}
-                        }}><FontAwesomeIcon icon={faEdit}/> Izmjeni</Link>
+                        }}><FontAwesomeIcon icon={faEdit}/> Izmijeni</Link>
                     </div>
                     <br/><br/>
                     <Col xs={6}>
@@ -119,11 +119,11 @@ export default class TicketPage extends Component {
                                     {editedAt ?
                                         <>
                                             <tr>
-                                                <td className={'fw-bold'}>Ulaznica izmjenjena</td>
+                                                <td className={'fw-bold'}>Ulaznica izmijenjena</td>
                                                 <td>{editedAt}</td>
                                             </tr>
                                             <tr>
-                                                <td className={'fw-bold'}>Ulaznicu izmjenio</td>
+                                                <td className={'fw-bold'}>Ulaznicu izmijenio</td>
                                                 <td>{editedBy}</td>
                                             </tr>
                                         </>

@@ -71,7 +71,7 @@ export class EventPage extends Component {
                                 :
                                 <>
                                     <Card.Text className={"text-sm-start"}>
-                                        Da bi ste započeli proces kupovine karata potrebno je da se ulogujete!<br/><br/>
+                                        Da biste započeli proces kupovine karata potrebno je da se ulogujete!<br/><br/>
                                     </Card.Text>
                                     <Card.Text className={"text-md-center"}>
                                         <Link className={"btn  button-card"}

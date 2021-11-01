@@ -91,8 +91,9 @@ export class TicketsPage extends Component {
                 }
 
                 <Modal show={show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title><FontAwesomeIcon icon={faTicketAlt}/> Naruči kartu</Modal.Title>
+                    <Modal.Header className={'bg-success'}>
+                        <Modal.Title className={'m-auto text-white'}><FontAwesomeIcon icon={faTicketAlt}/> Naruči
+                            kartu</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Row>

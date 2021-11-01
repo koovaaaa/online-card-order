@@ -41,28 +41,35 @@ export default class EditCity extends Component {
     render() {
         if (this.state.isEdited) return (<Redirect to={'../location'}/>);
         return (
-            <Container>
+            <Container className={'mt-5'}>
                 <Col md={{span: 3, offset: 4}}>
                     <Card>
-                        <Card.Body>
-                            <Card.Title>
+                        <Card.Header className={'p-3 bg-warning'}>
+                            <Card.Title className={'text-md-center'}>
                                 <FontAwesomeIcon icon={faEdit}/> Izmijeni informacije
                             </Card.Title>
+                        </Card.Header>
+                        <Card.Body>
                             <Form>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"cityName"}>Naziv
                                         grada</Form.Label>
-                                    <Form.Control type={"text"} id={"cityName"} value={this.state.cityName}
+                                    <Form.Control className={'text-md-center'} type={"text"} id={"cityName"}
+                                                  value={this.state.cityName}
                                                   onChange={event => this.handleInputFieldChange(event)}/>
                                 </Form.Group>
-                                <Form.Group>
+                                <Form.Group className={'text-md-center'}>
                                     <Form.Label className={"small fw-bold"} htmlFor={"postalCode"}>Poštanski
                                         broj</Form.Label>
-                                    <Form.Control type={"text"} id={"postalCode"} value={this.state.postalCode}
+                                    <Form.Control className={'text-md-center'} type={"text"} id={"postalCode"}
+                                                  value={this.state.postalCode}
                                                   onChange={event => this.handleInputFieldChange(event)}/>
                                 </Form.Group>
                                 <br/>
-                                <Button variant={"primary"} onClick={async () => await this.doEdit()}>Potvrdi</Button>
+                                <div className={'text-md-center'}>
+                                    <Button variant={"warning"} className={'fw-bold pe-4 ps-4 p-2'}
+                                            onClick={async () => await this.doEdit()}>Potvrdi</Button>
+                                </div>
                             </Form>
                         </Card.Body>
                     </Card>

@@ -74,7 +74,9 @@ export default class AdminEmployeeEventList extends Component {
     render() {
         return (
             <>
-                <Link className="btn btn-primary" to={"add-new-event"}><FontAwesomeIcon icon={faPlus}/> Dodaj novi
+                <Link className="btn btn-primary fw-bold p-2 pe-3 ps-3" to={"add-new-event"}><FontAwesomeIcon
+                    icon={faPlus}/> Dodaj
+                    novi
                     dogadjaj</Link>
                 <br/>
                 <br/>
@@ -131,7 +133,6 @@ export default class AdminEmployeeEventList extends Component {
                         </tbody>
                     </Table>
                 </Card>
-                <br/>
                 <Pagination eventsCount={this.state.numberOfEvents} pageSize={this.state.eventsPerPage}
                             onPageChange={this.handlePageChange} currentPage={this.state.currentPage}/>
 

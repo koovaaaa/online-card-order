@@ -97,8 +97,9 @@ export default class Cart extends Component {
                     icon={faCartArrowDown}/> ({cartLength})</Nav.Link>
 
                 <Modal show={show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title className={'m-auto'}><FontAwesomeIcon icon={faCartArrowDown}/> Korpa</Modal.Title>
+                    <Modal.Header className={'bg-success'}>
+                        <Modal.Title className={'m-auto text-white'}><FontAwesomeIcon
+                            icon={faCartArrowDown}/> Korpa</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className={'m-auto'}>
                         {cartLength ?
@@ -148,8 +149,8 @@ export default class Cart extends Component {
                 </Modal>
 
                 <Modal show={notification} onHide={this.closeNotification}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Obavještenje</Modal.Title>
+                    <Modal.Header className={`bg-${alertVariant}`}>
+                        <Modal.Title className={'m-auto text-white'}>Obavještenje</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Alert variant={alertVariant} className={'text-md-center fw-bold'}>{message}</Alert>
