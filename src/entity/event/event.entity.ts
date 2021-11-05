@@ -4,7 +4,6 @@ import {
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { Category } from '../category/category.entity';
 import { User } from '../user/user.entity';
